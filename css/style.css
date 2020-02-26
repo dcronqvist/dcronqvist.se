@@ -1,0 +1,13 @@
+body {
+    height: 100%;
+    margin: 0%;
+}
+
+.hejsan {
+    position: absolute;
+    font-family: Roboto;
+    font-size: 14pt;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+}

@@ -1,13 +1,36 @@
 body {
-    height: 100%;
     margin: 0%;
+    background-color: antiquewhite;
 }
 
 .hejsan {
+    text-decoration: underline;
     position: absolute;
     font-family: Roboto;
-    font-size: 14pt;
+    font-size: 2rem;
     text-align: center;
     width: 100%;
     top: 50%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.bankbank {
+    font-size: 2rem;
+    position: absolute;
+    font-family: Roboto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bank1 {
+    transform: rotate(12deg);
+    left: 10%;
+    top: 5%;
+}
+
+.bank2 {
+    transform: rotate(-23deg);
+    left: 80%;
+    top: 80%;
 }

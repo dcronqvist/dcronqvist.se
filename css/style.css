@@ -34,3 +34,9 @@ body {
     left: 80%;
     top: 80%;
 }
+
+.bank3 {
+    transform: rotate(5deg);
+    left: 20%;
+    top: 60%;
+}

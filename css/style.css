@@ -1,42 +1,38 @@
 body {
     margin: 0%;
-    background-color: antiquewhite;
+    background-color: #e2edff;
 }
 
-.hejsan {
-    text-decoration: underline;
-    position: absolute;
+.main-view-wrapper {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    border: 1px solid black;
+    display: flex;
+    flex-flow: row rtl wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-view {
+    width: 50%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-box {
+    display: flex;
     font-family: Roboto;
-    font-size: 2rem;
-    text-align: center;
-    width: 100%;
-    top: 50%;
-    -webkit-transform: translate(0, -50%);
-    transform: translate(0, -50%);
+    width: 44%;
+    border: 1px solid red;
+    margin: 2.5%;
 }
 
-.bankbank {
-    font-size: 2rem;
-    position: absolute;
+.project-info-view {
+    display: flex;
     font-family: Roboto;
-    font-weight: bold;
-    text-align: center;
-}
-
-.bank1 {
-    transform: rotate(12deg);
-    left: 10%;
-    top: 5%;
-}
-
-.bank2 {
-    transform: rotate(-23deg);
-    left: 80%;
-    top: 80%;
-}
-
-.bank3 {
-    transform: rotate(5deg);
-    left: 20%;
-    top: 60%;
+    width: 50%;
+    border: 1px solid red;
 }

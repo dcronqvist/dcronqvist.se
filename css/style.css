@@ -9,16 +9,15 @@ body {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
-    width: 75%;
+    width: 1700px;
     display: flex;
     flex-flow: row rtl wrap;
     justify-content: center;
     align-items: center;
-    height: 60%;
 }
 
 .project-view {
-    width: 700px;
+    width: 522px;
     height: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -51,7 +50,7 @@ body {
     border-radius: 20px;
     height: 255px;
     width: 245px;
-    margin: 2.5%;
+    margin: 8px;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
@@ -88,15 +87,13 @@ body {
 
 .project-info-view {
     display: flex;
-    height: 60%;
-    width: 30%;
-    border: 1px solid red;
-    padding: 2.5% 5% 2.5% 5%;
-    margin-right: 5%;
+    width: 440px;
+    height: 476px;
+    padding: 25px;
+    margin-left: 8px;
     background-color: white;
     border-color: white;
     border-radius: 20px;
-    display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }

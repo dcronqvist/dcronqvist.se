@@ -1,6 +1,6 @@
 body {
     margin: 0%;
-    background-color: #e2edff;
+    background-color: #EEDFFF;
     font-family: Roboto;;
 }
 
@@ -14,10 +14,12 @@ body {
     flex-flow: row rtl wrap;
     justify-content: center;
     align-items: center;
+    height: 60%;
 }
 
 .project-view {
-    width: 50%;
+    width: 700px;
+    height: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -40,24 +42,31 @@ body {
     background-color: #ffd153;
 }
 
+.shadow {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 .project-box {
     display: flex;
     border-radius: 20px;
-    height: 30%;
-    width: 35%;
+    height: 255px;
+    width: 245px;
     margin: 2.5%;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     color: white;
     transform: scale(1);
-    transition: transform .2s;
+    transition: transform .14s;
     cursor: pointer;
 } 
 
 .project-box:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+.project-box:active {
+    transform: scale(1);
 }
 
 .project-box-title {
@@ -79,6 +88,35 @@ body {
 
 .project-info-view {
     display: flex;
-    width: 50%;
+    height: 60%;
+    width: 30%;
     border: 1px solid red;
+    padding: 2.5% 5% 2.5% 5%;
+    margin-right: 5%;
+    background-color: white;
+    border-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.project-info-title {
+    margin-top: 0%;
+    font-size: 29px;
+    font-weight: 900;
+    color: black;
+    margin-bottom: 1%;
+}
+
+.project-github-link {
+    text-decoration: none;
+    color: #6D6D6D;
+    font-weight: 900;
+    padding: 2%;
+}
+
+.project-info-undertitle {
+    color: black;
+    font-weight: 300;
 }

@@ -1,12 +1,15 @@
 body {
     margin: 0%;
     background-color: #e2edff;
+    font-family: Roboto;;
 }
 
 .main-view-wrapper {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
     width: 75%;
-    margin-left: 12.5%;
-    margin-right: 12.5%;
     border: 1px solid black;
     display: flex;
     flex-flow: row rtl wrap;
@@ -22,17 +25,46 @@ body {
     align-items: center;
 }
 
+.purple {
+    background-color: #b37aff;
+}
+
+.red {
+    background-color: #ff8e8e;
+}
+
 .project-box {
     display: flex;
-    font-family: Roboto;
+    border-radius: 20px;
+    height: 40%;
     width: 44%;
-    border: 1px solid red;
     margin: 2.5%;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.project-box-title {
+    font-size: 29px;
+    font-weight: 900;
+    margin: 0% 10% 5% 10%;
+}
+
+.project-box-description {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 300;
+    margin: 0% 10% 10% 10%;
+}
+
+.project-box svg {
+    margin: 10% 10% 5% 10%;
 }
 
 .project-info-view {
     display: flex;
-    font-family: Roboto;
     width: 50%;
     border: 1px solid red;
 }

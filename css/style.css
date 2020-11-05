@@ -10,7 +10,6 @@ body {
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
     width: 75%;
-    border: 1px solid black;
     display: flex;
     flex-flow: row rtl wrap;
     justify-content: center;
@@ -33,34 +32,42 @@ body {
     background-color: #ff8e8e;
 }
 
+.blue {
+    background-color: #6dc5ff;
+}
+
+.yellow {
+    background-color: #ffd153;
+}
+
 .project-box {
     display: flex;
     border-radius: 20px;
-    height: 40%;
-    width: 44%;
+    height: 30%;
+    width: 35%;
     margin: 2.5%;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     color: white;
-}
+} 
 
 .project-box-title {
-    font-size: 29px;
+    font-size: 26px;
     font-weight: 900;
     margin: 0% 10% 5% 10%;
 }
 
 .project-box-description {
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 300;
-    margin: 0% 10% 10% 10%;
+    margin: 0% 5% 10% 5%;
 }
 
 .project-box svg {
-    margin: 10% 10% 5% 10%;
+    margin: 15% 10% 5% 10%;
 }
 
 .project-info-view {

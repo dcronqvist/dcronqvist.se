@@ -44,21 +44,40 @@
                 <p class="project-box-description">working on different projects at the moment. More coming soon...</p>
             </div>
         </div>
-        <div class="project-info-view shadow">
-            <p class="project-info-title">danpass</p>
-            <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist/danpass">
-                github repo
-                <svg xmlns="http://www.w3.org/2000/svg" width="18.002" height="18.002" viewBox="0 0 18.002 18.002">
-                    <g id="Icon_feather-external-link" data-name="Icon feather-external-link" transform="translate(-3.5 -3.086)">
-                      <path id="Path_1" data-name="Path 1" d="M17.49,15.062v5.2a1.732,1.732,0,0,1-1.732,1.732H6.232A1.732,1.732,0,0,1,4.5,20.258V10.732A1.732,1.732,0,0,1,6.232,9h5.2" transform="translate(0 -1.902)" fill="none" stroke="#6d6d6d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                      <path id="Path_2" data-name="Path 2" d="M22.5,4.5h5.2V9.7" transform="translate(-7.608)" fill="none" stroke="#6d6d6d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                      <path id="Path_3" data-name="Path 3" d="M15,14.026,24.526,4.5" transform="translate(-4.438)" fill="none" stroke="#6d6d6d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                    </g>
-                </svg>
-            </a>
-            <p class="project-info-undertitle">
+        <div id="proj-view-danpass" class="project-info-view shadow">
+            <div class="project-info-view-header">
+                <p class="project-info-title">danpass</p>
+                <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist/danpass">
+                    github repo
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18.002" height="18.002" viewBox="0 0 18.002 18.002">
+                        <g id="Icon_feather-external-link" data-name="Icon feather-external-link" transform="translate(-3.5 -3.086)">
+                        <path id="Path_1" data-name="Path 1" d="M17.49,15.062v5.2a1.732,1.732,0,0,1-1.732,1.732H6.232A1.732,1.732,0,0,1,4.5,20.258V10.732A1.732,1.732,0,0,1,6.232,9h5.2" transform="translate(0 -1.902)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_2" data-name="Path 2" d="M22.5,4.5h5.2V9.7" transform="translate(-7.608)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_3" data-name="Path 3" d="M15,14.026,24.526,4.5" transform="translate(-4.438)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <p class="project-info-text">
                 danpass is a very simple command line interfaced password manager written in python using fernet encryption to store passwords securely.
             </p>
+            <p class="project-info-title-small">how to use</p>
+            <p class="project-info-text">to add new entries to the manager, you simply run:</p>
+            <code class="project-info-code">$ danpass add -s example.com -u username -p password</code>
+            <p class="project-info-text">once you've added a bunch of entries to danpass, you can search through the entries in two different ways, either by site:</p>
+            <code class="project-info-code">$ danpass find -s example.com</code>
+            <p class="project-info-text">or you can search by the entry's numeric id:</p>
+            <code class="project-info-code">
+                $ danpass find -id 415              <br>
+                Found 1 entries in danpass.         <br>
+                ----------------------------------- <br>
+                ID:             415                 <br>
+                Website:        example.com         <br>
+                Username:       username            <br>
+                Password:       password            <br>
+                ----------------------------------- <br>
+            </code>
+            <p class="project-info-text">there are of course ways to update or delete existing entries, check out the github repo if you're curious!</p>
         </div>
     </div>
 </body>

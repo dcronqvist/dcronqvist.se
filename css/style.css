@@ -75,16 +75,16 @@ pre {
 } 
 
 .faded {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scale(0.95);
 }
 
 .project-box:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .project-box:active {
-    transform: scale(1.02);
+    transform: scale(1);
 }
 
 .project-box-title {
@@ -157,6 +157,7 @@ pre {
 
 .project-github-link svg {
     padding-left: 5px;
+    display: inline;
 }
 
 .project-github-link:hover {

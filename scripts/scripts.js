@@ -11,11 +11,11 @@ function unfadeOtherThan(proj) {
 
 function showProj(proj) {
     let projs = [
-        ["#proj-view-danpass", "#A269EE"],
-        ["#proj-view-aboutme", "#F5EBCF"],
-        ["#proj-view-evolvi", "#5CB4EE"],
-        ["#proj-view-restberry", "#EE7D7D"],
-        ["#proj-view-upcoming", "#EEC042"],
+        ["#proj-view-aboutme", "#E8E8E8"],
+        ["#proj-view-danpass", "#D9BFFF"],
+        ["#proj-view-evolvi", "#BAE4FF"],
+        ["#proj-view-restberry", "#FFC9C9"],
+        ["#proj-view-upcoming", "#FFE7AD"],
     ];
 
     let indexIsMe = -1;

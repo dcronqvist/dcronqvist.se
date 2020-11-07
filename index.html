@@ -109,7 +109,7 @@
         <div id="proj-view-restberry" class="project-info-view shadow">
             <div class="project-info-view-header">
                 <p class="project-info-title">restberry-api</p>
-                <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist/danpass">
+                <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist/restberry-api">
                     github repo
                     <svg xmlns="http://www.w3.org/2000/svg" width="18.002" height="18.002" viewBox="0 0 18.002 18.002">
                         <g id="Icon_feather-external-link" data-name="Icon feather-external-link" transform="translate(-3.5 -3.086)">
@@ -120,6 +120,33 @@
                     </svg>
                 </a>
             </div>
+            <p class="project-info-text">
+                This REST API, written in Python, is hosted on my RPi 4, and I mostly use it for personal finance management. The following examples are simplified API responses.
+            </p>
+            <p class="project-info-text">
+                One endpoint I use a lot is the current month's statistics:
+            </p>
+            <code class="project-info-code"><pre>$ curl https://api.dcronqvist.se/econ/outcomes/month
+{
+    "response": {
+        "balance": "3841.76",
+        "budget": "10912.81",
+        "result": "7071.05",
+    }
+}</pre></code>
+            <p class="project-info-text">
+                There are also a couple of endpoints for checking what food is available at different restaurants on Chalmers campus:
+            </p>
+            <code class="project-info-code"><pre>$ curl https://api.dcronqvist.se/food/jh/express/week/eng
+{
+    "response": {
+        "monday": "Mushroom & bean risotto, spinach",
+        "tuesday": "Vegetarian lasagna, len...",
+        "wednesday": "Chinese casserole, roots, bl..."
+        ...    
+    },
+    "status": "200 OK"
+}</pre></code>
         </div>
         <div id="proj-view-upcoming" class="project-info-view shadow">
             <div class="project-info-view-header">

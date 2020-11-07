@@ -5,12 +5,16 @@ body {
     transition: background-color 0.2s;
 }
 
+pre {
+    display: inline;
+}
+
 .main-view-wrapper {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
-    width: 1700px;
+    width: 1020px;
     display: flex;
     flex-flow: row rtl wrap;
     justify-content: center;
@@ -80,7 +84,7 @@ body {
 }
 
 .project-box:active {
-    transform: scale(1);
+    transform: scale(1.02);
 }
 
 .project-box-title {

@@ -11,38 +11,50 @@
     <link rel="icon" 
       type="image/png" 
       href="favicon.png">
+    <script src="scripts/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="main-view-wrapper">
-        <div class="project-view">
-            <div class="project-box red shadow">
+        <div id="proj-view" class="project-view unselectable">
+            <div id="proj-restberry-button" class="project-box red shadow">
                 <svg xmlns="http://www.w3.org/2000/svg" width="104.875" height="73.413" viewBox="0 0 104.875 73.413">
                     <path id="icon_rest_api" data-name="icon rest api" d="M88.1,34.139a15.75,15.75,0,0,0-14.683-21.4,15.651,15.651,0,0,0-8.734,2.655A26.221,26.221,0,0,0,15.731,28.469c0,.442.016.885.033,1.327A23.6,23.6,0,0,0,23.6,75.663H83.9A20.974,20.974,0,0,0,88.1,34.139Z" transform="translate(0 -2.25)" fill="#fff"/>
                 </svg>
                 <p class="project-box-title">restberry-api</p>
                 <p class="project-box-description">A personal utility REST API that is hosted on my Raspberry Pi at home.</p>
             </div>
-            <div class="project-box purple shadow">
+            <div id="proj-danpass-button" class="project-box purple shadow">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64.159" height="73.325" viewBox="0 0 64.159 73.325">
                     <path id="danpass_icon" data-name="danpass icon" d="M57.285,32.08H53.848V21.768a21.768,21.768,0,1,0-43.537,0V32.08H6.874A6.876,6.876,0,0,0,0,38.954v27.5a6.876,6.876,0,0,0,6.874,6.874H57.285a6.876,6.876,0,0,0,6.874-6.874v-27.5A6.876,6.876,0,0,0,57.285,32.08Zm-14.894,0H21.768V21.768a10.311,10.311,0,1,1,20.623,0Z" fill="#fff"/>
                 </svg>                  
                 <p class="project-box-title">danpass</p>
                 <p class="project-box-description">A command line interfaced password manager written in Python.</p>
             </div>
-            <div class="project-box blue shadow">
+            <div id="proj-evolvi-button" class="project-box blue shadow">
                 <svg xmlns="http://www.w3.org/2000/svg" width="91.287" height="73.03" viewBox="0 0 91.287 73.03">
                     <path id="Icon_awesome-project-diagram" data-name="Icon awesome-project-diagram" d="M54.772,45.644H36.515a4.565,4.565,0,0,0-4.564,4.564V68.466a4.565,4.565,0,0,0,4.564,4.564H54.772a4.565,4.565,0,0,0,4.564-4.564V50.208A4.565,4.565,0,0,0,54.772,45.644ZM27.386,4.564A4.565,4.565,0,0,0,22.822,0H4.564A4.565,4.565,0,0,0,0,4.564V22.822a4.565,4.565,0,0,0,4.564,4.564H18.218L28.653,45.649a9.1,9.1,0,0,1,7.862-4.57h.04L27.386,25.034V18.257H59.337V9.129H27.386ZM86.723,0H68.466A4.565,4.565,0,0,0,63.9,4.564V22.822a4.565,4.565,0,0,0,4.564,4.564H86.723a4.565,4.565,0,0,0,4.564-4.564V4.564A4.565,4.565,0,0,0,86.723,0Z" fill="#fff"/>
                 </svg>                                   
                 <p class="project-box-title">evolvi</p>
                 <p class="project-box-description">A simulation of a virtual species using neural networks and a genetic algorithm.</p>
             </div>
-            <div class="project-box yellow shadow">
+            <div id="proj-upcoming-button" class="project-box yellow shadow">
                 <svg xmlns="http://www.w3.org/2000/svg" width="54.66" height="73.78" viewBox="0 0 54.66 73.78">
                     <path id="Icon_ionic-ios-git-branch" data-name="Icon ionic-ios-git-branch" d="M49.476,12.79A11.522,11.522,0,0,0,47.154,35.6c-.2,3.146-1.7,4.825-4.447,6.95-3.36,2.586-7.691,3.294-10.754,3.854-6.7,1.219-10.359,4.447-11.94,6.587V25.109a11.522,11.522,0,1,0-4.611-.066V53.254a11.6,11.6,0,0,0-6.209,3.673,11.516,11.516,0,1,0,15.135-1.96c1.416-1.6,4.035-3.228,8.416-4.018,3.557-.642,8.663-1.581,12.747-4.743,3.887-3,6.044-6.011,6.258-10.589A11.528,11.528,0,0,0,49.476,12.79Zm-38.537.988a6.917,6.917,0,1,1,6.917,6.917A6.916,6.916,0,0,1,10.939,13.778ZM24.773,64.5a6.917,6.917,0,1,1-6.917-6.917A6.916,6.916,0,0,1,24.773,64.5Zm24.7-33.267a6.917,6.917,0,1,1,6.917-6.917A6.916,6.916,0,0,1,49.476,31.235Z" transform="translate(-6.328 -2.25)" fill="#fff"/>
                 </svg>                                                   
                 <p class="project-box-title">upcoming...</p>
                 <p class="project-box-description">working on different projects at the moment. More coming soon...</p>
             </div>
+        </div>
+        <div id="proj-view-aboutme" class="project-info-view shadow project-info-view-shown">
+            <div class="project-info-view-header">
+                <p class="project-info-title">Hey there!</p>
+            </div>
+            <p class="project-info-text-large">
+                I'm Daniel, a Software Developer and student at Chalmers University of Technology in Gothenburg, Sweden.
+            </p>
+            <p class="project-info-text-large">
+                You can check out some of my projects by clicking on them to the left!
+            </p>
         </div>
         <div id="proj-view-danpass" class="project-info-view shadow">
             <div class="project-info-view-header">
@@ -79,6 +91,52 @@
             </code>
             <p class="project-info-text">there are of course ways to update or delete existing entries, check out the github repo if you're curious!</p>
         </div>
+        <div id="proj-view-evolvi" class="project-info-view shadow">
+            <div class="project-info-view-header">
+                <p class="project-info-title">evolvi</p>
+                <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist/danpass">
+                    github repo
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18.002" height="18.002" viewBox="0 0 18.002 18.002">
+                        <g id="Icon_feather-external-link" data-name="Icon feather-external-link" transform="translate(-3.5 -3.086)">
+                        <path id="Path_1" data-name="Path 1" d="M17.49,15.062v5.2a1.732,1.732,0,0,1-1.732,1.732H6.232A1.732,1.732,0,0,1,4.5,20.258V10.732A1.732,1.732,0,0,1,6.232,9h5.2" transform="translate(0 -1.902)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_2" data-name="Path 2" d="M22.5,4.5h5.2V9.7" transform="translate(-7.608)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_3" data-name="Path 3" d="M15,14.026,24.526,4.5" transform="translate(-4.438)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div id="proj-view-restberry" class="project-info-view shadow">
+            <div class="project-info-view-header">
+                <p class="project-info-title">restberry-api</p>
+                <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist/danpass">
+                    github repo
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18.002" height="18.002" viewBox="0 0 18.002 18.002">
+                        <g id="Icon_feather-external-link" data-name="Icon feather-external-link" transform="translate(-3.5 -3.086)">
+                        <path id="Path_1" data-name="Path 1" d="M17.49,15.062v5.2a1.732,1.732,0,0,1-1.732,1.732H6.232A1.732,1.732,0,0,1,4.5,20.258V10.732A1.732,1.732,0,0,1,6.232,9h5.2" transform="translate(0 -1.902)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_2" data-name="Path 2" d="M22.5,4.5h5.2V9.7" transform="translate(-7.608)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_3" data-name="Path 3" d="M15,14.026,24.526,4.5" transform="translate(-4.438)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div id="proj-view-upcoming" class="project-info-view shadow">
+            <div class="project-info-view-header">
+                <p class="project-info-title">upcoming projects...</p>
+                <a class="project-github-link" target="_blank" href="https://github.com/dcronqvist">
+                    github profile
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18.002" height="18.002" viewBox="0 0 18.002 18.002">
+                        <g id="Icon_feather-external-link" data-name="Icon feather-external-link" transform="translate(-3.5 -3.086)">
+                        <path id="Path_1" data-name="Path 1" d="M17.49,15.062v5.2a1.732,1.732,0,0,1-1.732,1.732H6.232A1.732,1.732,0,0,1,4.5,20.258V10.732A1.732,1.732,0,0,1,6.232,9h5.2" transform="translate(0 -1.902)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_2" data-name="Path 2" d="M22.5,4.5h5.2V9.7" transform="translate(-7.608)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_3" data-name="Path 3" d="M15,14.026,24.526,4.5" transform="translate(-4.438)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </div>
+    <script src="scripts/scripts.js"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 body {
     margin: 0%;
-    background-color: #EEDFFF;
-    font-family: Roboto;;
+    background-color: #F5EBCF;
+    font-family: Roboto;
+    transition: background-color 0.2s;
 }
 
 .main-view-wrapper {
@@ -45,6 +46,15 @@ body {
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .project-box {
     display: flex;
     border-radius: 20px;
@@ -56,9 +66,14 @@ body {
     align-items: center;
     color: white;
     transform: scale(1);
-    transition: transform .14s;
+    transition: transform .14s, opacity 0.2s;
     cursor: pointer;
 } 
+
+.faded {
+    opacity: 0.3;
+    transform: scale(0.95);
+}
 
 .project-box:hover {
     transform: scale(1.05);
@@ -93,6 +108,11 @@ body {
     background-color: white;
     border-color: white;
     border-radius: 20px;
+    display: none;
+}
+
+.project-info-view-shown {
+    display: block;
 }
 
 .project-info-view-header {
@@ -141,6 +161,15 @@ body {
     font-weight: 300;
     margin-top: 5px;
     margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.project-info-text-large {
+    color: black;
+    font-weight: 300;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    font-size: 20px;
 }
 
 .project-info-code {

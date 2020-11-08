@@ -11,7 +11,7 @@ function unfadeOtherThan(proj) {
 
 function showProj(proj) {
     let projs = [
-        ["#proj-view-aboutme", "#E8E8E8"],
+        ["#proj-view-aboutme", "#e5d3e6"],
         ["#proj-view-danpass", "#D9BFFF"],
         ["#proj-view-evolvi", "#BAE4FF"],
         ["#proj-view-restberry", "#FFC9C9"],

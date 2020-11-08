@@ -1,6 +1,6 @@
 body {
     margin: 0%;
-    background-color: #E8E8E8;
+    background-color: #e5d3e6;
     font-family: Roboto;
     transition: background-color 0.2s;
 }
@@ -14,7 +14,7 @@ pre {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
-    width: 1020px;
+    width: auto;
     display: flex;
     flex-flow: row rtl wrap;
     justify-content: center;
@@ -22,12 +22,17 @@ pre {
 }
 
 .project-view {
-    width: 522px;
+    width: 590px;
     height: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+}
+
+.special-text {
+    color:  #ff8e8e;
+    font-weight: 900;
 }
 
 .purple {
@@ -64,7 +69,7 @@ pre {
     border-radius: 20px;
     height: 255px;
     width: 245px;
-    margin: 8px;
+    margin: 25px;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
@@ -105,10 +110,10 @@ pre {
 }
 
 .project-info-view {
-    width: 440px;
-    height: 476px;
-    padding: 25px;
-    margin-left: 8px;
+    width: 540px;
+    height: 480px;
+    padding: 40px;
+    margin: 25px;
     background-color: white;
     border-color: white;
     border-radius: 20px;
@@ -208,4 +213,30 @@ a:hover {
     float: left;
     border-radius: 4px;
     width: 60%;
+}
+
+.other-platforms {
+    padding: 20px;
+    display: flex;
+    flex: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.other-platforms a {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.other-platforms p {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 6px;
+}
+
+.other-platforms svg {
+    width: 25px;
+    height: 25px;
 }

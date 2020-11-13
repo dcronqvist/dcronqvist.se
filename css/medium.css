@@ -67,17 +67,18 @@ pre {
 .project-box {
     display: flex;
     border-radius: 20px;
-    height: 120px;
+    height: 125px;
     width: 100%;
-    margin: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color: white;
     transform: scale(1);
     transition: transform .14s, opacity 0.2s;
     cursor: pointer;
-    min-width: 343px;
 } 
 
 .faded {
@@ -94,9 +95,10 @@ pre {
 }
 
 .project-box-title {
-    font-size: 26px;
+    font-size: 23px;
     font-weight: 900;
     margin: 0% 10% 0% 0%;
+    display: none;
 }
 
 .project-box-description {
@@ -108,18 +110,21 @@ pre {
 }
 
 .project-box svg {
-    margin: 5% 5% 5% 10%;
+    margin: 10px;
+    height: 60%;
+    width: auto;
 }
 
 .project-info-view {
     width: 60%;
-    height: 480px;
+    height: auto;
     padding: 40px;
     margin: 25px;
     background-color: white;
     border-color: white;
     border-radius: 20px;
     display: none;
+    min-height: 480px;
 }
 
 .project-info-view-shown {

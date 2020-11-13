@@ -19,11 +19,10 @@ pre {
     flex-flow: row rtl wrap;
     justify-content: center;
     align-items: center;
-    display: none;
 }
 
 .project-view {
-    width: 100%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -68,10 +67,12 @@ pre {
 .project-box {
     display: flex;
     border-radius: 20px;
-    height: 200px;
-    width: 200px;
-    margin: 10px;
-    flex-flow: column wrap;
+    height: 125px;
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     color: white;
@@ -94,9 +95,10 @@ pre {
 }
 
 .project-box-title {
-    font-size: 28px;
+    font-size: 23px;
     font-weight: 900;
-    margin: 0% 5% 5% 5%;
+    margin: 0% 10% 0% 0%;
+    display: none;
 }
 
 .project-box-description {
@@ -108,20 +110,21 @@ pre {
 }
 
 .project-box svg {
-    margin: 15% 10% 5% 10%;
-    width: 30%;
-    height: auto;
+    margin: 10px;
+    height: 60%;
+    width: auto;
 }
 
 .project-info-view {
-    width: 540px;
-    height: 480px;
+    width: 60%;
+    height: auto;
     padding: 40px;
     margin: 25px;
     background-color: white;
     border-color: white;
     border-radius: 20px;
     display: none;
+    min-height: 480px;
 }
 
 .project-info-view-shown {

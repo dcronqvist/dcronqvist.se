@@ -62,11 +62,14 @@ $(document).ready(function () {
 
     $(document).mouseup(function(e) 
     {
-        // if the target of the click isn't the container nor a descendant of the container
-        if (!$.contains(document.getElementById("main-view"), e.target)) 
+        if($("main-view").is(":visible"))
         {
-            showProj("#proj-view-aboutme");
-            unfadeOtherThan($("project-box").not($("faded")));
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!$.contains(document.getElementById("main-view"), e.target)) 
+            {
+                showProj("#proj-view-aboutme");
+                unfadeOtherThan($("project-box").not($("faded")));
+            }
         }
     });
 });

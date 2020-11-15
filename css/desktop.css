@@ -33,6 +33,7 @@ pre {
 .special-text {
     color:  #ff8e8e;
     font-weight: 900;
+    transition: transform 1s;
 }
 
 .purple {
@@ -240,3 +241,8 @@ a:hover {
     width: 25px;
     height: 25px;
 }
+
+.main-view-wrapper-m {
+    display: none;
+}
+

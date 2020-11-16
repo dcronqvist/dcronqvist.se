@@ -82,6 +82,14 @@ body {
     margin-bottom: 10px;
 }
 
+.other-platforms {
+    padding: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .other-platforms a {
     display: flex;
     flex-flow: row wrap;
@@ -92,11 +100,12 @@ body {
 
 .other-platforms p {
     color: black;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 300;
 }
 
 .other-platforms svg {
+    fill: black;
     width: 25px;
     height: 25px;
 }

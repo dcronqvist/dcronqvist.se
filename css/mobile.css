@@ -17,19 +17,30 @@ body {
 
 .purple {
     background-color: #b37aff;
+    color: white;
+    fill: transparent;
+    stroke: white;
 }
 
 .red {
     background-color: #ff8e8e;
     color: white;
+    fill: transparent;
+    stroke: white;
 }
 
 .blue {
     background-color: #6dc5ff;
+    color: white;
+    fill: transparent;
+    stroke: white;
 }
 
 .yellow {
     background-color: #ffd153;
+    color: white;
+    fill: transparent;
+    stroke: white;
 }
 
 .white {
@@ -38,17 +49,35 @@ body {
 }
 
 .m-section {
+    width: 80%;
     padding: 5% 10% 5% 10%;
 }
 
+.m-section-header {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.m-section-header svg {
+    width: 20%;
+    height: auto;
+}
+
 .m-section-title {
+    font-family: Roboto;
     font-weight: 900;
     font-size: 36px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .m-section-text-normal {
     font-weight: 400;
-    font-size: 28px;
+    font-size: 26px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -58,6 +87,7 @@ body {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 .other-platforms p {
@@ -69,5 +99,19 @@ body {
 .other-platforms svg {
     width: 25px;
     height: 25px;
+}
+
+.m-section-github-link {
+    font-size: 22px;
+    font-weight: 900;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.m-section-github-link svg {
+    padding-left: 5px;
 }
 

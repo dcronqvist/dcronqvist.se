@@ -20,10 +20,10 @@ jobs:
         protocol: ftps
         server-dir: public_html/
         exclude:
-          - **/.git*
-          - **/.git*/**
-          - **/node_modules/**
-          - .gitignore.txt
-          - README.md
-          - **/.github/**
+          - "**/.git*"
+          - "**/.git*/**"
+          - "**/node_modules/**"
+          - ".gitignore.txt"
+          - "README.md"
+          - "**/.github/**"
         dry-run: true

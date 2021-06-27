@@ -21,4 +21,4 @@ jobs:
         server-dir: public_html/
         dry-run: true
         exclude:
-          - .gitignore
+          - ".gitignore"

@@ -1,43 +1,83 @@
-@keyframes color-shift {
+@keyframes animwave1 {
  0% { 
-   fill: green;
-   left: -100%;
-  }
- 25% { 
-   fill: yellow; 
-   left: -75%;
-  }
- 50% { 
-   fill: blue; 
-   left: -50%;
-  }
- 75% { 
-   fill: red; 
-   left: -25%;
+   fill: #55aaff;
+   width: 200%;
+   transform: translate(0%, 15%);
   }
  100% { 
-   fill: purple; 
-   left: 0%;
+    fill: #875bff;
+    width: 200%;
+    transform: translate(-100%, -20%);
+  }
+}
+
+@keyframes animwave2 {
+  0% { 
+    fill: #805ed7;
+    width: 250%;
+    transform: translate(-100%, -10%);
+   }
+  100% { 
+    fill: #8dcbff;
+    width: 200%;
+    transform: translate(0%, 30%);
+   }
+ }
+
+@keyframes animwave3 {
+  0% { 
+    fill: #ac43f1;
+    width: 250%;
+    transform: translate(0%, -20%);
+  }
+  100% { 
+    fill: #5a57ff;
+    width: 200%;
+    transform: translate(-100%, 40%);
   }
 }
 
 .slow {
-  animation-duration: 50s !important;
+  animation-duration: 60s !important;
 }
 
 .medium {
   animation-duration: 30s !important;
 }
 
+.fast {
+  animation-duration: 20s !important;
+}
+
+.wave1 {
+  animation: animwave1;
+}
+
+.wave2 {
+  animation: animwave2;
+}
+
+.wave3 {
+  animation-fill-mode: backwards !important;
+  animation-delay: 5s !important;
+  animation: animwave3;
+}
+
 .wavecontainer {
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 .wave {
-  width: 100%;
   position: absolute;
+  width: 200%;
   z-index: 0;
-  fill: green;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  opacity: 0.5;
 }

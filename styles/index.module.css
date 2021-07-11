@@ -1,0 +1,43 @@
+@keyframes color-shift {
+ 0% { 
+   fill: green;
+   left: -100%;
+  }
+ 25% { 
+   fill: yellow; 
+   left: -75%;
+  }
+ 50% { 
+   fill: blue; 
+   left: -50%;
+  }
+ 75% { 
+   fill: red; 
+   left: -25%;
+  }
+ 100% { 
+   fill: purple; 
+   left: 0%;
+  }
+}
+
+.slow {
+  animation-duration: 50s !important;
+}
+
+.medium {
+  animation-duration: 30s !important;
+}
+
+.wavecontainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.wave {
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  fill: green;
+}

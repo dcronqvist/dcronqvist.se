@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from '../styles/commitlist.module.css'
 import useSWR, { SWRConfig } from 'swr'
+import { useTheme } from './ThemeContext'
 const fetcher = url => fetch(url).then(r => r.json())
 
 const Event = ({event}) => {
@@ -12,12 +12,18 @@ const Event = ({event}) => {
     }
     else if (event.type === "PushEvent") {
         return <td>
-            pushed <a target="_blank" href={`https://github.com/dcronqvist/restberry-api/commit/${event.payload.head}`}>{event.payload.size} {event.payload.size > 1 ? "commits" : "commit"}</a> to <a target="_blank" href={`https://github.com/${event.repo.name}`}>{event.repo.name.replace("dcronqvist/", "")}</a>
+            pushed{' '}
+            <a target="_blank" href={`https://github.com/${event.repo.name}/commit/${event.payload.head}`}>
+                {event.payload.size} {event.payload.size > 1 ? "commits" : "commit"}
+            </a>
+            {' '}to{' '}
+            <a target="_blank" href={`https://github.com/${event.repo.name}`}>{event.repo.name.replace("dcronqvist/", "")}
+            </a>
         </td>
     }
     else if (event.type === "PullRequestEvent") {
         return <td>
-            {event.payload.action === "closed" ? "closed" : "opened"} <a target="_blank" href={`https://github.com/${event.repo.name}`}>{event.repo.name.replace("dcronqvist/", "")}</a> pull request <a target="_blank" href={`https://github.com/dcronqvist/restberry-api/pull/${event.payload.number}`}>#{event.payload.number}</a>
+            {event.payload.action === "closed" ? "closed" : "opened"} <a target="_blank" href={`https://github.com/${event.repo.name}`}>{event.repo.name.replace("dcronqvist/", "")}</a> pull request <a target="_blank" href={`https://github.com/${event.repo.name}/pull/${event.payload.number}`}>#{event.payload.number}</a>
         </td>
     }
 
@@ -31,6 +37,8 @@ type DayOfEventsProps = {
 }
 
 const DayOfEvents = ({date, events} : DayOfEventsProps) => {
+    const { theme } = useTheme()
+
     const formatDate = (date : Date) => {
 
         const today = new Date()
@@ -49,15 +57,15 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     const filteredEvents = events.filter(event => event.event.type != "DeleteEvent")
 
     const firstRow = filteredEvents.slice(0,1).map(event => {
-        return <tr className={styles.event} key={`${date}${event.event.id}`}>
-            <td className={styles.eventdate}>{formatDate(new Date(date))}</td>
+        return <tr className={theme.commitList.event} key={`${date}${event.event.id}`}>
+            <td className={theme.commitList.eventdate}>{formatDate(new Date(date))}</td>
             <Event event={event.event}/>
         </tr>
     })
 
     const rows = filteredEvents.slice(1,3).map(event => {
-        return <tr className={styles.event} key={`${date}${event.event.id}`}>
-            <td className={styles.eventdate}></td>
+        return <tr className={theme.commitList.event} key={`${date}${event.event.id}`}>
+            <td className={theme.commitList.eventdate}></td>
             <Event event={event.event}/>
         </tr>
     })
@@ -65,12 +73,13 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     return <>
         {firstRow}
         {rows}
-        {events.length > 3 ? <tr className={styles.event}><td></td><td>{`+ ${events.length - 3} more`}</td></tr> : ''}
+        {events.length > 3 ? <tr className={theme.commitList.event}><td></td><td>{`+ ${events.length - 3} more`}</td></tr> : ''}
     </>
 }
 
 const GithubActivity = ({ username }) => {
     const { data } = useSWR(`https://api.github.com/users/${username}/events`, fetcher)
+    const { theme } = useTheme()
     
     if (!data) return <div>{"loading..."}</div>
 
@@ -109,7 +118,7 @@ const GithubActivity = ({ username }) => {
     console.log(mappedEvents)
 
     return (
-        <table className={styles.container}>
+        <table className={theme.commitList.container}>
             {mappedEvents}
         </table>
     )

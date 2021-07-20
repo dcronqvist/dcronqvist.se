@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import styles from '../styles/navlink.module.css'
+import { useTheme } from './ThemeContext'
 
 type Props = {
   children?: ReactNode
@@ -11,13 +12,17 @@ type Props = {
 }
 
 
-const NavLink = ({ children, title = 'This is the default title', href, at }: Props) => (
-  <span className={ at ? `${styles.link} ${styles.underlined}` : styles.link }>
+const NavLink = ({ children, title = 'This is the default title', href, at }: Props) => {
+  const { theme } = useTheme()
+
+
+  return (
+  <span className={ at ? `${theme.navlink.link} ${theme.navlink.underlined}` : theme.navlink.link }>
     <Link href={href}>
       <a>{title}</a>
     </Link>
   </span>
-)
+)}
   
 export default NavLink
   

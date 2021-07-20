@@ -1,7 +1,11 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import styles from '../styles/layout.module.css'
+import lightStyles from '../styles/layout.module.css'
+import darkStyles from '../styles/layout.module.css'
+
+import { useTheme } from '../components/ThemeContext'
+
 import NavLink from '../components/NavLink'
 import { Icon, InlineIcon } from '@iconify/react';
 import linkedinIcon from '@iconify/icons-mdi/linkedin';
@@ -15,14 +19,17 @@ type Props = {
   currentNav?: string
 }
 
-const Layout = ({ children, title = 'This is the default title', currentNav }: Props) => (
-  <div className={styles.layout}>
+const Layout = ({ children, title = 'This is the default title', currentNav }: Props) => {
+  const { theme, setThemeName } = useTheme()
+  
+  return (
+  <div className={theme.layout.layout}>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header className={styles.header}>
+    <header className={theme.layout.header}>
       <Link href="/">
         <a>
           <h1>daniel cronqvist.</h1>
@@ -33,7 +40,7 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
         <NavLink title="articles" href="/articles" at={currentNav == "articles"}/>
         <NavLink title="who's daniel?" href="/aboutme" at={currentNav == "who's daniel?"}/>
       </nav>
-      <div className={styles.links}>
+      <div className={theme.layout.links}>
         <a href="https://www.linkedin.com/in/dcronqvist/" target="_blank">
           <Icon height={40} icon={linkedinIcon}/>
         </a>
@@ -48,11 +55,15 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
           </a>
         </Tooltipped>
       </div>
+      <select onChange={(e) => setThemeName(e.target.value)}>
+        <option>light</option>
+        <option>dark</option>
+      </select>
     </header>
-    <main className={styles.main}>
+    <main className={theme.layout.main}>
       {children}
     </main>
   </div>
-)
+)}
 
 export default Layout

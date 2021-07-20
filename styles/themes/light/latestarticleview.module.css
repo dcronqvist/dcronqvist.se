@@ -1,0 +1,19 @@
+.articles {
+    border-spacing: 2px 8px;
+}
+
+.articletitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+}
+
+.articledate {
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+}
+
+.articletitle a {
+    color: inherit;
+}

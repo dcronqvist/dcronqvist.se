@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/tooltipped.module.css'
+import { useTheme } from './ThemeContext'
 // React component which acts as a wrapper for another component which should have a certain tooltip.
 
 type TooltippedProps = {
@@ -8,10 +8,12 @@ type TooltippedProps = {
 }
 
 const Tooltipped = ({text, children} : TooltippedProps) => {
+    const { theme } = useTheme()
+
     return (
     <>
-        <div className={styles.tooltip}>
-            <span className={styles.tooltiptext}>{text}</span>
+        <div className={theme.toolTipped.tooltip}>
+            <span className={theme.toolTipped.tooltiptext}>{text}</span>
             {children}
         </div>
     </>

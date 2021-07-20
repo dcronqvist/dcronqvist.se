@@ -1,0 +1,15 @@
+.link {
+    margin: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+.link a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.underlined {
+    text-decoration: underline;
+}

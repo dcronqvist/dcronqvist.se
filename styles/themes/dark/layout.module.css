@@ -1,16 +1,17 @@
+
 .layout {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: #3f3f3f;
+    color: rgb(255, 255, 255);
 }
 
 .header {
     width: 100%;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100000;
-    height: 15vh;
+    height: 18vh;
 }
 
 .header nav {
@@ -37,7 +38,7 @@
     font-weight: 600;
     font-size: 64px;
     z-index: 100000;
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
@@ -51,5 +52,5 @@
 }
 
 .links a {
-    color: black;
+    color: rgb(255, 255, 255);
 }

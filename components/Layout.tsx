@@ -20,7 +20,7 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'This is the default title', currentNav }: Props) => {
-  const { theme, setThemeName } = useTheme()
+  const { theme, setThemeName, allThemeNames, currentThemeName } = useTheme()
   
   return (
   <div className={theme.layout.layout}>
@@ -55,9 +55,8 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
           </a>
         </Tooltipped>
       </div>
-      <select onChange={(e) => setThemeName(e.target.value)}>
-        <option>light</option>
-        <option>dark</option>
+      <select value={currentThemeName} onChange={(e) => setThemeName(e.target.value)}>
+        {allThemeNames.map((name, i) => <option key={i} value={name}>{name}</option>)}
       </select>
     </header>
     <main className={theme.layout.main}>

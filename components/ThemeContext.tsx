@@ -23,7 +23,7 @@ type Theme = {
     toolTipped,
 }
 
-const allThemes = {
+const allThemes : {[key: string]: Theme} = {
     light: {
         commitList: lightCommitList,
         index: lightIndex,
@@ -44,12 +44,16 @@ const allThemes = {
 
 type ThemeContextType = {
     theme: Theme,
-    setThemeName: any
+    currentThemeName,
+    setThemeName: any,
+    allThemeNames: Array<string>
 }
 
 const themeContextDefaultValues : ThemeContextType = {
     theme: allThemes.light,
-    setThemeName: () => {}
+    currentThemeName: 'light',
+    setThemeName: () => {},
+    allThemeNames: Object.keys(allThemes)
 }
 
 const ThemeContext = createContext<ThemeContextType>(themeContextDefaultValues)
@@ -72,7 +76,9 @@ export const ThemeProvider = ({children}: Props) => {
 
     const value = {
         theme: theme,
-        setThemeName: setThemeName
+        currentThemeName: themeName,
+        setThemeName: setThemeName,
+        allThemeNames: Object.keys(allThemes)
     }
 
     return <>

@@ -67,12 +67,18 @@ type Props = {
 }
 
 export const ThemeProvider = ({children}: Props) => {
-    const [themeName, setThemeName] = useState<string>("light")
-    const [theme, setTheme] = useState(allThemes.light)
+    const [themeName, setThemeName] = useState(themeContextDefaultValues.currentThemeName)
+    const [theme, setTheme] = useState(themeContextDefaultValues.theme)
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('config-theme')
+        setThemeName(storedTheme || themeContextDefaultValues.currentThemeName)
+    }, [])
 
     useEffect(() => {
         setTheme(allThemes[themeName])
-    }, [themeName]);
+        localStorage.setItem('config-theme', themeName)
+    }, [themeName])
 
     const value = {
         theme: theme,

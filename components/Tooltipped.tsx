@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme } from './ThemeContext'
+import { useTheme } from '../contexts/ThemeContext'
 // React component which acts as a wrapper for another component which should have a certain tooltip.
 
 type TooltippedProps = {

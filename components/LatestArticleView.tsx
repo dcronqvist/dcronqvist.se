@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
-import { useTheme } from './ThemeContext'
+import { useTheme } from '../contexts/ThemeContext'
 
 const LatestArticleView = (props) => {
     const { theme } = useTheme()

@@ -1,6 +1,6 @@
 import React from 'react'
 import useSWR, { SWRConfig } from 'swr'
-import { useTheme } from './ThemeContext'
+import { useTheme } from '../contexts/ThemeContext'
 const fetcher = url => fetch(url).then(r => r.json())
 
 const Event = ({event}) => {
@@ -83,8 +83,6 @@ const GithubActivity = ({ username }) => {
     
     if (!data) return <div>{"loading..."}</div>
 
-    console.log(data)
-
     // Accepts the array and key
     const groupBy = (array, key) => {
         // Return the end result
@@ -114,8 +112,6 @@ const GithubActivity = ({ username }) => {
     }), 'date')
 
     const mappedEvents = grouped.slice(0, 3).map(events => <DayOfEvents date={events[0].date} events={events}/>)
-
-    console.log(mappedEvents)
 
     return (
         <table className={theme.commitList.container}>

@@ -1,7 +1,7 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
 import '../styles/app.css'
-import { ThemeProvider, useTheme }from '../components/ThemeContext'
+import { ThemeProvider, useTheme }from '../contexts/ThemeContext'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

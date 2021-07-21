@@ -6,16 +6,13 @@ import commitsPic from '../public/commits.png'
 import Tooltipped from '../components/Tooltipped'
 import GithubActivity from '../components/GithubActivity'
 import LatestArticleView from '../components/LatestArticleView'
-import { useTheme } from '../components/ThemeContext'
+import { useTheme } from '../contexts/ThemeContext'
 
 const IndexPage = () => {
   const { theme } = useTheme()
 
   let profilePicHeight : number = 454
   let profilePicWidth : number = (422 / 454) * profilePicHeight
-
-  console.log(profilePicHeight)
-  console.log(profilePicWidth)
 
   return (<>
   <Layout title="Home" currentNav="">
@@ -40,7 +37,7 @@ const IndexPage = () => {
       </div>
       <div className={`${theme.index.profilepic} ${theme.index.third}`}>
         <Tooltipped text="Yep, that's me!">
-          <Image src={profilePic}/>
+          <Image quality={100} src={profilePic}/>
         </Tooltipped>
       </div>   
     </div>

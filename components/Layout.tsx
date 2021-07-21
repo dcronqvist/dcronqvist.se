@@ -4,7 +4,7 @@ import Head from 'next/head'
 import lightStyles from '../styles/layout.module.css'
 import darkStyles from '../styles/layout.module.css'
 
-import { useTheme } from '../components/ThemeContext'
+import { useTheme } from '../contexts/ThemeContext'
 
 import NavLink from '../components/NavLink'
 import { Icon, InlineIcon } from '@iconify/react';

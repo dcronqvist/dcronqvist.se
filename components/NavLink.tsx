@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import styles from '../styles/navlink.module.css'
-import { useTheme } from './ThemeContext'
+import { useTheme } from '../contexts/ThemeContext'
 
 type Props = {
   children?: ReactNode

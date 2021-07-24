@@ -55,9 +55,6 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
           </a>
         </Tooltipped>
       </div>
-      <select value={currentThemeName} onChange={(e) => setThemeName(e.target.value)}>
-        {allThemeNames.map((name, i) => <option key={i} value={name}>{name}</option>)}
-      </select>
     </header>
     <main className={theme.layout.main}>
       {children}

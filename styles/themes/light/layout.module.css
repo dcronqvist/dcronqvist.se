@@ -15,7 +15,6 @@
 
 .header nav {
     height: 100%;
-    width: 40%;
     justify-content:space-evenly;
     align-items: center;
     display: flex;
@@ -32,10 +31,11 @@
 }
 
 .header h1 {
-    margin-left: 3.2rem;
+    margin-left: 3vw;
+    margin-right: 3.2rem;
     min-width: fit-content;
     font-weight: 600;
-    font-size: 64px;
+    font-size: 3.9vw;
     z-index: 100000;
     color: black;
     text-decoration: none;
@@ -52,4 +52,72 @@
 
 .links a {
     color: black;
+}
+
+@media only screen and (max-width: 750px) {
+    .layout {
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+    }
+    
+    .header {
+        width: 100%;
+        color: rgb(0, 0, 0);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100000;
+        height: auto;
+    }
+    
+    .header nav {
+        margin-top: 0;
+        padding-top: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        z-index: 100000;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .header nav span {
+        min-width: fit-content;
+    }
+    
+    .header a {
+        height: auto;
+        margin-bottom: 0;
+        width: 100%;
+        text-decoration: none;
+    }
+    
+    .header h1 {
+        margin-bottom: 10px;
+        height: min-content;
+        margin-left: 20px;
+        margin-right: 20px;
+        font-weight: 600;
+        font-size: 9.2vw;
+        z-index: 100000;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .links {
+        display: none;
+        margin: 0% 5% 0% 5%;
+    }
+    
+    .links svg {
+        padding: 0.5rem;
+    }
+    
+    .links a {
+        color: black;
+    }
 }

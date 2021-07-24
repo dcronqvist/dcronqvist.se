@@ -14,12 +14,12 @@
 
 .intro h3 {
   margin-top: 0;
-  font-size: 64px;
+  font-size: 5.2vw;
   font-weight: 700;
 }
 
 .intro p {
-  font-size: 36px;
+  font-size: 2.4vw;
 }
 
 .profilepic {
@@ -45,6 +45,73 @@
 }
 
 .feed h4 {
-  font-size: 36px;
+  font-size: 2.2vw;
   margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 0vh;
+    padding: 0;
+  }
+  
+  .third {
+    width: 100%;
+    margin-bottom: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .intro {
+    order: 1;
+    width: calc(44% - 40px) !important;
+  }
+  
+  .intro h3 {
+    margin-top: 0;
+    font-size: 6.8vw;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  .intro p {
+    margin: 0;
+    font-size: 3.4vw;
+  }
+  
+  .profilepic {
+    order: 2;
+    width: calc(56% - 40px) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profilepic div {
+    height: fit-content;
+    width: fit-content;
+  }
+  
+  .feedcontainer {
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .feed {
+    font-size: 20px;
+    width: 100%;
+  }
+  
+  .feed h4 {
+    margin-bottom: 5px;
+    font-size: 4.9vw;
+  }
 }

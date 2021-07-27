@@ -7,12 +7,12 @@ import lightLayout from '../styles/themes/light/layout.module.css'
 import lightNavlink from '../styles/themes/light/navlink.module.css'
 import lightToolTipped from '../styles/themes/light/tooltipped.module.css'
 
-import darkCommitList from '../styles/themes/dark/commitlist.module.css'
-import darkIndex from '../styles/themes/dark/index.module.css'
-import darkLatestArticleView from '../styles/themes/dark/latestarticleview.module.css'
-import darkLayout from '../styles/themes/dark/layout.module.css'
-import darkNavlink from '../styles/themes/dark/navlink.module.css'
-import darkToolTipped from '../styles/themes/dark/tooltipped.module.css'
+// import darkCommitList from '../styles/themes/dark/commitlist.module.css'
+// import darkIndex from '../styles/themes/dark/index.module.css'
+// import darkLatestArticleView from '../styles/themes/dark/latestarticleview.module.css'
+// import darkLayout from '../styles/themes/dark/layout.module.css'
+// import darkNavlink from '../styles/themes/dark/navlink.module.css'
+// import darkToolTipped from '../styles/themes/dark/tooltipped.module.css'
 
 type Theme = {
     commitList,
@@ -32,14 +32,14 @@ const allThemes : {[key: string]: Theme} = {
         navlink: lightNavlink,
         toolTipped: lightToolTipped
     },
-    dark: {
-        commitList: darkCommitList,
-        index: darkIndex,
-        latestArticleView: darkLatestArticleView,
-        layout: darkLayout,
-        navlink: darkNavlink,
-        toolTipped: darkToolTipped
-    }
+    // dark: {
+    //     commitList: darkCommitList,
+    //     index: darkIndex,
+    //     latestArticleView: darkLatestArticleView,
+    //     layout: darkLayout,
+    //     navlink: darkNavlink,
+    //     toolTipped: darkToolTipped
+    // }
 }
 
 type ThemeContextType = {

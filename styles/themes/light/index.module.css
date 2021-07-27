@@ -8,21 +8,22 @@
 }
 
 .third {
-  width: 30%;
-  margin-bottom: 5%;
+  padding: 2%;
+  width: 25%;
 }
 
 .intro h3 {
   margin-top: 0;
-  font-size: 5.2vw;
+  font-size: 3.4vw;
   font-weight: 700;
 }
 
 .intro p {
-  font-size: 2.4vw;
+  font-size: 1.8vw;
 }
 
 .profilepic {
+  padding-right: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +35,7 @@
 }
 
 .feedcontainer {
+  padding-left: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +47,7 @@
 }
 
 .feed h4 {
-  font-size: 2.2vw;
+  font-size: 1.8vw;
   margin: 20px 0 20px 0;
 }
 
@@ -70,6 +72,9 @@
   .intro {
     order: 1;
     width: calc(44% - 40px) !important;
+    padding: 0;
+    margin: 0;
+    padding-top: 15px;
   }
   
   .intro h3 {
@@ -90,6 +95,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding-top: 15px;
   }
   
   .profilepic div {
@@ -99,13 +107,16 @@
   
   .feedcontainer {
     order: 3;
-    width: 100%;
+    width: calc(100% - 80px) !important;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    padding: 0;
+    margin: 0;
   }
   
   .feed {
+    padding-top: 15px;
     font-size: 20px;
     width: 100%;
   }

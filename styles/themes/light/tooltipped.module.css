@@ -17,7 +17,7 @@
   bottom: 100%;
   left: 50%;
   margin-left: -60px;
-
+  font-size: max(0.9vw, 12px);
   transition: opacity 0.1s ease-in;
 }
   

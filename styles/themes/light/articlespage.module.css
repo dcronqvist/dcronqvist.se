@@ -1,0 +1,134 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    position: relative;
+    width: 750px;
+}
+
+.content .section {
+    padding: 12px;
+}
+
+.content .section input[type="text"] {
+    width: 60%;
+    background-color: #e2e2e2;
+    border: 0.5px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.content .section h2 {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.articlepreviewlink {
+    text-decoration: none;
+    color: #000000;
+}
+
+.articlepreviewlink:hover {
+    color: #000000 !important;
+}
+
+.articlepreview {
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.articlepreview:hover {
+    background-color: #e2e2e2;
+}
+
+.articlepreview div {
+    display: flex;
+    align-items: center;
+}
+
+.articlepreview h3 {
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.articlepreview span {
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.tagblob {
+    padding: 1px 3px 1px 3px;
+    border-radius: 5px;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    margin-right: 5px;
+}
+
+.content header {
+    width: 100%;
+}
+
+.content header a {
+    color: black;
+    text-decoration: underline;
+}
+
+.content header a:hover {
+    color: #408080;
+}
+
+.content header h1 {
+    font-size: 42px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.maillink {
+    display: flex;
+    margin-right: 10px;
+}
+
+.content header h2 {
+    display: inline;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.content article {
+    line-height: 1.8rem;
+    font-size: 20px;
+    width: 100%;
+}
+
+.articleimg {
+    width: 50%;
+    float: right;
+    display: inline;
+}
+
+.articleimg img {
+    width: 100%;
+}
+
+.markdowncontent {
+    display: inline;
+}
+
+.content header div {
+    display: flex;
+    align-items: center;
+}

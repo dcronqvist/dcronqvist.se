@@ -6,6 +6,7 @@ import lightLatestArticleView from '../styles/themes/light/latestarticleview.mod
 import lightLayout from '../styles/themes/light/layout.module.css'
 import lightNavlink from '../styles/themes/light/navlink.module.css'
 import lightToolTipped from '../styles/themes/light/tooltipped.module.css'
+import lightArticlesPage from '../styles/themes/light/articlespage.module.css'
 
 // import darkCommitList from '../styles/themes/dark/commitlist.module.css'
 // import darkIndex from '../styles/themes/dark/index.module.css'
@@ -21,6 +22,8 @@ type Theme = {
     layout,
     navlink,
     toolTipped,
+    articlespage,
+    allColors: string[]
 }
 
 const allThemes : {[key: string]: Theme} = {
@@ -30,7 +33,21 @@ const allThemes : {[key: string]: Theme} = {
         latestArticleView: lightLatestArticleView,
         layout: lightLayout,
         navlink: lightNavlink,
-        toolTipped: lightToolTipped
+        toolTipped: lightToolTipped,
+        articlespage: lightArticlesPage,
+        allColors: [
+            '#00ffc2',
+            '#ff9900',
+            '#ff0000',
+            '#42ff00',
+            '#3e68ff',
+            '#c892ff',
+            '#99c2ff',
+            '#ff99ef',
+            '#99f9ff',
+            '#99ffa3',
+            '#99afff'
+        ]
     },
     // dark: {
     //     commitList: darkCommitList,

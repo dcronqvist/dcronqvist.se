@@ -1,41 +1,50 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import { useTheme } from '../contexts/ThemeContext'
+import { Article } from '../pages/api/articles'
 
-const LatestArticleView = (props) => {
+type Props = {
+    articles: Article[]
+}
+
+const ArticlePreviewRow = ({ article }: { article: Article }) => {
+    const { theme } = useTheme()
+
+    const formatDate = (date: string) => {
+        const d = new Date(date)
+
+        const months = {
+            0: "Jan",
+            1: "Feb",
+            2: "Mar",
+            3: "Apr",
+            4: "May",
+            5: "Jun",
+            6: "Jul",
+            7: "Aug",
+            8: "Sep",
+            9: "Oct",
+            10: "Nov",
+            11: "Dec"
+        }
+
+        return `${d.getDate()}\u00A0${months[d.getMonth()]}`
+    }
+
+    return (
+        <tr className={theme.latestArticleView.articlerow}>
+            <td className={theme.latestArticleView.articledate}>{formatDate(article.date)}</td>
+            <td className={theme.latestArticleView.articletitle}><Link href={"articles/" + article.link}><a>
+            {article.title}</a></Link></td>
+        </tr>
+    )
+}
+
+const LatestArticleView = ({ articles }: Props) => {
     const { theme } = useTheme()
 
     return <table className={theme.latestArticleView.articles}>
-        <tr className={theme.latestArticleView.articlerow}>
-            <td className={theme.latestArticleView.articledate}>19{'\u00A0'}Jul</td>
-            <td className={theme.latestArticleView.articletitle}><a href={"/articles/how-to-use-fbprophet-for-easy-time-series-analysis"}>
-            How to use FBProphet for easy Time Series Analysis</a>
-            </td>
-        </tr>
-        <tr className={theme.latestArticleView.articlerow}>
-            <td className={theme.latestArticleView.articledate}>13{'\u00A0'}Jul</td>
-            <td className={theme.latestArticleView.articletitle}><a href={"/articles/how-to-use-fbprophet-for-easy-time-series-analysis"}>
-            My first internship! @ Ericsson</a>
-            </td>
-        </tr>
-        <tr className={theme.latestArticleView.articlerow}>
-            <td className={theme.latestArticleView.articledate}>13{'\u00A0'}Jul</td>
-            <td className={theme.latestArticleView.articletitle}><a href={"/articles/how-to-use-fbprophet-for-easy-time-series-analysis"}>
-            My first internship! @ Ericsson</a>
-            </td>
-        </tr>
-        <tr className={theme.latestArticleView.articlerow}>
-            <td className={theme.latestArticleView.articledate}>13{'\u00A0'}Jul</td>
-            <td className={theme.latestArticleView.articletitle}><a href={"/articles/how-to-use-fbprophet-for-easy-time-series-analysis"}>
-            My first internship! @ Ericsson</a>
-            </td>
-        </tr>
-        <tr className={theme.latestArticleView.articlerow}>
-            <td className={theme.latestArticleView.articledate}>13{'\u00A0'}Jul</td>
-            <td className={theme.latestArticleView.articletitle}><a href={"/articles/how-to-use-fbprophet-for-easy-time-series-analysis"}>
-            My first internship! @ Ericsson</a>
-            </td>
-        </tr>
+        {articles.map(article => <ArticlePreviewRow article={article} />)}
     </table>
 }
   

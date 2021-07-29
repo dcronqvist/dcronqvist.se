@@ -10,6 +10,7 @@ import headings from 'remark-autolink-headings'
 import slug from 'remark-slug'
 import mailIcon from '@iconify/icons-mdi/email'
 import { Icon, InlineIcon } from '@iconify/react';
+import Tag from '../../components/Tag';
 
 type Props = {
     article: Article,
@@ -97,7 +98,7 @@ const ArticlePage = ({ article, allTags } : Props) => {
                         <h1>{article.title}</h1>
                         <div>
                         <h2>published on {formatDate(new Date(article.date))} by <a href={article.author.link} target="_blank">{article.author.name}</a></h2><a target="_blank" href={`mailto:${article.author.email}`}><Icon className={theme.articlespage.maillink} width={25} icon={mailIcon}/></a>
-                        <span>{article.tags.map(tag => <span style={{backgroundColor: tagToColor(tag)}} className={theme.articlespage.tagblob}>{tag}</span>)}</span>
+                        <span>{article.tags.map(tag => <Tag tag={tag} allTags={allTags}/>)}</span>
                         </div>
                     </header>
                     <article>

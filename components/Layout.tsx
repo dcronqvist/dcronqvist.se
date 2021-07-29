@@ -28,6 +28,7 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="shortcut icon" href="favicon.ico" />
     </Head>
     <header className={theme.layout.header}>
       <Link href="/">

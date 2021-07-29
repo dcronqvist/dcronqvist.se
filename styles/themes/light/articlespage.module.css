@@ -4,6 +4,7 @@
 }
 
 .content {
+    min-height: 82vh;
     position: relative;
     width: 750px;
 }
@@ -53,7 +54,7 @@
 
 .articlepreview h3 {
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0;
     padding: 0;
 }
@@ -65,6 +66,9 @@
 }
 
 .tagblob {
+    user-select: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
     padding: 1px 3px 1px 3px;
     border-radius: 5px;
     font-size: 14px !important;
@@ -115,7 +119,8 @@
 }
 
 .articleimg {
-    width: 50%;
+    padding: 20px;
+    width: 40%;
     float: right;
     display: inline;
 }
@@ -124,11 +129,44 @@
     width: 100%;
 }
 
-.markdowncontent {
-    display: inline;
-}
-
 .content header div {
     display: flex;
     align-items: center;
+}
+
+.tagscontainer {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.markdowncontent {
+    height: max(100vh, 100%);
+    display: inline;
+}
+
+.markdowncontent a {
+    font-weight: 500;
+    color: black;
+    text-decoration: underline;
+}
+
+.markdowncontent a:hover {
+    color: #408080;
+}
+
+.markdowncontent p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.markdowncontent h3 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+}
+
+.markdowncontent h4 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
 }

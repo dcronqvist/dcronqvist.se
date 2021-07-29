@@ -7,12 +7,27 @@ import Tooltipped from '../components/Tooltipped'
 import GithubActivity from '../components/GithubActivity'
 import LatestArticleView from '../components/LatestArticleView'
 import { useTheme } from '../contexts/ThemeContext'
+import { getAllArticles, ArticleData } from './api/articles'
 
-const IndexPage = () => {
+type IndexPageProps = {
+  articlesData: ArticleData
+}
+
+export async function getStaticProps(context) {
+  return {
+    props: { articlesData: JSON.parse(JSON.stringify(await getAllArticles())) }
+  }
+}
+
+const IndexPage = ({ articlesData }: IndexPageProps) => {
   const { theme } = useTheme()
 
   let profilePicHeight : number = 454
   let profilePicWidth : number = (422 / 454) * profilePicHeight
+
+  const latestArticles = articlesData.articles.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  }).slice(0, 3)
 
   return (<>
   <Layout title="Home" currentNav="">
@@ -24,7 +39,7 @@ const IndexPage = () => {
         </div>
         <div className={theme.index.feed}>
           <h4>Latest articles</h4>
-          <LatestArticleView/>
+          <LatestArticleView articles={latestArticles}/>
         </div>        
       </div>
       <div className={`${theme.index.intro} ${theme.index.third}`}>

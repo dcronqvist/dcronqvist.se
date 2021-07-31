@@ -1,6 +1,11 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 
+export type Project = {
+    name: string,
+    link: string,
+}
+
 export type Author = {
     name: string
     link: string
@@ -15,7 +20,8 @@ export type Article = {
     link: string
     image: string | undefined
     slug: string
-    author: Author
+    author: Author,
+    projects: Project[] | undefined
 }
 
 export type ArticleData = {
@@ -60,7 +66,13 @@ export async function getAllArticles() : Promise<ArticleData> {
                     name: article.data.author.name,
                     link: article.data.author.link,
                     email: article.data.author.email
-                }
+                },
+                projects: article.data.projects ? article.data.projects.map(proj => {
+                    return {
+                        name: proj.name,
+                        link: proj.link
+                    }  
+                }) : undefined
             }
             articles.push(realArticle)
         }

@@ -45,7 +45,7 @@ const Tag = ({ tag, allTags, onClick, fade = false }: Props) => {
     }
 
     return (
-        <span onClick={(e) => {onClick ? onClick(tag) : {}}} style={{opacity: (fade ? 0.3 : 1), backgroundColor: tagToColor(tag), border: `1px solid ${lightenDarkenColor(tagToColor(tag), -20)}`}} className={theme.articlespage.tagblob}>
+        <span key={tag} onClick={(e) => {onClick ? onClick(tag) : {}}} style={{opacity: (fade ? 0.3 : 1), backgroundColor: tagToColor(tag), border: `1px solid ${lightenDarkenColor(tagToColor(tag), -20)}`}} className={theme.articlespage.tagblob}>
             {tag}
         </span>
     )

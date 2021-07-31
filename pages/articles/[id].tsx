@@ -98,8 +98,13 @@ const ArticlePage = ({ article, allTags } : Props) => {
                         <h1>{article.title}</h1>
                         <div>
                         <h2>published on {formatDate(new Date(article.date))} by <a href={article.author.link} target="_blank">{article.author.name}</a></h2><a target="_blank" href={`mailto:${article.author.email}`}><Icon className={theme.articlespage.maillink} width={25} icon={mailIcon}/></a>
-                        <span>{article.tags.map(tag => <Tag tag={tag} allTags={allTags}/>)}</span>
+                        <span>{article.tags.map(tag => <Tag key={tag} tag={tag} allTags={allTags}/>)}</span>
                         </div>
+                        {article.projects ? 
+                        <div>
+                            <h2>references {article.projects?.length > 1 ? "projects" : "project"}{' '}{article.projects.map(project => <><a target="_blank" key={project.name} href={project.link}>{project.name}</a>{' '}</>)}</h2>
+                        </div>
+                        : ""}
                     </header>
                     <article>
                         {article.image ? 

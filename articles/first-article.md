@@ -4,7 +4,10 @@ date: 2021-07-30
 tags:
   - web
   - projects
-image: imgofme.png
+image: imgofme-small.png
+projects:
+  - name: dcronqvist.se
+    link: https://github.com/dcronqvist/dcronqvist.se
 author: 
   name: Daniel Cronqvist
   link: https://github.com/dcronqvist

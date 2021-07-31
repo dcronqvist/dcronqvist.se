@@ -4,7 +4,8 @@
 }
 
 .content {
-    min-height: 82vh;
+    padding-top: 20px;
+    min-height: calc(82vh - 20px);
     position: relative;
     width: 750px;
 }
@@ -95,7 +96,6 @@
     margin: 0;
     padding: 0;
     margin-bottom: 10px;
-    margin-top: 30px;
 }
 
 .maillink {

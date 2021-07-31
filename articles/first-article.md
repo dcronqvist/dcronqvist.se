@@ -21,6 +21,4 @@ On this site I post articles and posts about stuff I learn, tutorials, or anythi
 
 There's also a bit of information about my collection of [cool projects](/projects) if that interests you.
 
-This is the first article I'll write, and I'm not really sure how these should be structured, or even if there should be a very coherent structure.
-
 Anyway, hopefully, this is the **first** post of many to come, so stay tuned for what might show up here in the future!

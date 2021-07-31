@@ -7,6 +7,7 @@ import lightLayout from '../styles/themes/light/layout.module.css'
 import lightNavlink from '../styles/themes/light/navlink.module.css'
 import lightToolTipped from '../styles/themes/light/tooltipped.module.css'
 import lightArticlesPage from '../styles/themes/light/articlespage.module.css'
+import lightProjectsPage from '../styles/themes/light/projects.module.css'
 
 // import darkCommitList from '../styles/themes/dark/commitlist.module.css'
 // import darkIndex from '../styles/themes/dark/index.module.css'
@@ -23,6 +24,7 @@ type Theme = {
     navlink,
     toolTipped,
     articlespage,
+    projectsPage,
     allColors: string[]
 }
 
@@ -35,6 +37,7 @@ const allThemes : {[key: string]: Theme} = {
         navlink: lightNavlink,
         toolTipped: lightToolTipped,
         articlespage: lightArticlesPage,
+        projectsPage: lightProjectsPage,
         allColors: [
             '#00ffc2',
             '#ff9900',

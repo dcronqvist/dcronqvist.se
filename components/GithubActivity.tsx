@@ -1,6 +1,7 @@
 import React from 'react'
 import useSWR, { SWRConfig } from 'swr'
 import { useTheme } from '../contexts/ThemeContext'
+import Tooltipped from './Tooltipped'
 const fetcher = url => fetch(url).then(r => r.json())
 
 const Event = ({event}) => {

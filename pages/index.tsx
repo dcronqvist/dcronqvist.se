@@ -52,7 +52,7 @@ const IndexPage = ({ articlesData }: IndexPageProps) => {
       </div>
       <div className={`${theme.index.profilepic} ${theme.index.third}`}>
         <Tooltipped text="Yep, that's me!">
-          <Image quality={100} src={profilePic}/>
+          <img style={{width: "100%"}} src={"imgofme.png"}></img>
         </Tooltipped>
       </div>   
     </div>

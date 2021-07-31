@@ -14,7 +14,9 @@ const Tooltipped = ({text, children} : TooltippedProps) => {
     <>
         <div className={theme.toolTipped.tooltip}>
             <span className={theme.toolTipped.tooltiptext}>{text}</span>
-            {children}
+            <span className={theme.toolTipped.kids}>
+                {children}
+            </span>
         </div>
     </>
     )

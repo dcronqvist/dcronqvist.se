@@ -74,8 +74,6 @@ function CustomLink({ children, href }) {
 const ArticlePage = ({ article, allTags } : Props) => {
     const { theme } = useTheme()
 
-    console.log(article)
-
     const content = unified()
     .use(parse)
     .use(remark2react, {

@@ -1,4 +1,120 @@
 .container {
-    min-height: 82vh;
-    margin: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    padding-top: 20px;
+    min-height: calc(82vh - 20px);
+    position: relative;
+    width: 750px;
+}
+
+.content .section {
+    padding: 12px;
+}
+
+.iconcontainer {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.iconcontainer a {
+    color: black;
+}
+
+.tagscontainer {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.projectPreviewContainer {
+    margin-top: 10px;
+}
+
+.grayish {
+    stroke: rgb(168, 168, 168);
+}
+
+.projectPreviewHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.projectPreviewHeader header {
+    display: flex;
+    align-items: center;;
+}
+
+.projectPreviewHeader h3 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #6b6b6b;
+    margin: 0;
+}
+
+.projectPreviewHeader header h2 {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.pointerOnHover {
+    cursor: pointer;
+}
+
+.projectPreviewContainer article {
+    width: 100%;
+}
+
+.referencearticles {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    width: 40%;
+    float: right;
+    display: inline;
+}
+
+.referencearticles h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.referencearticles a {
+    color: black;
+    text-decoration: underline;
+}
+
+.markdowncontent {
+    height: max(100vh, 100%);
+    display: inline;
+}
+
+.markdowncontent a {
+    font-weight: 500;
+    color: black;
+    text-decoration: underline;
+}
+
+.markdowncontent a:hover {
+    color: #408080;
+}
+
+.markdowncontent p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.markdowncontent h3 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+}
+
+.markdowncontent h4 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
 }

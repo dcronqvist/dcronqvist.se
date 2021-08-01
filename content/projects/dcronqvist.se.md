@@ -3,7 +3,7 @@ title: dcronqvist.se
 tags:
   - nextjs
   - web
-description: the website you're currently on! portfolio/showcase/article site
+description: 👨🏼‍💻 the website you're currently on! portfolio/showcase/article site
 link:
   url: https://github.com/dcronqvist/dcronqvist.se
   type: github-repo

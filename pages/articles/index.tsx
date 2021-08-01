@@ -20,6 +20,9 @@ export async function getStaticProps(context) {
   }
 }
 
+const interleave = (arr, arr2) => arr
+  .reduce((combArr, elem, i) => combArr.concat(elem, arr2[i]), []); 
+
 const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
   const { theme } = useTheme()
   const [ search, setSearch ] = useState<string>("")
@@ -46,7 +49,19 @@ const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
     return <ArticlePreview allTags={articlesData.allTags} article={article} key={article.slug} />
   }) : undefined
 
-  console.log(selectedTag)
+  const lines = (amount) => {
+    const lines = []
+
+    for (let i = 0; i < amount; i++) {
+      lines.push(<svg key={i} className={theme.projectsPage.grayish} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="0.5" x2="726" y2="0.5"/>
+     </svg>)
+    }
+
+    return lines
+  }
+
+  const displayedArticles = interleave((searchResults || latestArticles), lines((searchResults || latestArticles).length - 1))
 
   return (<>
   <Layout title="Articles" currentNav="articles">
@@ -56,7 +71,7 @@ const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
           <h2>Search articles</h2>
           <input type="text" placeholder={"search for stuff"} onChange={(e) => setSearch(e.target.value)}></input>
           <div className={theme.articlespage.tagscontainer}>
-            {articlesData.allTags.map(tag => <Tag onClick={() => {
+            {articlesData.allTags.map(tag => <Tag key={tag} onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
                 } else {
@@ -68,7 +83,7 @@ const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
         </div>
         <div className={theme.articlespage.section}>
           {searchResults ? <h2>Results</h2> : <h2>Latest articles</h2>}
-          {searchResults ? searchResults : latestArticles}
+          {displayedArticles}
         </div>
       </div>
     </div>

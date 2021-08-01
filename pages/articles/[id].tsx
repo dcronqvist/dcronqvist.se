@@ -100,7 +100,7 @@ const ArticlePage = ({ article, allTags } : Props) => {
                         </div>
                         {article.projects ? 
                         <div>
-                            <h2>references {article.projects?.length > 1 ? "projects" : "project"}{' '}{article.projects.map(project => <><a target="_blank" key={project.name} href={project.link}>{project.name}</a>{' '}</>)}</h2>
+                            <h2>references {article.projects?.length > 1 ? "projects" : "project"}{' '}{article.projects.map(project => <><a key={project.link} target="_blank" href={project.link}>{project.name}</a>{' '}</>)}</h2>
                         </div>
                         : ""}
                     </header>

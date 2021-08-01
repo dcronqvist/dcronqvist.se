@@ -18,7 +18,7 @@ export type Project = {
     description: string,
     articlesAbout: Article[],
     content: string,
-    link: ProjectLink
+    link: ProjectLink | undefined
 }
 
 export const projectToLink = (project: Project) => {
@@ -59,10 +59,10 @@ export async function getAllProjects() : Promise<ProjectsData> {
                 tags: project.data.tags,
                 articlesAbout: articlesAbout,
                 content: project.content,
-                link: {
+                link: project.data.link ? {
                     url: project.data.link.url,
                     type: project.data.link.type
-                }
+                } : undefined
             }
             projects.push(realProject)
         }

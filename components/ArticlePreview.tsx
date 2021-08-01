@@ -18,17 +18,19 @@ const ArticlePreview = ({ article, allTags } : Props) => {
   const { theme } = useTheme()
   
   return (
-    <Link href={"articles/" + article.link}>          
+    <>
+    <Link href={"/articles/" + article.link}>          
       <a className={theme.articlespage.articlepreviewlink}>
         <div className={theme.articlespage.articlepreview}>
           <h3>{article.title}</h3>
             <div>
               <span>publ. {formatDate(new Date(article.date))}</span>
-              <span>{article.tags.map(tag => <Tag tag={tag} allTags={allTags}/>)}</span>
+              <span>{article.tags.map(tag => <Tag key={tag} tag={tag} allTags={allTags}/>)}</span>
           </div>
         </div>
       </a>
     </Link>
+    </>
     )
   }
   

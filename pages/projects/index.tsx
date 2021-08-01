@@ -70,9 +70,9 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
   })
   .processSync(project.content).result;
 
-  const link = <a target="_blank" href={project.link.url}>
+  const link = project.link ? <a target="_blank" href={project.link.url}>
     <Icon height={40} icon={projectTypeToIcon(project.link.type)}/>
-  </a>
+  </a> : ""
 
   return (
     <div className={theme.projectsPage.projectPreviewContainer}>
@@ -104,15 +104,27 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
           </div>
         </article>
       : null }
-      <svg className={theme.projectsPage.grayish} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0" y1="0.5" x2="726" y2="0.5"/>
-      </svg>
     </div>
   )
 }
 
 const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
   const { theme } = useTheme()
+  const [selectedTag, setSelectedTag] = useState<string>("")
+
+  const lines = (amount) => {
+    const lines = []
+
+    for (let i = 0; i < amount; i++) {
+      lines.push(<svg key={i} className={theme.projectsPage.grayish} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="0.5" x2="726" y2="0.5"/>
+     </svg>)
+    }
+
+    return lines
+  }
+
+  const selectedProjects = selectedTag == "" ? projectsData.projects : projectsData.projects.filter(project => project.tags.includes(selectedTag))
 
   return (<>
   <Layout title="Projects" currentNav="projects">
@@ -121,11 +133,17 @@ const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
         <div className={theme.projectsPage.section}>
           <h2>All project tags</h2>
           <div className={theme.projectsPage.tagscontainer}>
-            {projectsData.allTags.map(tag => <Tag key={tag} allTags={projectsData.allTags} tag={tag}/>)}
+            {projectsData.allTags.map(tag => <Tag onClick={() => {
+                if(selectedTag === tag) {
+                  setSelectedTag("")
+                } else {
+                  setSelectedTag(tag)
+                }
+              }} fade={selectedTag !== "" && selectedTag !== tag} key={tag} allTags={projectsData.allTags} tag={tag}/>)}
           </div>
         </div>
         <div className={theme.projectsPage.section}>
-          {projectsData.projects.map(project => <ProjectPreview key={project.title} allTags={projectsData.allTags} project={project}/>)}
+          {interleave(selectedProjects.map(project => <ProjectPreview key={project.title} allTags={projectsData.allTags} project={project}/>), lines(selectedProjects.length - 1))}
         </div>
       </div>
     </div>

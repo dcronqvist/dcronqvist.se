@@ -7,7 +7,8 @@
     padding-top: 20px;
     min-height: calc(82vh - 20px);
     position: relative;
-    width: 750px;
+    max-width: 750px;
+    width: 95%;
 }
 
 .content .section {
@@ -71,6 +72,10 @@
     font-weight: 200;
 }
 
+.tagbottom {
+    margin-bottom: 5px;
+}
+
 .tagblob {
     user-select: none;
     cursor: pointer;
@@ -80,6 +85,7 @@
     font-size: 14px !important;
     font-weight: 400 !important;
     margin-right: 5px;
+    white-space: nowrap;
 }
 
 .content header {

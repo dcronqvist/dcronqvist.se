@@ -80,7 +80,9 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
         <div>
           <header>
             <h2>{project.title}</h2>
-            {project.tags.map(tag => <Tag key={tag} tag={tag} allTags={allTags}/>)}
+            <div>
+              {project.tags.map(tag => <Tag bottomMargin={true} key={tag} tag={tag} allTags={allTags}/>)}
+            </div>
           </header>
           <h3>{project.description}</h3>
         </div>
@@ -133,7 +135,7 @@ const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
         <div className={theme.projectsPage.section}>
           <h2>All project tags</h2>
           <div className={theme.projectsPage.tagscontainer}>
-            {projectsData.allTags.map(tag => <Tag onClick={() => {
+            {projectsData.allTags.map(tag => <Tag bottomMargin={true}  onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
                 } else {

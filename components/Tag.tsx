@@ -4,10 +4,11 @@ type Props = {
     tag: string,
     allTags: string[],
     onClick?: (tag: string) => any,
-    fade?: boolean
+    fade?: boolean,
+    bottomMargin?: boolean
 }
 
-const Tag = ({ tag, allTags, onClick, fade = false }: Props) => {
+const Tag = ({ tag, allTags, onClick, fade = false, bottomMargin = false }: Props) => {
     const { theme } = useTheme();
 
     function lightenDarkenColor(col, amt) {
@@ -45,7 +46,7 @@ const Tag = ({ tag, allTags, onClick, fade = false }: Props) => {
     }
 
     return (
-        <span key={tag} onClick={(e) => {onClick ? onClick(tag) : {}}} style={{opacity: (fade ? 0.3 : 1), backgroundColor: tagToColor(tag), border: `1px solid ${lightenDarkenColor(tagToColor(tag), -20)}`}} className={theme.articlespage.tagblob}>
+        <span key={tag} onClick={(e) => {onClick ? onClick(tag) : {}}} style={{opacity: (fade ? 0.3 : 1), backgroundColor: tagToColor(tag), border: `1px solid ${lightenDarkenColor(tagToColor(tag), -20)}`}} className={`${theme.articlespage.tagblob} ${bottomMargin ? theme.articlespage.tagbottom : ""}`}>
             {tag}
         </span>
     )

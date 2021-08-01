@@ -55,7 +55,9 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
         return date.getDate() + " " + formatMonth(date.getMonth())
     }
 
-    const filteredEvents = events.filter(event => event.event.type != "DeleteEvent")
+    console.log(events)
+
+    const filteredEvents = events.filter(event => event.event.type != "DeleteEvent" && event.event.type != "IssueCommentEvent")
 
     const firstRow = filteredEvents.slice(0,1).map(event => {
         return <tr className={theme.commitList.event} key={`${date}${event.event.id}`}>

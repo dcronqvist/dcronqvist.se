@@ -1,0 +1,34 @@
+.link {
+    margin: 1.5vw;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.9vw;
+}
+
+.link a {
+    color: #d4d4d4;
+    text-decoration: none;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 750px) {
+    .link {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 4.7vw;
+        margin-bottom: 15px;
+    }
+    
+    .link a {
+        color: #d4d4d4;
+        text-decoration: none;
+    }
+    
+    .underlined {
+        text-decoration: underline;
+    }    
+}

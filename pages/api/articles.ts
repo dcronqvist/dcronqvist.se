@@ -47,7 +47,7 @@ const removeDups = (arr: Array<string>) => {
 
 export async function getAllArticles() : Promise<ArticleData> {
     const articles : Article[] = []
-    const articlesDir = './content/articles'
+    const articlesDir = './dcronqvist.se-content/articles'
     const files = fs.readdirSync(articlesDir)
     files.forEach((file) => {
         if (file !== "template.md") {

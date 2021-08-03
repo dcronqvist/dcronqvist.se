@@ -1,0 +1,3 @@
+[submodule "dcronqvist.se-content"]
+	path = dcronqvist.se-content
+	url = https://github.com/dcronqvist/dcronqvist.se-content

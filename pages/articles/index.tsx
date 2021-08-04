@@ -1,40 +1,42 @@
-import Layout from '../../components/Layout'
-import unified from 'unified';
-import parse from 'remark-parse';
-import remark2react from 'remark-react';
-import Link from 'next/link'
-import { ArticleData, getAllArticles } from '../api/articles'
-import { useTheme } from '../../contexts/ThemeContext';
-import ArticlePreview from '../../components/ArticlePreview';
+import Layout from '@components/Layout'
+import { useTheme } from '@contexts/ThemeContext';
+import ArticlePreview from '@components/ArticlePreview';
 import { useState } from 'react';
-import Tag from '../../components/Tag'
-
+import Tag from '@components/Tag'
+import { Article } from 'types/articles';
+import { getAllArticles } from 'pages/api/articles';
 
 type ArticlePageProps = {
-  articlesData: ArticleData
+  articles: Article[],
+  tags: string[],
 }
 
 export async function getStaticProps(context) {
+  const { articles, tags } = getAllArticles()
+
   return {
-    props: { articlesData: JSON.parse(JSON.stringify(await getAllArticles())) }
+    props: {
+      articles,
+      tags,
+    }
   }
 }
 
 const interleave = (arr, arr2) => arr
   .reduce((combArr, elem, i) => combArr.concat(elem, arr2[i]), []); 
 
-const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
+const ArticlesPage = ({ articles, tags } : ArticlePageProps) => {
   const { theme } = useTheme()
   const [ search, setSearch ] = useState<string>("")
   const [ selectedTag, setSelectedTag ] = useState<string>("")
 
-  const latestArticles = articlesData.articles.sort((a, b) => {
+  const latestArticles = articles.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   }).slice(0, 3).map(article => {
-    return <ArticlePreview allTags={articlesData.allTags} article={article} key={article.slug} />
+    return <ArticlePreview tags={tags} article={article} key={article.title} />
   })
 
-  const searchResults = search != "" || selectedTag != "" ? articlesData.articles.filter(article => {
+  const searchResults = search != "" || selectedTag != "" ? articles.filter(article => {
     const searchString = search.toLowerCase()
     const title = article.title.toLowerCase()
     const tags = article.tags.map(tag => tag.toLowerCase())
@@ -46,7 +48,7 @@ const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
     }
     return false
   }).map(article => {
-    return <ArticlePreview allTags={articlesData.allTags} article={article} key={article.slug} />
+    return <ArticlePreview tags={tags} article={article} key={article.title} />
   }) : undefined
 
   const lines = (amount) => {
@@ -71,14 +73,14 @@ const ArticlesPage = ({ articlesData } : ArticlePageProps) => {
           <h2>Search articles</h2>
           <input type="text" placeholder={"search for stuff"} onChange={(e) => setSearch(e.target.value)}></input>
           <div className={theme.articlespage.tagscontainer}>
-            {articlesData.allTags.map(tag => <Tag key={tag} onClick={() => {
+            {tags.map(tag => <Tag key={tag} onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
                 } else {
                   setSelectedTag(tag)
                 }
               }
-            } fade={selectedTag !== "" && selectedTag !== tag} allTags={articlesData.allTags} tag={tag}/>)}
+            } fade={selectedTag !== "" && selectedTag !== tag} allTags={tags} tag={tag}/>)}
           </div>
         </div>
         <div className={theme.articlespage.section}>

@@ -1,27 +1,25 @@
 import Layout from '../../components/Layout'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from '../../contexts/ThemeContext';
-import { Article, getAllArticles } from "../api/articles";
+import { getAllArticles } from "../api/articles";
+import { Article, getArticleLink } from 'types/articles'
 import unified from 'unified';
 import parse from 'remark-parse';
 import remark2react from 'remark-react';
-import headings from 'remark-autolink-headings'
-import slug from 'remark-slug'
 import mailIcon from '@iconify/icons-mdi/email'
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import Tag from '../../components/Tag';
 
 type Props = {
     article: Article,
-    allTags
+    tags: string[]
 }
 
 export async function getStaticPaths() {
     const a = (await getAllArticles()).articles.map(article => {
         return {
             params: {
-                id: article.link
+                id: getArticleLink(article)
             }
         }
     })
@@ -39,14 +37,14 @@ const formatDate = (date : Date) => {
 }
 
 export async function getStaticProps({ params }) {
-    const articleData = await getAllArticles()
-    const article = articleData.articles.find(article => article.link === params.id)
-    const allTags = articleData.allTags
+    const articlesData = getAllArticles()
+    const article = articlesData.articles.find(article => getArticleLink(article) === params.id)
+    const allTags = articlesData.tags
 
     return {
         props: {
             article: JSON.parse(JSON.stringify(article)),
-            allTags: allTags
+            tags: allTags
         }
     }
 }
@@ -71,7 +69,7 @@ function CustomLink({ children, href }) {
     );
   }
 
-const ArticlePage = ({ article, allTags } : Props) => {
+const ArticlePage = ({ article, tags } : Props) => {
     const { theme } = useTheme()
 
     const content = unified()
@@ -84,10 +82,6 @@ const ArticlePage = ({ article, allTags } : Props) => {
     })
     .processSync(article.content).result;
 
-    const tagToColor = (tag : string) => {
-        return theme.allColors[allTags.indexOf(tag) % theme.allColors.length]
-    }
-
     return (
         <Layout title={article.title} currentNav="">
             <div className={theme.articlespage.container}>
@@ -96,11 +90,11 @@ const ArticlePage = ({ article, allTags } : Props) => {
                         <h1>{article.title}</h1>
                         <div>
                         <h2>published on {formatDate(new Date(article.date))} by <a href={article.author.link} target="_blank">{article.author.name}</a></h2><a target="_blank" href={`mailto:${article.author.email}`}><Icon className={theme.articlespage.maillink} width={25} icon={mailIcon}/></a>
-                        <span>{article.tags.map(tag => <Tag key={tag} tag={tag} allTags={allTags}/>)}</span>
+                        <span>{article.tags.map(tag => <Tag key={tag} tag={tag} allTags={tags}/>)}</span>
                         </div>
-                        {article.projects ? 
+                        {article.referencedProjects ? 
                         <div>
-                            <h2>references {article.projects?.length > 1 ? "projects" : "project"}{' '}{article.projects.map(project => <><a key={project.link} target="_blank" href={project.link}>{project.name}</a>{' '}</>)}</h2>
+                            <h2>references {article.referencedProjects?.length > 1 ? "projects" : "project"}{' '}{article.referencedProjects.map(project => <><a key={project.link} target="_blank" href={project.link}>{project.name}</a>{' '}</>)}</h2>
                         </div>
                         : ""}
                     </header>

@@ -3,7 +3,7 @@ import unified from 'unified';
 import parse from 'remark-parse';
 import remark2react from 'remark-react';
 import Link from 'next/link'
-import { getAllProjects, Project, ProjectsData } from '../api/projects'
+import { getAllProjects } from '../api/projects'
 import { useTheme } from '../../contexts/ThemeContext';
 import { useState } from 'react';
 import Tag from '../../components/Tag'
@@ -12,15 +12,23 @@ import githubIcon from '@iconify/icons-mdi/github'
 import openInNew from '@iconify/icons-mdi/open-in-new'
 import expander from '@iconify/icons-mdi/arrow-down-drop-circle-outline'
 import Tooltipped from '../../components/Tooltipped';
+import { Project } from 'types/projects';
+import { getArticleLink } from 'types/articles';
 
 
 type ProjectsPageProps = {
-  projectsData: ProjectsData
+  projects: Project[]
+  tags: string[]
 }
 
 export async function getStaticProps(context) {
+  const projects = getAllProjects()
+
   return {
-    props: { projectsData: JSON.parse(JSON.stringify(await getAllProjects())) }
+    props: { 
+      projects: projects.projects,
+      tags: projects.tags
+    }
   }
 }
 
@@ -98,7 +106,7 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
           { project.articlesAbout.length > 0 ? 
           <div className={theme.projectsPage.referencearticles}>
             <h3>Related articles</h3>
-            {project.articlesAbout.map(article => <Link href={"/articles/" + article.link}><a>{article.title}</a></Link>)}
+            {project.articlesAbout.map(article => <Link href={"/articles/" + getArticleLink(article)}><a>{article.title}</a></Link>)}
           </div>
           : null }
           <div className={theme.projectsPage.markdowncontent}>
@@ -110,7 +118,7 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
   )
 }
 
-const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
+const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
   const { theme } = useTheme()
   const [selectedTag, setSelectedTag] = useState<string>("")
 
@@ -126,7 +134,7 @@ const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
     return lines
   }
 
-  const selectedProjects = selectedTag == "" ? projectsData.projects : projectsData.projects.filter(project => project.tags.includes(selectedTag))
+  const selectedProjects = selectedTag == "" ? projects : projects.filter(project => project.tags.includes(selectedTag))
 
   return (<>
   <Layout title="Projects" currentNav="projects">
@@ -135,17 +143,17 @@ const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
         <div className={theme.projectsPage.section}>
           <h2>All project tags</h2>
           <div className={theme.projectsPage.tagscontainer}>
-            {projectsData.allTags.map(tag => <Tag bottomMargin={true}  onClick={() => {
+            {tags.map(tag => <Tag bottomMargin={true}  onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
                 } else {
                   setSelectedTag(tag)
                 }
-              }} fade={selectedTag !== "" && selectedTag !== tag} key={tag} allTags={projectsData.allTags} tag={tag}/>)}
+              }} fade={selectedTag !== "" && selectedTag !== tag} key={tag} allTags={tags} tag={tag}/>)}
           </div>
         </div>
         <div className={theme.projectsPage.section}>
-          {interleave(selectedProjects.map(project => <ProjectPreview key={project.title} allTags={projectsData.allTags} project={project}/>), lines(selectedProjects.length - 1))}
+          {interleave(selectedProjects.map(project => <ProjectPreview key={project.title} allTags={tags} project={project}/>), lines(selectedProjects.length - 1))}
         </div>
       </div>
     </div>

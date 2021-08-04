@@ -39,6 +39,14 @@ const removeDups = (arr: Array<string>) => {
 export async function getAllProjects() : Promise<ProjectsData> {
     const projects : Project[] = []
     const projectsDir = './dcronqvist.se-content/projects'
+
+    if (!fs.existsSync(projectsDir)) {
+        return {
+            projects: [],
+            allTags: [],
+        }
+    }
+
     const files = fs.readdirSync(projectsDir)
 
     const articles = await getAllArticles()

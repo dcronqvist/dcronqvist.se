@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
+      with:
+        submodules: recursive
 
     - name: install npm deps
       uses: actions/setup-node@v2

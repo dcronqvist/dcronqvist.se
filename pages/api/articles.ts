@@ -25,7 +25,7 @@ export const getAllArticles = () => {
                 date: article.data.date.toString(),
                 tags: article.data.tags,
                 content: article.content,
-                image: article.data.image ? article.data.image : undefined,
+                image: article.data.image ? article.data.image : null,
                 author: {
                     name: article.data.author.name,
                     link: article.data.author.link,
@@ -36,7 +36,7 @@ export const getAllArticles = () => {
                         name: proj.name,
                         link: proj.link
                     }  
-                }) : undefined
+                }) : []
             }
             articles.push(realArticle)
         }

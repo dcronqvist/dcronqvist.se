@@ -14,6 +14,7 @@ import expander from '@iconify/icons-mdi/arrow-down-drop-circle-outline'
 import Tooltipped from '../../components/Tooltipped';
 import { Project } from 'types/projects';
 import { getArticleLink } from 'types/articles';
+import styled from 'styled-components';
 
 
 type ProjectsPageProps = {
@@ -64,6 +65,107 @@ const projectTypeToIcon = (type: string) => {
   return openInNew
 }
 
+const ProjectPreviewContainer = styled.div`
+  margin-top: 10px;
+
+  & article {
+    width: 100%;
+  }
+`
+
+const ProjectPreviewHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & header {
+    display: flex;
+    align-items: center;
+  }
+
+  & header div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 50%;
+  }
+
+  & h3 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #6b6b6b;
+    margin: 0;
+  }
+
+  & header h2 {
+    margin: 0;
+    margin-right: 10px;
+  }
+`
+
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: black;
+
+  & a {
+    color: black;
+  }
+`
+
+const PointerOnHover = styled.div`
+  cursor: pointer;
+`
+
+const ReferencedArticlesContainer = styled.div`
+  margin-left: 20px;
+  margin-bottom: 20px;
+  text-align: right;
+  width: 40%;
+  float: right;
+  display: inline;
+
+  & h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  & a {
+    color: black;
+    text-decoration: underline;
+  }
+`
+
+const MarkdownContent = styled.div`
+  height: max(100vh, 100%);
+  display: inline;
+
+  & a {
+    font-weight: 500;
+    color: black;
+    text-decoration: underline;
+  }
+
+  & a:hover {
+    color: #408080;
+  }
+
+  & p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  & h3 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+  }
+
+  & h4 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+  }
+` 
+
 const ProjectPreview = ({ project, allTags }: { project: Project, allTags: string[] }) => {
   const { theme } = useTheme()
   const [expanded, setExpanded] = useState<boolean>(false)
@@ -83,8 +185,8 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
   </a> : ""
 
   return (
-    <div className={theme.projectsPage.projectPreviewContainer}>
-      <div className={theme.projectsPage.projectPreviewHeader}>
+    <ProjectPreviewContainer>
+      <ProjectPreviewHeader>
         <div>
           <header>
             <h2>{project.title}</h2>
@@ -94,29 +196,56 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
           </header>
           <h3>{project.description}</h3>
         </div>
-        <div className={theme.projectsPage.iconcontainer}>
+        <IconContainer>
           {link}
-          <div className={theme.projectsPage.pointerOnHover} onClick={(e) => setExpanded(!expanded)}>
+          <PointerOnHover onClick={(e) => setExpanded(!expanded)}>
             <Icon vFlip={expanded} height={40} icon={expander}/>
-          </div>
-        </div>
-      </div>
+          </PointerOnHover>
+        </IconContainer>
+      </ProjectPreviewHeader>
       { expanded ? 
         <article>
           { project.articlesAbout.length > 0 ? 
-          <div className={theme.projectsPage.referencearticles}>
+          <ReferencedArticlesContainer>
             <h3>Related articles</h3>
             {project.articlesAbout.map(article => <Link href={"/articles/" + getArticleLink(article)}><a>{article.title}</a></Link>)}
-          </div>
+          </ReferencedArticlesContainer>
           : null }
-          <div className={theme.projectsPage.markdowncontent}>
+          <MarkdownContent>
             {content}
-          </div>
+          </MarkdownContent>
         </article>
       : null }
-    </div>
+    </ProjectPreviewContainer>
   )
 }
+
+const PageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Section = styled.div`
+
+`
+
+const Content = styled.div`
+  padding-top: 20px;
+  min-height: calc(82vh - 20px);
+  position: relative;
+  width: 750px;
+
+  & ${Section} {
+    padding: 12px;
+  }
+`
+
+const TagsContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`
 
 const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
   const { theme } = useTheme()
@@ -126,7 +255,7 @@ const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
     const lines = []
 
     for (let i = 0; i < amount; i++) {
-      lines.push(<svg key={i} className={theme.projectsPage.grayish} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      lines.push(<svg key={i} stroke={"rgb(168, 168, 168)"} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="0" y1="0.5" x2="726" y2="0.5"/>
      </svg>)
     }
@@ -138,11 +267,11 @@ const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
 
   return (<>
   <Layout title="Projects" currentNav="projects">
-    <div className={theme.projectsPage.container}>
-      <div className={theme.projectsPage.content}>
-        <div className={theme.projectsPage.section}>
+    <PageContainer>
+      <Content>
+        <Section>
           <h2>All project tags</h2>
-          <div className={theme.projectsPage.tagscontainer}>
+          <TagsContainer>
             {tags.map(tag => <Tag bottomMargin={true}  onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
@@ -150,13 +279,13 @@ const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
                   setSelectedTag(tag)
                 }
               }} fade={selectedTag !== "" && selectedTag !== tag} key={tag} allTags={tags} tag={tag}/>)}
-          </div>
-        </div>
-        <div className={theme.projectsPage.section}>
+          </TagsContainer>
+        </Section>
+        <Section>
           {interleave(selectedProjects.map(project => <ProjectPreview key={project.title} allTags={tags} project={project}/>), lines(selectedProjects.length - 1))}
-        </div>
-      </div>
-    </div>
+        </Section>
+      </Content>
+    </PageContainer>
   </Layout>
   </>
 )}

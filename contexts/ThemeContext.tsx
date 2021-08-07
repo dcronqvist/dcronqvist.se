@@ -1,30 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react"
 
-import lightCommitList from '../styles/themes/light/commitlist.module.css'
-import lightIndex from '../styles/themes/light/index.module.css'
-import lightLatestArticleView from '../styles/themes/light/latestarticleview.module.css'
-import lightLayout from '../styles/themes/light/layout.module.css'
-import lightNavlink from '../styles/themes/light/navlink.module.css'
-import lightToolTipped from '../styles/themes/light/tooltipped.module.css'
-import lightArticlesPage from '../styles/themes/light/articlespage.module.css'
-import lightProjectsPage from '../styles/themes/light/projects.module.css'
-
-// import darkCommitList from '../styles/themes/dark/commitlist.module.css'
-// import darkIndex from '../styles/themes/dark/index.module.css'
-// import darkLatestArticleView from '../styles/themes/dark/latestarticleview.module.css'
-// import darkLayout from '../styles/themes/dark/layout.module.css'
-// import darkNavlink from '../styles/themes/dark/navlink.module.css'
-// import darkToolTipped from '../styles/themes/dark/tooltipped.module.css'
-
 export type Theme = {
-    commitList,
-    index,
-    latestArticleView,
-    layout,
-    navlink,
-    toolTipped,
-    articlespage,
-    projectsPage,
     allColors: string[],
     primary: string,
     onPrimary: string,
@@ -36,14 +12,6 @@ export type Theme = {
 
 const allThemes : {[key: string]: Theme} = {
     light: {
-        commitList: lightCommitList,
-        index: lightIndex,
-        latestArticleView: lightLatestArticleView,
-        layout: lightLayout,
-        navlink: lightNavlink,
-        toolTipped: lightToolTipped,
-        articlespage: lightArticlesPage,
-        projectsPage: lightProjectsPage,
         allColors: [
             "#BDD4FF",
             "#BDEFFF",

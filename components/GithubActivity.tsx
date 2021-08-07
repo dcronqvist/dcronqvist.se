@@ -2,6 +2,7 @@ import React from 'react'
 import useSWR, { SWRConfig } from 'swr'
 import { useTheme } from '../contexts/ThemeContext'
 import Tooltipped from './Tooltipped'
+import styled from 'styled-components'
 const fetcher = url => fetch(url).then(r => r.json())
 
 const Event = ({event}) => {
@@ -37,6 +38,28 @@ type DayOfEventsProps = {
     events : any[]
 }
 
+const EventRow = styled.tr`
+    margin-bottom: 5px;
+    font-size: 1.1vw;
+    font-weight: 300;
+
+    & a {
+        text-decoration: underline;
+        font-weight: 400;
+        color: #000000;
+    }
+`
+
+const EventDateColumn = styled.td`
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-right: 4px;
+    font-weight: 400;
+    font-size: inherit;
+    min-width: fit-content;
+`
+
 const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     const { theme } = useTheme()
 
@@ -60,25 +83,29 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     const filteredEvents = events.filter(event => event.event.type != "DeleteEvent" && event.event.type != "IssueCommentEvent")
 
     const firstRow = filteredEvents.slice(0,1).map(event => {
-        return <tr className={theme.commitList.event} key={`${date}${event.event.id}`}>
-            <td className={theme.commitList.eventdate}>{formatDate(new Date(date))}</td>
+        return <EventRow key={`${date}${event.event.id}`}>
+            <EventDateColumn>{formatDate(new Date(date))}</EventDateColumn>
             <Event event={event.event}/>
-        </tr>
+        </EventRow>
     })
 
     const rows = filteredEvents.slice(1,3).map(event => {
-        return <tr className={theme.commitList.event} key={`${date}${event.event.id}`}>
-            <td className={theme.commitList.eventdate}></td>
+        return <EventRow key={`${date}${event.event.id}`}>
+            <EventDateColumn></EventDateColumn>
             <Event event={event.event}/>
-        </tr>
+        </EventRow>
     })
 
     return <>
         {firstRow}
         {rows}
-        {events.length > 3 ? <tr className={theme.commitList.event}><td></td><td>{`+ ${events.length - 3} more`}</td></tr> : ''}
+        {events.length > 3 ? <EventRow><td></td><td>{`+ ${events.length - 3} more`}</td></EventRow> : ''}
     </>
 }
+
+const TableContainer = styled.table`
+    font-size: 1.1vw;
+`
 
 const GithubActivity = ({ username }) => {
     const { data } = useSWR(`https://api.github.com/users/${username}/events`, fetcher)
@@ -117,9 +144,9 @@ const GithubActivity = ({ username }) => {
     const mappedEvents = grouped.slice(0, 3).map(events => <DayOfEvents date={events[0].date} events={events}/>)
 
     return (
-        <table className={theme.commitList.container}>
+        <TableContainer>
             {mappedEvents}
-        </table>
+        </TableContainer>
     )
 }
 

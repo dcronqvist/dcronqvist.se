@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Tag from '@components/Tag'
 import { Article } from 'types/articles';
 import { getAllArticles } from 'pages/api/articles';
+import styled from 'styled-components';
 
 type ArticlePageProps = {
   articles: Article[],
@@ -24,6 +25,55 @@ export async function getStaticProps(context) {
 
 const interleave = (arr, arr2) => arr
   .reduce((combArr, elem, i) => combArr.concat(elem, arr2[i]), []); 
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Section = styled.div`
+  & input[type="text"] {
+    width: 60%;
+    background-color: #e2e2e2;
+    border: 0.5px solid #b1b1b1;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  & input[type="text"]:focus {
+    width: 60%;
+    border: 0.5px solid #b1b1b1;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  & h2 {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+`
+
+const Content = styled.div`
+  padding-top: 20px;
+  min-height: calc(82vh - 20px);
+  position: relative;
+  max-width: 750px;
+  width: 95%;
+
+  & ${Section} {
+    padding: 12px;
+  }
+`
+
+
+const TagsContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`
 
 const ArticlesPage = ({ articles, tags } : ArticlePageProps) => {
   const { theme } = useTheme()
@@ -55,7 +105,7 @@ const ArticlesPage = ({ articles, tags } : ArticlePageProps) => {
     const lines = []
 
     for (let i = 0; i < amount; i++) {
-      lines.push(<svg key={i} className={theme.projectsPage.grayish} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      lines.push(<svg key={i} stroke={"rgb(168, 168, 168)"} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="0" y1="0.5" x2="726" y2="0.5"/>
      </svg>)
     }
@@ -67,12 +117,12 @@ const ArticlesPage = ({ articles, tags } : ArticlePageProps) => {
 
   return (<>
   <Layout title="Articles" currentNav="articles">
-    <div className={theme.articlespage.container}>
-      <div className={theme.articlespage.content}>
-        <div className={theme.articlespage.section}>
+    <Container>
+      <Content>
+        <Section>
           <h2>Search articles</h2>
           <input type="text" placeholder={"search for stuff"} onChange={(e) => setSearch(e.target.value)}></input>
-          <div className={theme.articlespage.tagscontainer}>
+          <TagsContainer>
             {tags.map(tag => <Tag key={tag} onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
@@ -81,14 +131,14 @@ const ArticlesPage = ({ articles, tags } : ArticlePageProps) => {
                 }
               }
             } fade={selectedTag !== "" && selectedTag !== tag} allTags={tags} tag={tag}/>)}
-          </div>
-        </div>
-        <div className={theme.articlespage.section}>
+          </TagsContainer>
+        </Section>
+        <Section>
           {searchResults ? <h2>Results</h2> : <h2>Latest articles</h2>}
           {displayedArticles}
-        </div>
-      </div>
-    </div>
+        </Section>
+      </Content>
+    </Container>
   </Layout>
   </>
 )}

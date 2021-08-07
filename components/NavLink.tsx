@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import styles from '../styles/navlink.module.css'
 import { useTheme, Theme } from '../contexts/ThemeContext'
 import styled from 'styled-components'
 
@@ -17,7 +16,7 @@ const NavLinkWrapper = styled.span<{underlined: boolean, theme: Theme}>`
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1.9vw;
-  text-decoration: ${props => props.underlined ? 'underline' : 'none'};
+  text-decoration: ${props => (props.underlined ? 'underline' : 'none')};
   color: ${props => props.theme.onPrimary};
 `
 
@@ -25,7 +24,7 @@ const NavLink = ({ children, title = 'This is the default title', href, at }: Pr
   const { theme } = useTheme()
 
   return (
-    <NavLinkWrapper underlined={at}>
+    <NavLinkWrapper underlined={at} theme={theme}>
       <Link href={href}>
         <a>{title}</a>
       </Link>

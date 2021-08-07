@@ -16,7 +16,7 @@ import lightProjectsPage from '../styles/themes/light/projects.module.css'
 // import darkNavlink from '../styles/themes/dark/navlink.module.css'
 // import darkToolTipped from '../styles/themes/dark/tooltipped.module.css'
 
-type Theme = {
+export type Theme = {
     commitList,
     index,
     latestArticleView,
@@ -25,7 +25,13 @@ type Theme = {
     toolTipped,
     articlespage,
     projectsPage,
-    allColors: string[]
+    allColors: string[],
+    primary: string,
+    onPrimary: string,
+    secondary: string,
+    onSecondary: string,
+    background: string,
+    onBackground: string,
 }
 
 const allThemes : {[key: string]: Theme} = {
@@ -51,7 +57,13 @@ const allThemes : {[key: string]: Theme} = {
             "#FFBDF8",
             "#FFDDBD",
             "#FFF1BD",
-        ]
+        ],
+        primary: "#1A2719",
+        onPrimary: "#ffffff",
+        secondary: "#006168",
+        onSecondary: "#ffffff",
+        background: "#ffffff",
+        onBackground: "#000000",
     },
     // dark: {
     //     commitList: darkCommitList,

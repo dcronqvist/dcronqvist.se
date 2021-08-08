@@ -2,7 +2,7 @@ import Layout from '@components/Layout'
 import Link from 'next/link'
 import { Theme, useTheme } from '@contexts/ThemeContext';
 import { getAllArticles } from "../api/articles";
-import { Article, getArticleLink } from 'types/articles'
+import { Article, getArticleLink } from '@model/articles'
 import unified from 'unified';
 import parse from 'remark-parse';
 import remark2react from 'remark-react';

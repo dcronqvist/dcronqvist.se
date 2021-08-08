@@ -1,9 +1,9 @@
 import fs from 'fs'
 import matter from 'gray-matter'
-import { Article } from 'types/articles'
-import { Project } from 'types/projects'
+import { Article } from '@model/articles'
+import { Project } from '@model/projects'
 import { getAllArticles } from './articles'
-import { removeDuplicates } from 'types/utils'
+import { removeDuplicates } from '@model/utils'
 
 export const getAllProjects = () => {
     const projects : Project[] = []

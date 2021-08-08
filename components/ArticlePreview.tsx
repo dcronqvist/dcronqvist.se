@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import useSWR, { SWRConfig } from 'swr'
 import { Theme, useTheme } from '../contexts/ThemeContext'
-import { Article, getArticleLink } from 'types/articles'
+import { Article, getArticleLink } from '@model/articles'
 import Tag from './Tag'
 import styled, { ThemeConsumer } from 'styled-components'
 

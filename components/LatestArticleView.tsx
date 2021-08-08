@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import { useTheme, Theme } from '../contexts/ThemeContext'
-import { Article, getArticleLink } from 'types/articles'
+import { Article, getArticleLink } from '@model/articles'
 import styled from 'styled-components'
 
 type Props = {

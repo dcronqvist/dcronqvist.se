@@ -12,8 +12,8 @@ import githubIcon from '@iconify/icons-mdi/github'
 import openInNew from '@iconify/icons-mdi/open-in-new'
 import expander from '@iconify/icons-mdi/arrow-down-drop-circle-outline'
 import Tooltipped from '../../components/Tooltipped';
-import { Project } from 'types/projects';
-import { getArticleLink } from 'types/articles';
+import { Project } from '@model/projects';
+import { getArticleLink } from '@model/articles';
 import styled from 'styled-components';
 
 

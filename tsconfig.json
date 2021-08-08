@@ -26,6 +26,9 @@
       ],
       "@themes/*": [
         "themes/*"
+      ],
+      "@model/*": [
+        "types/*"
       ]
     }
   },

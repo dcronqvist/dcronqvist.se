@@ -1,7 +1,7 @@
 import { Theme } from "@contexts/ThemeContext"
 
 const theme: Theme = {
-    allColors: [
+    tagColors: [
         "#a1b3d3",
         "#9cc6d4",
         "#99cfc1",

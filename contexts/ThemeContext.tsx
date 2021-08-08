@@ -3,7 +3,7 @@ import lightTheme from '@themes/light-theme'
 import darkTheme from '@themes/dark-theme'
 
 export type Theme = {
-    allColors: string[],
+    tagColors: string[],
     primary: string,
     onPrimary: string,
     secondary: string,

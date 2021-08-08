@@ -1,6 +1,6 @@
 import React from 'react'
 import useSWR, { SWRConfig } from 'swr'
-import { useTheme } from '../contexts/ThemeContext'
+import { Theme, useTheme } from '../contexts/ThemeContext'
 import Tooltipped from './Tooltipped'
 import styled from 'styled-components'
 const fetcher = url => fetch(url).then(r => r.json())
@@ -38,15 +38,16 @@ type DayOfEventsProps = {
     events : any[]
 }
 
-const EventRow = styled.tr`
+const EventRow = styled.tr<{theme: Theme}>`
     margin-bottom: 5px;
     font-size: 1.1vw;
     font-weight: 300;
+    transition: all 0.2 ease;
 
     & a {
         text-decoration: underline;
         font-weight: 400;
-        color: #000000;
+        color: inherit
     }
 `
 
@@ -58,6 +59,7 @@ const EventDateColumn = styled.td`
     font-weight: 400;
     font-size: inherit;
     min-width: fit-content;
+    transition: all 0.2 ease;
 `
 
 const DayOfEvents = ({date, events} : DayOfEventsProps) => {
@@ -83,14 +85,14 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     const filteredEvents = events.filter(event => event.event.type != "DeleteEvent" && event.event.type != "IssueCommentEvent")
 
     const firstRow = filteredEvents.slice(0,1).map(event => {
-        return <EventRow key={`${date}${event.event.id}`}>
+        return <EventRow theme={theme} key={`${date}${event.event.id}`}>
             <EventDateColumn>{formatDate(new Date(date))}</EventDateColumn>
             <Event event={event.event}/>
         </EventRow>
     })
 
     const rows = filteredEvents.slice(1,3).map(event => {
-        return <EventRow key={`${date}${event.event.id}`}>
+        return <EventRow theme={theme} key={`${date}${event.event.id}`}>
             <EventDateColumn></EventDateColumn>
             <Event event={event.event}/>
         </EventRow>
@@ -99,12 +101,13 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     return <>
         {firstRow}
         {rows}
-        {events.length > 3 ? <EventRow><td></td><td>{`+ ${events.length - 3} more`}</td></EventRow> : ''}
+        {events.length > 3 ? <EventRow theme={theme}><td></td><td>{`+ ${events.length - 3} more`}</td></EventRow> : ''}
     </>
 }
 
 const TableContainer = styled.table`
     font-size: 1.1vw;
+    transition: all 0.2 ease;
 `
 
 const GithubActivity = ({ username }) => {

@@ -4,7 +4,7 @@ import parse from 'remark-parse';
 import remark2react from 'remark-react';
 import Link from 'next/link'
 import { getAllProjects } from '../api/projects'
-import { useTheme } from '../../contexts/ThemeContext';
+import { Theme, useTheme } from '../../contexts/ThemeContext';
 import { useState } from 'react';
 import Tag from '../../components/Tag'
 import { Icon, InlineIcon } from '@iconify/react';
@@ -73,10 +73,11 @@ const ProjectPreviewContainer = styled.div`
   }
 `
 
-const ProjectPreviewHeader = styled.div`
+const ProjectPreviewHeader = styled.div<{theme: Theme}>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: inherit;
 
   & header {
     display: flex;
@@ -93,7 +94,7 @@ const ProjectPreviewHeader = styled.div`
   & h3 {
     font-size: 18px;
     font-weight: 300;
-    color: #6b6b6b;
+    color: inherit;
     margin: 0;
   }
 
@@ -106,10 +107,10 @@ const ProjectPreviewHeader = styled.div`
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
-  color: black;
+  color: inherit;
 
   & a {
-    color: black;
+    color: inherit;
   }
 `
 
@@ -131,7 +132,7 @@ const ReferencedArticlesContainer = styled.div`
   }
 
   & a {
-    color: black;
+    color: inherit;
     text-decoration: underline;
   }
 `
@@ -142,12 +143,8 @@ const MarkdownContent = styled.div`
 
   & a {
     font-weight: 500;
-    color: black;
+    color: inherit;
     text-decoration: underline;
-  }
-
-  & a:hover {
-    color: #408080;
   }
 
   & p {
@@ -186,7 +183,7 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
 
   return (
     <ProjectPreviewContainer>
-      <ProjectPreviewHeader>
+      <ProjectPreviewHeader theme={theme}>
         <div>
           <header>
             <h2>{project.title}</h2>

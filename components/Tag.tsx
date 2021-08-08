@@ -52,6 +52,7 @@ const StyledTag = styled.span<{theme: Theme, marginBottom: boolean, faded: boole
     margin-bottom: ${props => (props.marginBottom ? "5px" : "0px")};
     opacity: ${props => (props.faded ? 0.3 : 1)};
     background-color: ${props => props.color};
+    color: ${props => props.theme.onTags};
     border: 1px solid ${props => lightenDarkenColor(props.color, -20)};
 `
 
@@ -63,7 +64,7 @@ const Tag = ({ tag, allTags, onClick, fade = false, bottomMargin = false }: Prop
     }
 
     return (
-        <StyledTag key={tag} onClick={(e) => {onClick ? onClick(tag) : {}}}  faded={fade} marginBottom={bottomMargin} color={tagToColor(tag)}>
+        <StyledTag theme={theme} key={tag} onClick={(e) => {onClick ? onClick(tag) : {}}}  faded={fade} marginBottom={bottomMargin} color={tagToColor(tag)}>
             {tag}
         </StyledTag>
     )

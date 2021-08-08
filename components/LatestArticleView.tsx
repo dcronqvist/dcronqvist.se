@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
-import { useTheme } from '../contexts/ThemeContext'
+import { useTheme, Theme } from '../contexts/ThemeContext'
 import { Article, getArticleLink } from 'types/articles'
 import styled from 'styled-components'
 
@@ -16,16 +16,14 @@ const RowWrapper = styled.tr`
     }
 `
 
-const DateWrapper = styled.td`
+const DateWrapper = styled.td<{theme: Theme}>`
     vertical-align: top;
     font-size: 1.1vw;
     font-weight: 400;
-    color: black;
 `
-const TitleWrapper = styled.td`
+const TitleWrapper = styled.td<{theme: Theme}>`
     font-size: 1.1vw;
     font-weight: 300;
-    color: black;
 
     & a {
         color: inherit;
@@ -58,8 +56,8 @@ const ArticlePreviewRow = ({ article }: { article: Article }) => {
 
     return (
         <RowWrapper>
-            <DateWrapper>{formatDate(article.date)}</DateWrapper>
-            <TitleWrapper><Link href={"articles/" + getArticleLink(article)}><a>
+            <DateWrapper theme={theme}>{formatDate(article.date)}</DateWrapper>
+            <TitleWrapper theme={theme}><Link href={"articles/" + getArticleLink(article)}><a>
             {article.title}</a></Link></TitleWrapper>
         </RowWrapper>
     )

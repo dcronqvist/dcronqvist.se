@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 import useSWR, { SWRConfig } from 'swr'
-import { useTheme } from '../contexts/ThemeContext'
+import { Theme, useTheme } from '../contexts/ThemeContext'
 import { Article, getArticleLink } from 'types/articles'
 import Tag from './Tag'
-import styled from 'styled-components'
+import styled, { ThemeConsumer } from 'styled-components'
 
 type Props = {
   article: Article,
@@ -12,16 +12,16 @@ type Props = {
 }
 
 const formatDate = (date : Date) => {
-  return `${date.getFullYear()}-${date.getMonth() < 10 ? "0" : ""}${date.getMonth() + 1}-${date.getDate()}`
+  return `${date.getFullYear()}-${date.getMonth() < 10 ? "0" : ""}${date.getMonth() + 1}-${date.getDate() < 10 ? "0" : ""}${date.getDate()}`
 }
 
-const ArticlePreviewLink = styled.a`
+const ArticlePreviewLink = styled.a<{ theme: Theme}>`
   user-select: none;
   text-decoration: none;
-  color: #000000;
+  color: inherit;
 
   &:hover {
-    color: #000000 !important;
+    color: ${props => props.theme.onBackground} !important;
     cursor: pointer;
   }
 `
@@ -30,7 +30,7 @@ const ArticlePreviewWrapper = styled.div`
   padding: 5px;
 
   &:hover {
-    background-color: #e2e2e2;
+    background-color: ${props => props.theme.lighterBackground};
   }
 
   & div {
@@ -58,8 +58,8 @@ const ArticlePreview = ({ article, tags } : Props) => {
   return (
     <>
     <Link href={"/articles/" + getArticleLink(article)}>          
-      <ArticlePreviewLink>
-        <ArticlePreviewWrapper>
+      <ArticlePreviewLink theme={theme}>
+        <ArticlePreviewWrapper theme={theme}>
           <h3>{article.title}</h3>
             <div>
               <span>publ. {formatDate(new Date(article.date))}</span>

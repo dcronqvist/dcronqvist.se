@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import { useTheme } from '../contexts/ThemeContext'
+import { Theme, useTheme } from '../contexts/ThemeContext'
 import NavLink from '../components/NavLink'
 import { Icon } from '@iconify/react';
 import linkedinIcon from '@iconify/icons-mdi/linkedin';
@@ -16,24 +16,26 @@ type Props = {
   currentNav?: string
 }
 
-const LayoutWrapper = styled.div`
-  background-color: #f5f5f5;
-  color: rgb(0, 0, 0);
+const LayoutWrapper = styled.div<{theme: Theme}>`
+  transition: all 0.2s ease;
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.onBackground};
 
   & a:hover {
-    color: #408080;
+    color: ${props => props.theme.linkOnHover};
   }
 `
 
-const StyledHeader = styled.header`
-  background-color: #1a2719;
+const StyledHeader = styled.header<{theme: Theme}>`
+  background-color: ${props => props.theme.primary};
   width: 100%;
-  color: rgb(255, 255, 255);
+  color: ${props => props.theme.onPrimary};
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100000;
   height: 18vh;
+  transition: all 0.2s ease;
 
   & a {
     color: inherit;
@@ -66,31 +68,46 @@ const StyledHeader = styled.header`
   }
 `
 
-const LinksContainer = styled.div`
+const LinksContainer = styled.div<{theme: Theme}>`
   display: flex;
   margin: 0% 5% 0% 5%;
+  align-items: center;
 
   & svg {
     padding: 0.5rem;
   }
 
   & a {
-    color: rgb(255, 255, 255);
+    color: ${props => props.theme.onPrimary};
   }
 `
 
+const StyledMain = styled.main`
+  transition: all 0.2s ease;
+`
+
+const ThemeSwitcher = styled.span`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 10px;
+  font-size: 2rem;
+  user-select: none;
+  cursor: pointer;
+`
+
 const Layout = ({ children, title = 'This is the default title', currentNav }: Props) => {
-  const { theme, setThemeName, allThemeNames, currentThemeName } = useTheme()
+  const { theme, setThemeName, allThemeNames, currentThemeName, getThemeFromName } = useTheme()
   
   return (
-  <LayoutWrapper>
+  <LayoutWrapper theme={theme}>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="shortcut icon" href="favicon.ico" />
     </Head>
-    <StyledHeader>
+    <StyledHeader theme={theme}>
       <Link href="/">
         <a>
           <h1>daniel cronqvist.</h1>
@@ -105,21 +122,32 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
         <a href="https://www.linkedin.com/in/dcronqvist/" target="_blank">
           <Icon height={40} icon={linkedinIcon}/>
         </a>
-        <Tooltipped text="Follow me on GitHub!">
+        <Tooltipped text="Follow me!">
           <a href="https://github.com/dcronqvist" target="_blank">
             <Icon height={40} icon={githubIcon}/>
           </a>
         </Tooltipped>
-        <Tooltipped text="Want to get in touch?">
+        <Tooltipped text="Get in touch?">
           <a href="mailto:daniel@dcronqvist.se" target="_blank">
             <Icon height={40} icon={mailIcon}/>
           </a>
         </Tooltipped>
+        <Tooltipped text="Switch themes!">
+          <ThemeSwitcher onClick={() => {
+            if (currentThemeName == "light") {
+              setThemeName("dark")
+            } else {
+              setThemeName("light")
+            }
+          }}>
+            {theme.emoji}
+          </ThemeSwitcher>
+        </Tooltipped>
       </LinksContainer>
     </StyledHeader>
-    <main>
+    <StyledMain>
       {children}
-    </main>
+    </StyledMain>
   </LayoutWrapper>
 )}
 

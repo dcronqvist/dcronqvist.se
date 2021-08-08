@@ -15,6 +15,7 @@ export const getAllArticles = () => {
     }
 
     const files = fs.readdirSync(articlesDir)
+
     files.forEach((file) => {
         if (file !== "template.md") {
             const filePath = `${articlesDir}/${file}`

@@ -28,7 +28,7 @@
         "themes/*"
       ],
       "@model/*": [
-        "types/*"
+        "model/*"
       ]
     }
   },

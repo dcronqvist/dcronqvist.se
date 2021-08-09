@@ -2,6 +2,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { Article } from '@model/articles'
 import { removeDuplicates } from '@model/utils'
+const readingTime = require('reading-time')
 
 export const getAllArticles = () => {
     const articles : Article[] = []
@@ -37,7 +38,9 @@ export const getAllArticles = () => {
                         name: proj.name,
                         link: proj.link
                     }  
-                }) : []
+                }) : [],
+                readingTime: readingTime(article.content).minutes,
+                subHeader: article.data.subheader ? article.data.subheader : null,
             }
             articles.push(realArticle)
         }

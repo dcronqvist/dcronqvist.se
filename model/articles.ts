@@ -16,7 +16,9 @@ export type Article = {
     tags: string[]
     content: string
     image: string | undefined
-    referencedProjects: ReferencedProject[] | undefined
+    referencedProjects: ReferencedProject[] | undefined,
+    readingTime: number,
+    subHeader: string | undefined
 }
 
 export const getArticleLink = (article: Article): string => {

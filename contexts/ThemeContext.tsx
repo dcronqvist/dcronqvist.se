@@ -10,7 +10,10 @@ export type Theme = {
     onSecondary: string,
     background: string,
     lighterBackground: string,
+    shadedBackground: string
     onBackground: string,
+    onBackgroundLighter: string,
+    onBackgroundDarker: string,
     linkOnHover: string,
     onTags: string,
     emoji: string,

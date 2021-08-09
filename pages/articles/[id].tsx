@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import Highlight from 'react-highlight';
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
+import ArticleHeader from '@components/ArticleHeader';
 
 type Props = {
   article: Article,
@@ -73,94 +74,26 @@ function CustomLink({ children, href }) {
   );
 }
     
-const Section = styled.div`
-
-`
-    
-const Content = styled.div<{theme: Theme}>`
-  padding-top: 20px;
-  min-height: calc(82vh - 20px);
-  position: relative;
-  max-width: 750px;
-  width: 95%;
-
-  & ${Section} {
-    padding: 12px;
-  }
-
-  & ${Section} input[type="text"] {
-    width: 60%;
-    background-color: #e2e2e2;
-    border: 0.5px solid #b1b1b1;
-    border-radius: 10px;
-    padding: 10px;
-  }
-
-  & ${Section} input[type="text"]:focus {
-    width: 60%;
-    border: 0.5px solid #b1b1b1;
-    border-radius: 10px;
-    padding: 10px;
-  }
-
-  & ${Section} h2 {
-    font-size: 32px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 8px;
-  }
-
-  & header {
-    width: 100%;
-  } 
-
-  & header a {
-    color: ${props => props.theme.onBackground};
-    text-decoration: underline;
-  }
-
-  & header h1 {
-    font-size: 42px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
-  }
-
-  & header h2 {
-    display: inline;
-    font-size: 20px;
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-    margin-right: 10px;
-  }
-
-  & article {
-    line-height: 1.8rem;
-    font-size: 20px;
-    width: 100%;
-  }
-
-  & header div {
-    display: flex;
-    align-items: center;
-  }
-`
-    
 const ArticleContainer = styled.div<{theme: Theme}>`
   display: flex;
-  justify-content: center;
-`
+  flex-direction: column;
+  min-height: 82vh;
 
-const StyledIcon = styled(Icon)`
-  display: flex;
-  margin-right: 10px;
+  & > article {
+    display: flex;
+    justify-content: center;
+  }
+
+  & > article > div {
+    max-width: 800px;
+    width: 90%;
+  }
 `
 
 const MarkdownContent = styled.div<{theme: Theme}>`
   height: max(100vh, 100%);
   display: inline;
+  font-size: 20px;
 
   & a {
       font-weight: 400;
@@ -230,11 +163,33 @@ const ArticlePage = ({ article, tags } : Props) => {
       // Use CustomLink instead of <a>
       a: CustomLink,
       pre: ({children}: {children: ReactNode}) => {
-        console.log(children[0].props.children[0])
-
         return <Highlight>
           {children[0].props.children[0]}
         </Highlight>
+      },
+      h3: ({children}: {children: ReactNode}) => {
+        return <>
+          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+          <h3>{children[0]}</h3>
+        </>
+      },
+      h2: ({children}: {children: ReactNode}) => {
+        return <>
+          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+          <h2>{children[0]}</h2>
+        </>
+      },
+      h1: ({children}: {children: ReactNode}) => {
+        return <>
+          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+          <h1>{children[0]}</h1>
+        </>
+      },
+      h4: ({children}: {children: ReactNode}) => {
+        return <>
+          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+          <h4>{children[0]}</h4>
+        </>
       }
     },
   })
@@ -253,33 +208,12 @@ const ArticlePage = ({ article, tags } : Props) => {
         <link rel="stylesheet" href={`https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/${theme.highlightjsCodeTheme}.min.css`}/>
       </Head>
       <ArticleContainer theme={theme}>
-        <Content theme={theme}>
-        <header>
-          <h1>{article.title}</h1>
-            <div>
-            {publishedText}
-            <a target="_blank" href={`mailto:${article.author.email}`}>
-              <StyledIcon width={25} icon={mailIcon}/>
-            </a>
-            <span>{article.tags.map(tag => <Tag key={tag} tag={tag} allTags={tags}/>)}</span>
-            </div>
-          {article.referencedProjects ? 
-          <div>
-          <h2>references {article.referencedProjects?.length > 1 ? "projects" : "project"}{' '}{article.referencedProjects.map(project => <><a key={project.link} target="_blank" href={project.link}>{project.name}</a>{' '}</>)}</h2>
-          </div>
-          : ""}
-        </header>
-          <article>
-          {article.image ? 
-            <ArticleImg>
-              <img src={"/" + article.image}/>
-            </ArticleImg>
-            : ""}
-            <MarkdownContent theme={theme}>
-              {content}
-            </MarkdownContent>
-            </article>
-        </Content>
+        <ArticleHeader article={article} allTags={tags}/>
+        <article>
+          <MarkdownContent theme={theme}>
+            {content}
+          </MarkdownContent>
+        </article>
     </ArticleContainer>
   </Layout>
   )

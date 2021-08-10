@@ -24,7 +24,8 @@ const withTM = require("next-transpile-modules")([
     "unist-util-visit-parents",
     "property-information",
     "space-separated-tokens",
-    "comma-separated-tokens"
+    "comma-separated-tokens",
+    "parse-entities"
 ]); // pass the modules you would like to see transpiled
   
 module.exports = withTM({

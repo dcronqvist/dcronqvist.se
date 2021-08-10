@@ -1,9 +1,13 @@
+import { useTheme } from '@contexts/ThemeContext'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
+import { ServerStyleSheet } from 'styled-components'
 
-type Props = {}
+class Document extends NextDocument {
+  constructor(props) {
+    super(props);
+  }
 
-class Document extends NextDocument<Props> {
   render() {
     return (
       <Html>

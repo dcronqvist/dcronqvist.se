@@ -1,47 +1,24 @@
 import fs from 'fs'
 import matter from 'gray-matter'
-import { Article, getAllArticles } from './articles'
+import { Article } from '@model/articles'
+import { Project } from '@model/projects'
+import { getAllArticles } from './articles'
+import { removeDuplicates } from '@model/utils'
 
-export type ProjectsData = {
-    projects: Project[],
-    allTags: string[],
-}
-
-export type ProjectLink = {
-    url: string,
-    type: "github-repo" | "other"
-}
-
-export type Project = {
-    title: string,
-    tags: string[],
-    description: string,
-    articlesAbout: Article[],
-    content: string,
-    link: ProjectLink | undefined
-}
-
-export const projectToLink = (project: Project) => {
-    return project.title.toLowerCase().replace(/[!']+/g, "").replace(/[^a-z0-9]+/g, '-')
-}
-
-const removeDups = (arr: Array<string>) => {
-    const seen = new Set()
-    return arr.filter(x => {
-        if (seen.has(x)) {
-            return false
-        }
-        seen.add(x)
-        return true
-    })
-}
-
-export async function getAllProjects() : Promise<ProjectsData> {
+export const getAllProjects = () => {
     const projects : Project[] = []
     const projectsDir = './dcronqvist.se-content/projects'
+
+    if (!fs.existsSync(projectsDir)) {
+        return {
+            projects: [],
+            tags: [],
+        }
+    }
+
     const files = fs.readdirSync(projectsDir)
 
-    const articles = await getAllArticles()
+    const articles = getAllArticles()
 
     files.forEach((file) => {
         if (file !== "template.md") {
@@ -50,7 +27,7 @@ export async function getAllProjects() : Promise<ProjectsData> {
             const project = matter(fileContent)
 
             const articlesAbout = articles.articles.filter((article) => {
-                return article.projects.map(proj => proj.name).includes(project.data.title)
+                return article.referencedProjects.map(proj => proj.name).includes(project.data.title)
             })
 
             const realProject : Project = {
@@ -69,7 +46,7 @@ export async function getAllProjects() : Promise<ProjectsData> {
     })
     return {
         projects,
-        allTags: removeDups(projects.reduce((prev, curr) => {
+        tags: removeDuplicates<string>(projects.reduce((prev, curr) => {
             return [...prev, ...curr.tags]
         }, [])).sort((a, b) => {
             return a.localeCompare(b)

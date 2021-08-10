@@ -3,8 +3,8 @@ import unified from 'unified';
 import parse from 'remark-parse';
 import remark2react from 'remark-react';
 import Link from 'next/link'
-import { getAllProjects, Project, ProjectsData } from '../api/projects'
-import { useTheme } from '../../contexts/ThemeContext';
+import { getAllProjects } from '../api/projects'
+import { Theme, useTheme } from '../../contexts/ThemeContext';
 import { useState } from 'react';
 import Tag from '../../components/Tag'
 import { Icon, InlineIcon } from '@iconify/react';
@@ -12,15 +12,24 @@ import githubIcon from '@iconify/icons-mdi/github'
 import openInNew from '@iconify/icons-mdi/open-in-new'
 import expander from '@iconify/icons-mdi/arrow-down-drop-circle-outline'
 import Tooltipped from '../../components/Tooltipped';
+import { Project } from '@model/projects';
+import { getArticleLink } from '@model/articles';
+import styled from 'styled-components';
 
 
 type ProjectsPageProps = {
-  projectsData: ProjectsData
+  projects: Project[]
+  tags: string[]
 }
 
 export async function getStaticProps(context) {
+  const projects = getAllProjects()
+
   return {
-    props: { projectsData: JSON.parse(JSON.stringify(await getAllProjects())) }
+    props: { 
+      projects: projects.projects,
+      tags: projects.tags
+    }
   }
 }
 
@@ -56,6 +65,104 @@ const projectTypeToIcon = (type: string) => {
   return openInNew
 }
 
+const ProjectPreviewContainer = styled.div`
+  margin-top: 10px;
+
+  & article {
+    width: 100%;
+  }
+`
+
+const ProjectPreviewHeader = styled.div<{theme: Theme}>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: inherit;
+
+  & header {
+    display: flex;
+    align-items: center;
+  }
+
+  & header div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 50%;
+  }
+
+  & h3 {
+    font-size: 18px;
+    font-weight: 300;
+    color: inherit;
+    margin: 0;
+  }
+
+  & header h2 {
+    margin: 0;
+    margin-right: 10px;
+  }
+`
+
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: inherit;
+
+  & a {
+    color: inherit;
+  }
+`
+
+const PointerOnHover = styled.div`
+  cursor: pointer;
+`
+
+const ReferencedArticlesContainer = styled.div`
+  margin-left: 20px;
+  margin-bottom: 20px;
+  text-align: right;
+  width: 40%;
+  float: right;
+  display: inline;
+
+  & h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: underline;
+  }
+`
+
+const MarkdownContent = styled.div`
+  height: max(100vh, 100%);
+  display: inline;
+
+  & a {
+    font-weight: 500;
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  & p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  & h3 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+  }
+
+  & h4 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+  }
+` 
+
 const ProjectPreview = ({ project, allTags }: { project: Project, allTags: string[] }) => {
   const { theme } = useTheme()
   const [expanded, setExpanded] = useState<boolean>(false)
@@ -75,8 +182,8 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
   </a> : ""
 
   return (
-    <div className={theme.projectsPage.projectPreviewContainer}>
-      <div className={theme.projectsPage.projectPreviewHeader}>
+    <ProjectPreviewContainer>
+      <ProjectPreviewHeader theme={theme}>
         <div>
           <header>
             <h2>{project.title}</h2>
@@ -86,31 +193,58 @@ const ProjectPreview = ({ project, allTags }: { project: Project, allTags: strin
           </header>
           <h3>{project.description}</h3>
         </div>
-        <div className={theme.projectsPage.iconcontainer}>
+        <IconContainer>
           {link}
-          <div className={theme.projectsPage.pointerOnHover} onClick={(e) => setExpanded(!expanded)}>
+          <PointerOnHover onClick={(e) => setExpanded(!expanded)}>
             <Icon vFlip={expanded} height={40} icon={expander}/>
-          </div>
-        </div>
-      </div>
+          </PointerOnHover>
+        </IconContainer>
+      </ProjectPreviewHeader>
       { expanded ? 
         <article>
           { project.articlesAbout.length > 0 ? 
-          <div className={theme.projectsPage.referencearticles}>
+          <ReferencedArticlesContainer>
             <h3>Related articles</h3>
-            {project.articlesAbout.map(article => <Link href={"/articles/" + article.link}><a>{article.title}</a></Link>)}
-          </div>
+            {project.articlesAbout.map(article => <Link href={"/articles/" + getArticleLink(article)}><a>{article.title}</a></Link>)}
+          </ReferencedArticlesContainer>
           : null }
-          <div className={theme.projectsPage.markdowncontent}>
+          <MarkdownContent>
             {content}
-          </div>
+          </MarkdownContent>
         </article>
       : null }
-    </div>
+    </ProjectPreviewContainer>
   )
 }
 
-const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
+const PageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Section = styled.div`
+
+`
+
+const Content = styled.div`
+  padding-top: 20px;
+  min-height: calc(82vh - 20px);
+  position: relative;
+  width: 750px;
+
+  & ${Section} {
+    padding: 12px;
+  }
+`
+
+const TagsContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`
+
+const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
   const { theme } = useTheme()
   const [selectedTag, setSelectedTag] = useState<string>("")
 
@@ -118,7 +252,7 @@ const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
     const lines = []
 
     for (let i = 0; i < amount; i++) {
-      lines.push(<svg key={i} className={theme.projectsPage.grayish} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+      lines.push(<svg key={i} stroke={"rgb(168, 168, 168)"} viewBox="0 0 726 1" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="0" y1="0.5" x2="726" y2="0.5"/>
      </svg>)
     }
@@ -126,29 +260,29 @@ const ProjectsPage = ({ projectsData } : ProjectsPageProps) => {
     return lines
   }
 
-  const selectedProjects = selectedTag == "" ? projectsData.projects : projectsData.projects.filter(project => project.tags.includes(selectedTag))
+  const selectedProjects = selectedTag == "" ? projects : projects.filter(project => project.tags.includes(selectedTag))
 
   return (<>
   <Layout title="Projects" currentNav="projects">
-    <div className={theme.projectsPage.container}>
-      <div className={theme.projectsPage.content}>
-        <div className={theme.projectsPage.section}>
+    <PageContainer>
+      <Content>
+        <Section>
           <h2>All project tags</h2>
-          <div className={theme.projectsPage.tagscontainer}>
-            {projectsData.allTags.map(tag => <Tag bottomMargin={true}  onClick={() => {
+          <TagsContainer>
+            {tags.map(tag => <Tag bottomMargin={true}  onClick={() => {
                 if(selectedTag === tag) {
                   setSelectedTag("")
                 } else {
                   setSelectedTag(tag)
                 }
-              }} fade={selectedTag !== "" && selectedTag !== tag} key={tag} allTags={projectsData.allTags} tag={tag}/>)}
-          </div>
-        </div>
-        <div className={theme.projectsPage.section}>
-          {interleave(selectedProjects.map(project => <ProjectPreview key={project.title} allTags={projectsData.allTags} project={project}/>), lines(selectedProjects.length - 1))}
-        </div>
-      </div>
-    </div>
+              }} fade={selectedTag !== "" && selectedTag !== tag} key={tag} allTags={tags} tag={tag}/>)}
+          </TagsContainer>
+        </Section>
+        <Section>
+          {interleave(selectedProjects.map(project => <ProjectPreview key={project.title} allTags={tags} project={project}/>), lines(selectedProjects.length - 1))}
+        </Section>
+      </Content>
+    </PageContainer>
   </Layout>
   </>
 )}

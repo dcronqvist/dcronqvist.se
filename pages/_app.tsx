@@ -1,11 +1,19 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
-import '../styles/app.css'
 import { ThemeProvider, useTheme }from '../contexts/ThemeContext'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0px;
+    font-family: 'Roboto';
+  }
+`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <GlobalStyle/>
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>

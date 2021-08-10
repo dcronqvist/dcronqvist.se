@@ -23,7 +23,8 @@ const withTM = require("next-transpile-modules")([
     "character-entities-legacy",
     "unist-util-visit-parents",
     "property-information",
-    "space-separated-tokens"
+    "space-separated-tokens",
+    "comma-separated-tokens"
 ]); // pass the modules you would like to see transpiled
   
 module.exports = withTM({

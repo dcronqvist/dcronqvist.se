@@ -22,7 +22,8 @@ const withTM = require("next-transpile-modules")([
     "mdast-util-directive",
     "character-entities-legacy",
     "unist-util-visit-parents",
-    "property-information"
+    "property-information",
+    "space-separated-tokens"
 ]); // pass the modules you would like to see transpiled
   
 module.exports = withTM({

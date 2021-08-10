@@ -1,4 +1,4 @@
-import { Article } from 'types/articles'
+import { Article } from '@model/articles'
 
 export type ProjectLink = {
     url: string,

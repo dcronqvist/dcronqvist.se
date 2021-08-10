@@ -15,6 +15,10 @@ const withTM = require("next-transpile-modules")([
     "hast-util-parse-selector",
     "remark-directive",
     "micromark-util-symbol/codes.js",
+    "micromark-extension-directive",
+    "micromark-factory-space",
+    "micromark-util-character",
+    "micromark-factory-whitespace",
     "mdast-util-directive",
     "character-entities-legacy",
     "unist-util-visit-parents"

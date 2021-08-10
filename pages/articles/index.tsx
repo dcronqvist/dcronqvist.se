@@ -3,7 +3,7 @@ import { useTheme } from '@contexts/ThemeContext';
 import ArticlePreview from '@components/ArticlePreview';
 import { useState } from 'react';
 import Tag from '@components/Tag'
-import { Article } from 'types/articles';
+import { Article } from '@model/articles';
 import { getAllArticles } from 'pages/api/articles';
 import styled from 'styled-components';
 

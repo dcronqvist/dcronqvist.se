@@ -21,7 +21,8 @@ const withTM = require("next-transpile-modules")([
     "micromark-factory-whitespace",
     "mdast-util-directive",
     "character-entities-legacy",
-    "unist-util-visit-parents"
+    "unist-util-visit-parents",
+    "property-information"
 ]); // pass the modules you would like to see transpiled
   
 module.exports = withTM({

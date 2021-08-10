@@ -26,7 +26,8 @@ const withTM = require("next-transpile-modules")([
     "space-separated-tokens",
     "comma-separated-tokens",
     "parse-entities",
-    "character-entities"
+    "character-entities",
+    "mdast-util-to-markdown"
 ]); // pass the modules you would like to see transpiled
   
 module.exports = withTM({

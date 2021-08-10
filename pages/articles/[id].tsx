@@ -15,9 +15,37 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import ArticleHeader from '@components/ArticleHeader';
 
+import visit from "unist-util-visit";
+import { h } from "hastscript";
+import ReactMarkdown from "react-markdown";
+import directive from "remark-directive";
+import InteractiveAccountant from '@components/article-components/InteractiveAccountant';
+
 type Props = {
   article: Article,
   tags: string[]
+}
+
+function htmlDirectives() {
+  function transform(tree) {
+    visit(
+      tree,
+      ["textDirective", "leafDirective", "containerDirective"],
+      ondirective
+    );
+  }
+
+  function ondirective(node) {
+    var data = node.data || (node.data = {});
+    var hast = h(node.name, node.attributes);
+
+    // @ts-ignore
+    data.hName = hast.tagName;
+    // @ts-ignore
+    data.hProperties = hast.properties;
+  }
+
+  return transform;
 }
 
 export async function getStaticPaths() {
@@ -105,6 +133,7 @@ const MarkdownContent = styled.div<{theme: Theme}>`
     font-weight: 300;
     margin-top: 20px;
     margin-bottom: 20px;
+    line-height: 1.7rem;
   }
 
   & h3 {
@@ -138,6 +167,8 @@ const MarkdownContent = styled.div<{theme: Theme}>`
   & li {
     font-size: 20px;
     font-weight: 300;
+    margin: 3px;
+    line-height: 1.7rem;
   }
 `
 
@@ -156,44 +187,44 @@ const ArticleImg = styled.div`
 const ArticlePage = ({ article, tags } : Props) => {
   const { theme } = useTheme()
 
-  const content = unified()
-  .use(parse)
-  .use(remark2react, {
-    remarkReactComponents: {
-      // Use CustomLink instead of <a>
-      a: CustomLink,
-      pre: ({children}: {children: ReactNode}) => {
-        return <Highlight>
-          {children[0].props.children[0]}
-        </Highlight>
-      },
-      h3: ({children}: {children: ReactNode}) => {
-        return <>
-          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
-          <h3>{children[0]}</h3>
-        </>
-      },
-      h2: ({children}: {children: ReactNode}) => {
-        return <>
-          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
-          <h2>{children[0]}</h2>
-        </>
-      },
-      h1: ({children}: {children: ReactNode}) => {
-        return <>
-          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
-          <h1>{children[0]}</h1>
-        </>
-      },
-      h4: ({children}: {children: ReactNode}) => {
-        return <>
-          <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
-          <h4>{children[0]}</h4>
-        </>
-      }
-    },
-  })
-  .processSync(article.content).result;
+  // const content = unified()
+  // .use(parse)
+  // .use(remark2react, {
+  //   remarkReactComponents: {
+  //     // Use CustomLink instead of <a>
+  //     a: CustomLink,
+  //     pre: ({children}: {children: ReactNode}) => {
+  //       return <Highlight>
+  //         {children[0].props.children[0]}
+  //       </Highlight>
+  //     },
+  //     h3: ({children}: {children: ReactNode}) => {
+  //       return <>
+  //         <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+  //         <h3>{children[0]}</h3>
+  //       </>
+  //     },
+  //     h2: ({children}: {children: ReactNode}) => {
+  //       return <>
+  //         <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+  //         <h2>{children[0]}</h2>
+  //       </>
+  //     },
+  //     h1: ({children}: {children: ReactNode}) => {
+  //       return <>
+  //         <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+  //         <h1>{children[0]}</h1>
+  //       </>
+  //     },
+  //     h4: ({children}: {children: ReactNode}) => {
+  //       return <>
+  //         <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+  //         <h4>{children[0]}</h4>
+  //       </>
+  //     }
+  //   },
+  // })
+  // .processSync(article.content).result;
   
   const publishedText = <h2>
     published on {formatDate(new Date(article.date))} by{' '}
@@ -201,6 +232,40 @@ const ArticlePage = ({ article, tags } : Props) => {
       {article.author.name}
     </a>
   </h2>
+
+  const markdownComponents = {
+    pre: ({children}: {children: ReactNode}) => {
+      return <Highlight>
+        {children[0].props.children[0]}
+      </Highlight>
+    },
+    a: CustomLink,
+    h3: ({children}: {children: ReactNode}) => {
+      return <>
+        <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+        <h3>{children[0]}</h3>
+      </>
+    },
+    h2: ({children}: {children: ReactNode}) => {
+      return <>
+        <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+        <h2>{children[0]}</h2>
+      </>
+    },
+    h1: ({children}: {children: ReactNode}) => {
+      return <>
+        <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+        <h1>{children[0]}</h1>
+      </>
+    },
+    h4: ({children}: {children: ReactNode}) => {
+      return <>
+        <a id={children[0].toString().toLowerCase().replace(/[!',?]+/g, "").replace(/[^a-z0-9]+/g, '-')}/>
+        <h4>{children[0]}</h4>
+      </>
+    },
+    interactiveaccountant: InteractiveAccountant
+  }
 
   return (
     <Layout title={article.title} currentNav="">
@@ -211,7 +276,8 @@ const ArticlePage = ({ article, tags } : Props) => {
         <ArticleHeader article={article} allTags={tags}/>
         <article>
           <MarkdownContent theme={theme}>
-            {content}
+            {/*@ts-ignore*/}
+            <ReactMarkdown plugins={[directive, htmlDirectives]} components={markdownComponents} children={article.content}/>
           </MarkdownContent>
         </article>
     </ArticleContainer>

@@ -12,23 +12,42 @@ type Props = {
 }
 
 const NavLinkWrapper = styled.span<{underlined: boolean, theme: Theme}>`
-  margin: 1.5vw;
   font-family: 'Roboto', sans-serif;
+  margin: 2px;
+  background-color: ${props => props.theme.primaryDark};
+  border: 1px solid ${props => props.theme.primaryLight};
+  border-radius: 3px;
+  padding: 5px;
+  transition: all 0.2s ease;
   font-weight: 400;
-  font-size: 1.9vw;
+  font-size: 22px;
   text-decoration: ${props => (props.underlined ? 'underline' : 'none')};
   color: ${props => props.theme.onPrimary};
+
+  &:hover {
+    background-color: ${props => props.theme.primaryLight};
+    border: 1px solid ${props => props.theme.primaryDark};
+    cursor: pointer;
+  }
+
+  &:hover a {
+    color: ${props => props.theme.linkHover};
+  }
+
+  @media (min-width:320px)  {
+    font-size: 18px;
+  }
 `
 
 const NavLink = ({ children, title = 'This is the default title', href, at }: Props) => {
   const { theme } = useTheme()
 
   return (
-    <NavLinkWrapper underlined={at} theme={theme}>
-      <Link href={href}>
+    <Link href={href}>
+      <NavLinkWrapper underlined={at} theme={theme}>
         <a>{title}</a>
-      </Link>
-    </NavLinkWrapper>
+      </NavLinkWrapper>
+    </Link>
 )}
   
 export default NavLink

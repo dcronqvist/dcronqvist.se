@@ -14,7 +14,7 @@ export type ArticleHeaderProps = {
 
 const HeaderWrapper = styled.header<{ theme: Theme}>`
   padding-top: 20px;
-  background-color: ${props => props.theme.shadedBackground};
+  background-color: ${props => props.theme.backgroundAccent};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +30,10 @@ const ArticleTitle = styled.h1`
   display: inline;
   font-size: 44px;
   margin: 0;
+
+  @media (max-width:800px)  {
+    font-size: 24px;
+  }
 `
 
 const AuthorWrapper = styled.div<{ theme: Theme}>`
@@ -42,7 +46,7 @@ const AuthorWrapper = styled.div<{ theme: Theme}>`
     display: flex;
     align-items: center;
     transition: all 0.2s ease;
-    color: ${props => props.theme.onBackgroundDarker};
+    color: ${props => props.theme.onBackgroundAccent};
     margin-bottom: 2px;
   }
 `
@@ -53,7 +57,7 @@ const AuthorName = styled.span`
 
 const InfoWrapper = styled.div<{ theme: Theme}>`
   font-size: 16px;
-  color: ${props => props.theme.onBackgroundDarker};
+  color: ${props => props.theme.onBackgroundAccent};
   transition: all 0.2s ease;
 
   & span:last-child {
@@ -112,15 +116,23 @@ const StyledArticleImg = styled.img`
   width: 20%;
   float: right;
   display: inline;
+
+  @media (max-width:800px)  {
+    width: 29%;
+  }
 `
 
 const ArticleSubHeader = styled.h2<{ theme: Theme }>`
   font-size: 24px;
   margin: 0;
   font-weight: 500;
-  color: ${props => props.theme.onBackgroundDarker};
+  color: ${props => props.theme.onBackgroundAccent};
   transition: all 0.2s ease;
   margin: 20px 0px;
+
+  @media (max-width:800px)  {
+    font-size: 16px;
+  }
 `
 
 const ArticleHeader = ({ article, allTags }: ArticleHeaderProps) => {

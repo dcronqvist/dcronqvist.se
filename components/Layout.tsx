@@ -22,13 +22,14 @@ const LayoutWrapper = styled.div<{theme: Theme}>`
   color: ${props => props.theme.onBackground};
 
   & a:hover {
-    color: ${props => props.theme.linkOnHover};
+    color: ${props => props.theme.linkHover};
   }
 `
 
 const StyledHeader = styled.header<{theme: Theme}>`
   background-color: ${props => props.theme.primary};
-  width: 100%;
+  max-width: 800px;
+  width: 90%;
   color: ${props => props.theme.onPrimary};
   display: flex;
   justify-content: space-between;
@@ -36,6 +37,7 @@ const StyledHeader = styled.header<{theme: Theme}>`
   z-index: 100000;
   height: 18vh;
   transition: all 0.2s ease;
+  flex-direction: row;
 
   & a {
     color: inherit;
@@ -44,41 +46,72 @@ const StyledHeader = styled.header<{theme: Theme}>`
   }
 
   & nav {
+    min-width: 200px;
     color: inherit;
-    height: 100%;
-    justify-content:space-evenly;
+    height: fit-content;
     align-items: center;
+    justify-content: flex-end;
     display: flex;
+    flex-wrap: wrap;
     z-index: 100000;
-  }
-
-  & nav span {
-    min-width: fit-content;
+    width: fit-content;
+    white-space: nowrap;
   }
 
   & h1 {
     color: inherit;
-    margin-left: 3vw;
-    margin-right: 3.2rem;
     min-width: fit-content;
     font-weight: 600;
-    font-size: 3.9vw;
+    font-size: 48px;
     z-index: 100000;
     text-decoration: none;
+  }
+
+  @media (max-width:800px)  {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & h1 {
+      margin-top: 12px;
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
   }
 `
 
 const LinksContainer = styled.div<{theme: Theme}>`
   display: flex;
-  margin: 0% 5% 0% 5%;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 
   & svg {
     padding: 0.5rem;
+    height: 40px;
+    width: 40px;
   }
 
   & a {
     color: ${props => props.theme.onPrimary};
+  }
+
+  @media (max-width:800px)  {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-height: 18vh;
+    height: 80%;
+    width: max-content;
+    flex-wrap: wrap;
+
+    & svg {
+      padding: 0;
+      width: 25px;
+      height: 25px;
+    }
   }
 `
 
@@ -96,6 +129,14 @@ const ThemeSwitcher = styled.span`
   cursor: pointer;
 `
 
+const HorizontalCenterWrapper = styled.div<{backColor: string}>`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: ${props => props.backColor};
+  transition: all 0.2s ease;
+`
+
 const Layout = ({ children, title = 'This is the default title', currentNav }: Props) => {
   const { theme, setThemeName, allThemeNames, currentThemeName, getThemeFromName } = useTheme()
   
@@ -107,44 +148,48 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="shortcut icon" href="favicon.ico" />
     </Head>
+    <HorizontalCenterWrapper backColor={theme.primary}>
     <StyledHeader theme={theme}>
-      <Link href="/">
-        <a>
-          <h1>daniel cronqvist.</h1>
-        </a>
-      </Link>
-      <nav>
-        <NavLink title="projects" href="/projects" at={currentNav == "projects"}/>
-        <NavLink title="articles" href="/articles" at={currentNav == "articles"}/>
-        <NavLink title="who's daniel?" href="/aboutme" at={currentNav == "who's daniel?"}/>
-      </nav>
-      <LinksContainer>
-        <a href="https://www.linkedin.com/in/dcronqvist/" target="_blank">
-          <Icon height={40} icon={linkedinIcon}/>
-        </a>
-        <Tooltipped text="Follow me!">
-          <a href="https://github.com/dcronqvist" target="_blank">
-            <Icon height={40} icon={githubIcon}/>
+        <Link href="/">
+          <a>
+            <h1>dcronqvist.</h1>
           </a>
-        </Tooltipped>
-        <Tooltipped text="Get in touch?">
-          <a href="mailto:daniel@dcronqvist.se" target="_blank">
-            <Icon height={40} icon={mailIcon}/>
+        </Link>
+        <nav>
+          <NavLink title="projects" href="/projects" at={currentNav == "projects"}/>
+          <NavLink title="articles" href="/articles" at={currentNav == "articles"}/>
+          <NavLink title="about me" href="/aboutme" at={currentNav == "who's daniel?"}/>
+        </nav>
+        <LinksContainer>
+          <a href="https://www.linkedin.com/in/dcronqvist/" target="_blank">
+            <Icon icon={linkedinIcon}/>
           </a>
-        </Tooltipped>
-        <Tooltipped text="Switch themes!">
-          <ThemeSwitcher onClick={() => {
-            if (currentThemeName == "light") {
-              setThemeName("dark")
-            } else {
-              setThemeName("light")
-            }
-          }}>
-            {theme.emoji}
-          </ThemeSwitcher>
-        </Tooltipped>
-      </LinksContainer>
-    </StyledHeader>
+          <Tooltipped text="Follow me!">
+            <a href="https://github.com/dcronqvist" target="_blank">
+              <Icon icon={githubIcon}/>
+            </a>
+          </Tooltipped>
+          <Tooltipped text="Get in touch?">
+            <a href="mailto:daniel@dcronqvist.se" target="_blank">
+              <Icon icon={mailIcon}/>
+            </a>
+          </Tooltipped>
+          <Tooltipped text="Switch themes!">
+            <ThemeSwitcher onClick={() => {
+              if (currentThemeName == "light") {
+                setThemeName("dark")
+              } else {
+                setThemeName("light")
+              }
+            }}>
+              {
+                currentThemeName == "light" ? getThemeFromName("dark").emoji : getThemeFromName("light").emoji
+              }
+            </ThemeSwitcher>
+          </Tooltipped>
+        </LinksContainer>
+      </StyledHeader>
+    </HorizontalCenterWrapper>
     <StyledMain>
       {children}
     </StyledMain>

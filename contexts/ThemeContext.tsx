@@ -4,18 +4,26 @@ import darkTheme from '@themes/dark-theme'
 
 export type Theme = {
     tagColors: string[],
+    tagTextColor: string,
     primary: string,
     onPrimary: string,
+    primaryLight: string,
+    primaryDark: string,
+
     secondary: string,
     onSecondary: string,
+    secondaryLight: string,
+    secondaryDark: string,
+
     background: string,
-    lighterBackground: string,
-    shadedBackground: string
+    backgroundAccent: string,
+    backgroundDarker: string,
     onBackground: string,
-    onBackgroundLighter: string,
+    onBackgroundAccent: string,
     onBackgroundDarker: string,
-    linkOnHover: string,
-    onTags: string,
+
+    linkHover: string,
+
     emoji: string,
     highlightjsCodeTheme: string
 }

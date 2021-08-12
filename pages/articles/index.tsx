@@ -59,11 +59,11 @@ const Content = styled.div`
   padding-top: 20px;
   min-height: calc(82vh - 20px);
   position: relative;
-  max-width: 750px;
+  max-width: 800px;
   width: 95%;
 
   & ${Section} {
-    padding: 12px;
+    padding: 12px 0px;
   }
 `
 

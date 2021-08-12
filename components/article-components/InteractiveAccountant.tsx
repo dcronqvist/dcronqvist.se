@@ -151,7 +151,7 @@ const getAccountFromNumber = (num: number): any => {
 }
 
 const AccountantContainer = styled.div<{ theme: Theme}>`
-  background-color: ${props => props.theme.lighterBackground};
+  background-color: ${props => props.theme.backgroundAccent};
   padding: 20px;
   border-radius: 5px;
 

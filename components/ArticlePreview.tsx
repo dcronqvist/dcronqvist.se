@@ -30,7 +30,7 @@ const ArticlePreviewWrapper = styled.div`
   padding: 5px;
 
   &:hover {
-    background-color: ${props => props.theme.lighterBackground};
+    background-color: ${props => props.theme.backgroundAccent};
   }
 
   & div {

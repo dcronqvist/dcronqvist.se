@@ -149,7 +149,7 @@ const MarkdownContent = styled.div<{theme: Theme}>`
   & pre {
     font-size: 14px;
     line-height: 1.1rem;
-    background-color: ${props => props.theme.lighterBackground};
+    background-color: ${props => props.theme.backgroundAccent};
     border-radius: 5px;
   }
 
@@ -159,7 +159,7 @@ const MarkdownContent = styled.div<{theme: Theme}>`
 
   & code {
     font-size: 18px;
-    background-color: ${props => props.theme.lighterBackground};
+    background-color: ${props => props.theme.backgroundAccent};
     border-radius: 5px;
     padding: 0 5px 0 5px;
   }

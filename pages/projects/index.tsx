@@ -230,10 +230,11 @@ const Content = styled.div`
   padding-top: 20px;
   min-height: calc(82vh - 20px);
   position: relative;
-  width: 750px;
+  max-width: 800px;
+  width: 90%;
 
   & ${Section} {
-    padding: 12px;
+    padding: 12px 0px;
   }
 `
 

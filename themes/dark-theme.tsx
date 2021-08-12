@@ -15,18 +15,28 @@ const theme: Theme = {
         "#caaf96",
         "#cfc49a",
     ],
+    tagTextColor: "#000000",
     primary: "#1E2228",
     onPrimary: "#e0e0e0",
+
+    primaryLight: "#454950",
+    primaryDark: "#000000",
+
     secondary: "#006168",
     onSecondary: "#ffffff",
+
+    secondaryLight: "#438f96",
+    secondaryDark: "#00373e",
+
     background: "#22272e",
-    lighterBackground: "#4b5766",
-    shadedBackground: "#1a1e24",
-    onBackgroundLighter: "#f3f3f3",
-    onBackgroundDarker: "#bdbdbd",
+    backgroundAccent: "#38414d",
+    backgroundDarker: "#1a1e24",
+
     onBackground: "#e0e0e0",
-    linkOnHover: "#39A0F3",
-    onTags: "#000000",
+    onBackgroundAccent: "#cccccc",
+    onBackgroundDarker: "#8d8d8d",
+    
+    linkHover: "#ffa726",
     emoji: "🌑",
     highlightjsCodeTheme: "a11y-dark"
 }

@@ -13,7 +13,7 @@ type Props = {
 const StyledTag = styled.span<{theme: Theme, marginBottom: boolean, faded: boolean, color: string}>`
     user-select: none;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
     padding: 1px 3px 1px 3px;
     border-radius: 5px;
     font-size: 14px !important;
@@ -23,7 +23,7 @@ const StyledTag = styled.span<{theme: Theme, marginBottom: boolean, faded: boole
     margin-bottom: ${props => (props.marginBottom ? "5px" : "0px")};
     opacity: ${props => (props.faded ? 0.3 : 1)};
     background-color: ${props => props.color};
-    color: ${props => props.theme.onTags};
+    color: ${props => props.theme.tagTextColor};
     border: 1px solid ${props => lightenDarkenColor(props.color, -20)};
 `
 

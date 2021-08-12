@@ -8,7 +8,9 @@ type TooltippedProps = {
 }
 
 const TooltipText = styled.span`
-
+    @media (max-width:800px)  {
+        display: none;
+    }
 `
 
 const TooltipContainer = styled.div`

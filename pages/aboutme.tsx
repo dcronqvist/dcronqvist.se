@@ -5,7 +5,7 @@ const IndexPage = () => {
   const { theme } = useTheme()
 
     return (<>
-    <Layout title="About me" currentNav="who's daniel?">
+    <Layout title="dcronqvist | About me" currentNav="about me">
         <p>
           This page is still in development.
         </p>

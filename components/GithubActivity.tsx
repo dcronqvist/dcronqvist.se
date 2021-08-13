@@ -40,7 +40,6 @@ type DayOfEventsProps = {
 
 const EventRow = styled.tr<{theme: Theme}>`
     margin-bottom: 5px;
-    font-size: 1.1vw;
     font-weight: 300;
     transition: all 0.2 ease;
 
@@ -91,7 +90,7 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
         </EventRow>
     })
 
-    const rows = filteredEvents.slice(1,3).map(event => {
+    const rows = filteredEvents.slice(1,2).map(event => {
         return <EventRow theme={theme} key={`${date}${event.event.id}`}>
             <EventDateColumn></EventDateColumn>
             <Event event={event.event}/>
@@ -101,12 +100,12 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
     return <>
         {firstRow}
         {rows}
-        {events.length > 3 ? <EventRow theme={theme}><td></td><td>{`+ ${events.length - 3} more`}</td></EventRow> : ''}
+        {events.length > 2 ? <EventRow theme={theme}><td></td><td>{`+ ${events.length - 2} more`}</td></EventRow> : ''}
     </>
 }
 
 const TableContainer = styled.table`
-    font-size: 1.1vw;
+    font-size: 20px;
     transition: all 0.2 ease;
 `
 

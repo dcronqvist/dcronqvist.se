@@ -158,7 +158,7 @@ const Layout = ({ children, title = 'This is the default title', currentNav }: P
         <nav>
           <NavLink title="projects" href="/projects" at={currentNav == "projects"}/>
           <NavLink title="articles" href="/articles" at={currentNav == "articles"}/>
-          <NavLink title="about me" href="/aboutme" at={currentNav == "who's daniel?"}/>
+          <NavLink title="about me" href="/aboutme" at={currentNav == "about me"}/>
         </nav>
         <LinksContainer>
           <a href="https://www.linkedin.com/in/dcronqvist/" target="_blank">

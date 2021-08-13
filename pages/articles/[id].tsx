@@ -268,7 +268,7 @@ const ArticlePage = ({ article, tags } : Props) => {
   }
 
   return (
-    <Layout title={article.title} currentNav="">
+    <Layout title={`dcronqvist | ${article.title}`} currentNav="">
       <Head>
         <link rel="stylesheet" href={`https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/${theme.highlightjsCodeTheme}.min.css`}/>
       </Head>

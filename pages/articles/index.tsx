@@ -116,7 +116,7 @@ const ArticlesPage = ({ articles, tags } : ArticlePageProps) => {
   const displayedArticles = interleave((searchResults || latestArticles), lines((searchResults || latestArticles).length - 1))
 
   return (<>
-  <Layout title="Articles" currentNav="articles">
+  <Layout title="dcronqvist | Articles" currentNav="articles">
     <Container>
       <Content>
         <Section>

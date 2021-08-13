@@ -264,7 +264,7 @@ const ProjectsPage = ({ projects, tags } : ProjectsPageProps) => {
   const selectedProjects = selectedTag == "" ? projects : projects.filter(project => project.tags.includes(selectedTag))
 
   return (<>
-  <Layout title="Projects" currentNav="projects">
+  <Layout title="dcronqvist | Projects" currentNav="projects">
     <PageContainer>
       <Content>
         <Section>

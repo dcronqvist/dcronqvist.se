@@ -9,6 +9,7 @@ type Props = {
 }
 
 const RowWrapper = styled.tr`
+    font-size: 20px;
     @media only screen and (max-width: 750px) {
         .articlerow:nth-child(n + 4) {
             display: none;
@@ -18,11 +19,9 @@ const RowWrapper = styled.tr`
 
 const DateWrapper = styled.td<{theme: Theme}>`
     vertical-align: top;
-    font-size: 1.1vw;
     font-weight: 400;
 `
 const TitleWrapper = styled.td<{theme: Theme}>`
-    font-size: 1.1vw;
     font-weight: 300;
 
     & a {
@@ -64,7 +63,8 @@ const ArticlePreviewRow = ({ article }: { article: Article }) => {
 }
 
 const TableWrapper = styled.table`
-    border-spacing: 2px 8px;
+    border-spacing: 0px 8px;
+    width: 100%;
 `
 
 const LatestArticleView = ({ articles }: Props) => {

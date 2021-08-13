@@ -7,6 +7,7 @@ import { getAllArticles } from './api/articles'
 import { Article } from '@model/articles'
 import styled from 'styled-components'
 
+
 type IndexPageProps = {
   articles: Article[]
 }
@@ -17,98 +18,82 @@ export async function getStaticProps(context) {
   }
 }
 
-const HomeContainer = styled.div`
+const HomeWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 82vh;
-  padding-left: 5%;
-  padding-right: 5%;
-`
-
-const Third = styled.div`
-  padding: 2%;
-  width: 25%;
-`
-
-const FeedContainer = styled(Third)`
-  padding-left: 10%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
+  min-height: 82vh;
 `
 
-const IntroContainer = styled(Third)`
+const HomeContainer = styled.div`
+  padding-top: 20px;
+  max-width: 800px;
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: fit-content;
+
+  & > img {
+    width: 30%;
+    height: fit-content;
+  }
+`
+
+const IntroContainer = styled.div`
+  width: 70%;
+
   & h3 {
     margin-top: 0;
-    font-size: 3.4vw;
+    font-size: 48px;
     font-weight: 700;
   }
 
   & p {
-    font-size: 1.8vw;
+    font-size: 24px;
   }
 `
 
-const Feed = styled.div`
-  font-size: 20px;
+const Container = styled.div`
   width: 100%;
 
-  & h4 {
-    font-size: 1.8vw;
-    margin: 20px 0 20px 0;
-  }
-`
-
-const ProfilePicContainer = styled(Third)`
-  padding-right: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  & div {
-    height: fit-content;
-    width: fit-content;
+  & > h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
   }
 `
 
 const IndexPage = ({ articles }: IndexPageProps) => {
   const { theme } = useTheme()
 
-  let profilePicHeight : number = 454
-  let profilePicWidth : number = (422 / 454) * profilePicHeight
-
   const latestArticles = articles.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   }).slice(0, 3)
 
   return (<>
-  <Layout title="Home" currentNav="">
-    <HomeContainer>
-      <FeedContainer>
-        <Feed>
-          <h4>Latest activity on GitHub</h4>
-          <GithubActivity username="dcronqvist"/>
-        </Feed>
-        <Feed>
-          <h4>Latest articles</h4>
+  <Layout title="dcronqvist" currentNav="">
+    <HomeWrapper>
+      <HomeContainer>
+        <IntroContainer>
+          <h3>
+            Hey there, I'm Daniel.
+          </h3>
+          <p>
+            I'm a Computer Science and Engineering student at Chalmers University of Technology in Gothenburg, Sweden.
+          </p>
+        </IntroContainer>
+        <img src={"/imgofme-small.png"}/>
+        <Container>
+          <h3>Latest articles</h3>
           <LatestArticleView articles={latestArticles}/>
-        </Feed>        
-      </FeedContainer>
-      <IntroContainer>
-        <h3>
-          Hey there, I'm Daniel.
-        </h3>
-        <p>
-          I'm a Computer Science and Engineering student at Chalmers University of Technology in Gothenburg, Sweden.
-        </p>
-      </IntroContainer>
-      <ProfilePicContainer>
-        <Tooltipped text="Yep, that's me!">
-          <img style={{width: "100%"}} src={"imgofme-small.png"}></img>
-        </Tooltipped>
-      </ProfilePicContainer>   
-    </HomeContainer>
+        </Container>
+        <Container>
+          <h3>Latest activity on GitHub</h3>
+          <GithubActivity username="dcronqvist"/>
+        </Container>
+      </HomeContainer>
+    </HomeWrapper>
   </Layout>
   </>
 )}

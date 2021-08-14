@@ -1,20 +1,19 @@
-import { Article } from "@model/articles"
-import styled from "styled-components"
+import { Article } from '@model/articles'
+import styled from 'styled-components'
 import mailIcon from '@iconify/icons-mdi/email'
-import { Icon, InlineIcon } from "@iconify/react"
-import moment from "moment"
-import Tag from "./Tag"
-import { Theme, useTheme } from "@contexts/ThemeContext"
-
+import { Icon } from '@iconify/react'
+import moment from 'moment'
+import Tag from './Tag'
+import { Theme, useTheme } from '@contexts/ThemeContext'
 
 export type ArticleHeaderProps = {
-  article: Article,
-  allTags: string[],
+  article: Article
+  allTags: string[]
 }
 
-const HeaderWrapper = styled.header<{ theme: Theme}>`
+const HeaderWrapper = styled.header<{ theme: Theme }>`
   padding-top: 20px;
-  background-color: ${props => props.theme.backgroundAccent};
+  background-color: ${(props) => props.theme.backgroundAccent};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,12 +30,12 @@ const ArticleTitle = styled.h1`
   font-size: 44px;
   margin: 0;
 
-  @media (max-width:800px)  {
+  @media (max-width: 800px) {
     font-size: 24px;
   }
 `
 
-const AuthorWrapper = styled.div<{ theme: Theme}>`
+const AuthorWrapper = styled.div<{ theme: Theme }>`
   font-size: 16px;
   padding: 5px 0px;
   font-weight: 500;
@@ -46,7 +45,7 @@ const AuthorWrapper = styled.div<{ theme: Theme}>`
     display: flex;
     align-items: center;
     transition: all 0.2s ease;
-    color: ${props => props.theme.onBackgroundAccent};
+    color: ${(props) => props.theme.onBackgroundAccent};
     margin-bottom: 2px;
   }
 `
@@ -55,9 +54,9 @@ const AuthorName = styled.span`
   margin-right: 5px;
 `
 
-const InfoWrapper = styled.div<{ theme: Theme}>`
+const InfoWrapper = styled.div<{ theme: Theme }>`
   font-size: 16px;
-  color: ${props => props.theme.onBackgroundAccent};
+  color: ${(props) => props.theme.onBackgroundAccent};
   transition: all 0.2s ease;
 
   & span:last-child {
@@ -71,12 +70,12 @@ const StyledLinkIcon = styled.a`
   color: inherit;
 `
 
-const AuthorPublication = ({ article, allTags }: { article: Article, allTags: string[] }) => {
+const AuthorPublication = ({ article }: { article: Article }) => {
   const { theme } = useTheme()
 
   const formatDate = (date: string): string => {
     const dateObj = new Date(date)
-    return moment(dateObj).format("Do MMM, YYYY")
+    return moment(dateObj).format('Do MMM, YYYY')
   }
 
   return (
@@ -84,7 +83,7 @@ const AuthorPublication = ({ article, allTags }: { article: Article, allTags: st
       <div>
         <AuthorName>{article.author.name}</AuthorName>
         <StyledLinkIcon target="_blank" href={`mailto:${article.author.email}`}>
-          <Icon height={20} icon={mailIcon}/>
+          <Icon height={20} icon={mailIcon} />
         </StyledLinkIcon>
       </div>
       <InfoWrapper theme={theme}>
@@ -100,13 +99,17 @@ const StyledTagContainer = styled.div`
   margin: 5px 0px;
 `
 
-const TagContainer = ({ allTags, articleTags }: { allTags: string[], articleTags: string[] }) => {
+const TagContainer = ({
+  allTags,
+  articleTags
+}: {
+  allTags: string[]
+  articleTags: string[]
+}) => {
   return (
     <StyledTagContainer>
       {articleTags.map((tag, index) => {
-        return (
-          <Tag key={tag} tag={tag} allTags={allTags}/>
-        )
+        return <Tag key={`${tag}-${index}`} tag={tag} allTags={allTags} />
       })}
     </StyledTagContainer>
   )
@@ -117,7 +120,7 @@ const StyledArticleImg = styled.img`
   float: right;
   display: inline;
 
-  @media (max-width:800px)  {
+  @media (max-width: 800px) {
     width: 29%;
   }
 `
@@ -126,32 +129,26 @@ const ArticleSubHeader = styled.h2<{ theme: Theme }>`
   font-size: 24px;
   margin: 0;
   font-weight: 500;
-  color: ${props => props.theme.onBackgroundAccent};
+  color: ${(props) => props.theme.onBackgroundAccent};
   transition: all 0.2s ease;
   margin: 20px 0px;
 
-  @media (max-width:800px)  {
+  @media (max-width: 800px) {
     font-size: 16px;
   }
 `
 
-const ArticleHeader = ({ article, allTags }: ArticleHeaderProps) => {
+const ArticleHeader = ({ article, allTags }: ArticleHeaderProps): ReactNode => {
   const { theme } = useTheme()
 
   return (
     <HeaderWrapper theme={theme}>
       <div>
-        {
-          article.image ? <StyledArticleImg src={article.image} />: ""
-        }
-        <ArticleTitle>
-          {article.title}
-        </ArticleTitle>
-        <AuthorPublication article={article} allTags={allTags}/>
-        <TagContainer allTags={allTags} articleTags={article.tags}/>
-        <ArticleSubHeader theme={theme}>
-          {article.subHeader}
-        </ArticleSubHeader>
+        {article.image ? <StyledArticleImg src={article.image} /> : ''}
+        <ArticleTitle>{article.title}</ArticleTitle>
+        <AuthorPublication article={article} allTags={allTags} />
+        <TagContainer allTags={allTags} articleTags={article.tags} />
+        <ArticleSubHeader theme={theme}>{article.subHeader}</ArticleSubHeader>
       </div>
     </HeaderWrapper>
   )

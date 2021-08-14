@@ -1,13 +1,14 @@
-import { useTheme } from '@contexts/ThemeContext'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 import { ServerStyleSheet } from 'styled-components'
 
 class Document extends NextDocument {
+  // eslint-disable-next-line
   constructor(props) {
-    super(props);
+    super(props)
   }
 
+  // eslint-disable-next-line
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
@@ -15,7 +16,8 @@ class Document extends NextDocument {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />)
         })
 
       const initialProps = await NextDocument.getInitialProps(ctx)
@@ -26,19 +28,22 @@ class Document extends NextDocument {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        ),
+        )
       }
     } finally {
       sheet.seal()
     }
   }
 
-  render() {
+  render(): ReactNode {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

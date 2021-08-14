@@ -15,21 +15,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@contexts/*": [
-        "contexts/*"
-      ],
-      "@themes/*": [
-        "themes/*"
-      ],
-      "@model/*": [
-        "model/*"
-      ]
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@contexts/*": ["contexts/*"],
+      "@themes/*": ["themes/*"],
+      "@model/*": ["model/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

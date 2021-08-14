@@ -38,7 +38,7 @@ const Tag = ({
   onClick,
   fade = false,
   bottomMargin = false
-}: Props): ReactNode => {
+}: Props): JSX.Element => {
   const { theme } = useTheme()
 
   const tagToColor = (tag: string) => {

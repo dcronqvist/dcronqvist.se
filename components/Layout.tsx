@@ -141,7 +141,7 @@ const Layout = ({
   children,
   title = 'This is the default title',
   currentNav
-}: Props): ReactNode => {
+}: Props): JSX.Element => {
   const { theme, setThemeName, currentThemeName, getThemeFromName } = useTheme()
 
   return (
@@ -177,16 +177,28 @@ const Layout = ({
             />
           </nav>
           <LinksContainer>
-            <a href="https://www.linkedin.com/in/dcronqvist/" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/dcronqvist/"
+              target="_blank"
+            >
               <Icon icon={linkedinIcon} />
             </a>
             <Tooltipped text="Follow me!">
-              <a href="https://github.com/dcronqvist" target="_blank">
+              <a
+                href="https://github.com/dcronqvist"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <Icon icon={githubIcon} />
               </a>
             </Tooltipped>
             <Tooltipped text="Get in touch?">
-              <a href="mailto:daniel@dcronqvist.se" target="_blank">
+              <a
+                rel="noreferrer"
+                href="mailto:daniel@dcronqvist.se"
+                target="_blank"
+              >
                 <Icon icon={mailIcon} />
               </a>
             </Tooltipped>

@@ -42,11 +42,11 @@ const NavLink = ({
   title = 'This is the default title',
   href,
   at
-}: Props): ReactNode => {
+}: Props): JSX.Element => {
   const { theme } = useTheme()
 
   return (
-    <Link href={href}>
+    <Link passHref={true} href={href}>
       <NavLinkWrapper underlined={at} theme={theme}>
         <a>{title}</a>
       </NavLinkWrapper>

@@ -65,7 +65,7 @@ type Props = {
   children: ReactNode
 }
 
-export const ThemeProvider = ({ children }: Props): ReactNode => {
+export const ThemeProvider = ({ children }: Props): JSX.Element => {
   const [themeName, setThemeName] = useState(
     themeContextDefaultValues.currentThemeName
   )

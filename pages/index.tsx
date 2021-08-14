@@ -11,7 +11,7 @@ type IndexPageProps = {
 }
 
 // eslint-disable-next-line
-export const getStaticProps = async (context): GetStaticProps => {
+export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: { articles: getAllArticles().articles }
   }
@@ -61,7 +61,7 @@ const Container = styled.div`
   }
 `
 
-const IndexPage = ({ articles }: IndexPageProps): ReactNode => {
+const IndexPage = ({ articles }: IndexPageProps): JSX.Element => {
   const latestArticles = articles
     .sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -73,10 +73,13 @@ const IndexPage = ({ articles }: IndexPageProps): ReactNode => {
       <Layout title="dcronqvist" currentNav="">
         <HomeWrapper>
           <HomeContainer>
-            <h3>Hey there, I'm Daniel.</h3>
-            <img src={'/imgofme-small.png'} />
+            <h3>Hey there, I&apos;m Daniel.</h3>
+            <img
+              alt="Image of me! For some reason, you can't see it though :("
+              src={'/imgofme-small.png'}
+            />
             <p>
-              I'm a Computer Science and Engineering student at Chalmers
+              I&apos;m a Computer Science and Engineering student at Chalmers
               University of Technology in Gothenburg, Sweden.
             </p>
             <Container>

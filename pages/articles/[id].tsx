@@ -34,15 +34,19 @@ function htmlDirectives() {
     const data = node.data || (node.data = {})
     const hast = h(node.name, node.attributes)
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     data.hName = hast.tagName
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     data.hProperties = hast.properties
   }
 
   return transform
 }
 
-export const getStaticPaths = async (): GetStaticPaths => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const a = (await getAllArticles()).articles.map((article) => {
     return {
       params: {
@@ -57,11 +61,11 @@ export const getStaticPaths = async (): GetStaticPaths => {
   }
 }
 
-export const getStaticProps = async ({
+export const getStaticProps: GetStaticProps = async ({
   params: { id }
 }: {
   params: { id: string }
-}): GetStaticProps => {
+}) => {
   const articlesData = getAllArticles()
   const article = articlesData.articles.find(
     (article) => getArticleLink(article) === id
@@ -165,15 +169,15 @@ const MarkdownContent = styled.div<{ theme: Theme }>`
   }
 `
 
-const ArticlePage = ({ article, tags }: Props): ReactNode => {
+const ArticlePage = ({ article, tags }: Props): JSX.Element => {
   const { theme } = useTheme()
 
   const markdownComponents = {
-    pre: ({ children }: { children: ReactNode }) => {
+    pre: function HighlightedCodeBlock({ children }: { children: ReactNode }) {
       return <Highlight>{children[0].props.children[0]}</Highlight>
     },
     a: CustomLink,
-    h3: ({ children }: { children: ReactNode }) => {
+    h3: function MarkdownH3({ children }: { children: ReactNode }) {
       return (
         <>
           <a
@@ -187,7 +191,7 @@ const ArticlePage = ({ article, tags }: Props): ReactNode => {
         </>
       )
     },
-    h2: ({ children }: { children: ReactNode }) => {
+    h2: function MarkdownH2({ children }: { children: ReactNode }) {
       return (
         <>
           <a
@@ -201,7 +205,7 @@ const ArticlePage = ({ article, tags }: Props): ReactNode => {
         </>
       )
     },
-    h1: ({ children }: { children: ReactNode }) => {
+    h1: function MarkdownH1({ children }: { children: ReactNode }) {
       return (
         <>
           <a
@@ -215,7 +219,7 @@ const ArticlePage = ({ article, tags }: Props): ReactNode => {
         </>
       )
     },
-    h4: ({ children }: { children: ReactNode }) => {
+    h4: function MarkdownH4({ children }: { children: ReactNode }) {
       return (
         <>
           <a
@@ -245,10 +249,15 @@ const ArticlePage = ({ article, tags }: Props): ReactNode => {
         <article>
           <MarkdownContent theme={theme}>
             <ReactMarkdown
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              //@ts-ignore
               plugins={[directive, htmlDirectives]}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              //@ts-ignore
               components={markdownComponents}
-              children={article.content}
-            />
+            >
+              {article.content}
+            </ReactMarkdown>
           </MarkdownContent>
         </article>
       </ArticleContainer>

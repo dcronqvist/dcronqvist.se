@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
 
-const IndexPage = (): ReactNode => {
+const IndexPage = (): JSX.Element => {
   return (
     <>
       <Layout title="dcronqvist | About me" currentNav="about me">

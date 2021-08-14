@@ -1,6 +1,6 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from 'next/app'
-import { ThemeProvider, useTheme }from '../contexts/ThemeContext'
+import { ThemeProvider } from '../contexts/ThemeContext'
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
@@ -10,10 +10,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): ReactNode {
   return (
     <>
-      <GlobalStyle/>
+      <GlobalStyle />
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>

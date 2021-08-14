@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
-import Head from 'next/head'
 import { useTheme, Theme } from '../contexts/ThemeContext'
 import styled from 'styled-components'
 
@@ -11,35 +10,39 @@ type Props = {
   at?: boolean
 }
 
-const NavLinkWrapper = styled.span<{underlined: boolean, theme: Theme}>`
+const NavLinkWrapper = styled.span<{ underlined: boolean; theme: Theme }>`
   font-family: 'Roboto', sans-serif;
   margin: 2px;
-  background-color: ${props => props.theme.primaryDark};
-  border: 1px solid ${props => props.theme.primaryLight};
+  background-color: ${(props) => props.theme.primaryDark};
+  border: 1px solid ${(props) => props.theme.primaryLight};
   border-radius: 3px;
   padding: 5px;
   transition: all 0.2s ease;
   font-weight: 400;
   font-size: 22px;
-  text-decoration: ${props => (props.underlined ? 'underline' : 'none')};
-  color: ${props => props.theme.onPrimary};
+  text-decoration: ${(props) => (props.underlined ? 'underline' : 'none')};
+  color: ${(props) => props.theme.onPrimary};
 
   &:hover {
-    background-color: ${props => props.theme.primaryLight};
-    border: 1px solid ${props => props.theme.primaryDark};
+    background-color: ${(props) => props.theme.primaryLight};
+    border: 1px solid ${(props) => props.theme.primaryDark};
     cursor: pointer;
   }
 
   &:hover a {
-    color: ${props => props.theme.linkHover};
+    color: ${(props) => props.theme.linkHover};
   }
 
-  @media (min-width:320px)  {
+  @media (min-width: 320px) {
     font-size: 18px;
   }
 `
 
-const NavLink = ({ children, title = 'This is the default title', href, at }: Props) => {
+const NavLink = ({
+  title = 'This is the default title',
+  href,
+  at
+}: Props): ReactNode => {
   const { theme } = useTheme()
 
   return (
@@ -48,7 +51,7 @@ const NavLink = ({ children, title = 'This is the default title', href, at }: Pr
         <a>{title}</a>
       </NavLinkWrapper>
     </Link>
-)}
-  
+  )
+}
+
 export default NavLink
-  

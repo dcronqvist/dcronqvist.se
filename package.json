@@ -8,9 +8,7 @@
     "type-check": "tsc",
     "pc": "prettier --check .",
     "pr": "prettier --write .",
-    "lint": "eslint . --ext .ts --ext .tsx",
-    "prepare": "husky install",
-    "prettyquick": "pretty-quick --staged"
+    "lint": "eslint . --ext .ts --ext .tsx"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.12",

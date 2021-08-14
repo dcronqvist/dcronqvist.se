@@ -28,16 +28,27 @@ const HomeContainer = styled.div`
   padding-top: 20px;
   max-width: 800px;
   width: 90%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  flex-direction: row;
+  
   height: fit-content;
 
   & > img {
     width: 30%;
+    float: right;
+    /* height: fit-content; */
+  }
+
+  & > h3 {
+    display: inline-block;
+    width: 70%;
+    margin-top: 0;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 0;
     height: fit-content;
+  }
+
+  & > p {
+    font-size: 24px;
   }
 `
 
@@ -45,6 +56,7 @@ const IntroContainer = styled.div`
   width: 70%;
 
   & h3 {
+    display: block;
     margin-top: 0;
     font-size: 48px;
     font-weight: 700;
@@ -57,6 +69,7 @@ const IntroContainer = styled.div`
 
 const Container = styled.div`
   width: 100%;
+  display: inline-block;
 
   & > h3 {
     font-size: 24px;
@@ -75,15 +88,13 @@ const IndexPage = ({ articles }: IndexPageProps) => {
   <Layout title="dcronqvist" currentNav="">
     <HomeWrapper>
       <HomeContainer>
-        <IntroContainer>
-          <h3>
-            Hey there, I'm Daniel.
-          </h3>
-          <p>
-            I'm a Computer Science and Engineering student at Chalmers University of Technology in Gothenburg, Sweden.
-          </p>
-        </IntroContainer>
+        <h3>
+          Hey there, I'm Daniel.
+        </h3>
         <img src={"/imgofme-small.png"}/>
+        <p>
+          I'm a Computer Science and Engineering student at Chalmers University of Technology in Gothenburg, Sweden.
+        </p>
         <Container>
           <h3>Latest articles</h3>
           <LatestArticleView articles={latestArticles}/>

@@ -10,7 +10,10 @@ type Props = {
 
 const RowWrapper = styled.tr`
     font-size: 20px;
-    @media only screen and (max-width: 750px) {
+
+    @media only screen and (max-width: 800px) {
+        font-size: 16px;
+
         .articlerow:nth-child(n + 4) {
             display: none;
         }

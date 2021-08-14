@@ -53,12 +53,12 @@ const ArticlePreviewWrapper = styled.div`
   }
 `
 
-const ArticlePreview = ({ article, tags }: Props): ReactNode => {
+const ArticlePreview = ({ article, tags }: Props): JSX.Element => {
   const { theme } = useTheme()
 
   return (
     <>
-      <Link href={'/articles/' + getArticleLink(article)}>
+      <Link passHref={true} href={'/articles/' + getArticleLink(article)}>
         <ArticlePreviewLink theme={theme}>
           <ArticlePreviewWrapper theme={theme}>
             <h3>{article.title}</h3>

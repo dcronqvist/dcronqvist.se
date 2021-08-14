@@ -13,7 +13,7 @@ type ArticlePageProps = {
 }
 
 // eslint-disable-next-line
-export const getStaticProps = async (context): GetStaticProps => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { articles, tags } = getAllArticles()
 
   return {
@@ -75,7 +75,7 @@ const TagsContainer = styled.div`
   align-items: center;
 `
 
-const ArticlesPage = ({ articles, tags }: ArticlePageProps): ReactNode => {
+const ArticlesPage = ({ articles, tags }: ArticlePageProps): JSX.Element => {
   const [search, setSearch] = useState<string>('')
   const [selectedTag, setSelectedTag] = useState<string>('')
 

@@ -212,7 +212,7 @@ const DisplayWrapper = styled.div<{ theme: Theme }>`
   width: 50%;
 `
 
-const InteractiveAccountant = (): ReactNode => {
+const InteractiveAccountant = (): JSX.Element => {
   const { theme } = useTheme()
 
   const [amount, setAmount] = useState<number>(129)
@@ -236,7 +236,7 @@ const InteractiveAccountant = (): ReactNode => {
     }
   })
 
-  const getPrediction = () => {
+  useEffect(() => {
     const url = 'https://api.dcronqvist.se/v1/ai/accountant'
 
     const data = {
@@ -259,10 +259,6 @@ const InteractiveAccountant = (): ReactNode => {
 
       setPrediction(pred)
     })
-  }
-
-  useEffect(() => {
-    getPrediction()
   }, [amount, reference, isOutcome, isSwish])
 
   return (

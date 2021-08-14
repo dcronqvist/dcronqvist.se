@@ -22,7 +22,7 @@ type ProjectsPageProps = {
 }
 
 // eslint-disable-next-line
-export const getStaticProps = async (context): GetStaticProps => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const projects = getAllProjects()
 
   return {
@@ -177,7 +177,7 @@ const ProjectPreview = ({
     .processSync(project.content).result
 
   const link = project.link ? (
-    <a target="_blank" href={project.link.url}>
+    <a rel="noreferrer" target="_blank" href={project.link.url}>
       <Icon height={40} icon={projectTypeToIcon(project.link.type)} />
     </a>
   ) : (
@@ -216,7 +216,10 @@ const ProjectPreview = ({
             <ReferencedArticlesContainer>
               <h3>Related articles</h3>
               {project.articlesAbout.map((article) => (
-                <Link href={'/articles/' + getArticleLink(article)}>
+                <Link
+                  key={getArticleLink(article)}
+                  href={'/articles/' + getArticleLink(article)}
+                >
                   <a>{article.title}</a>
                 </Link>
               ))}
@@ -255,7 +258,7 @@ const TagsContainer = styled.div`
   align-items: center;
 `
 
-const ProjectsPage = ({ projects, tags }: ProjectsPageProps): ReactNode => {
+const ProjectsPage = ({ projects, tags }: ProjectsPageProps): JSX.Element => {
   const [selectedTag, setSelectedTag] = useState<string>('')
 
   const lines = (amount) => {

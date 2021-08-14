@@ -35,7 +35,7 @@ class Document extends NextDocument {
     }
   }
 
-  render(): ReactNode {
+  render(): JSX.Element {
     return (
       <Html>
         <Head>

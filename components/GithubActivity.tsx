@@ -9,7 +9,11 @@ const Event = ({ event }) => {
     return (
       <td>
         starred{' '}
-        <a target="_blank" href={`https://github.com/${event.repo.name}`}>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={`https://github.com/${event.repo.name}`}
+        >
           {event.repo.name}
         </a>
       </td>
@@ -20,12 +24,17 @@ const Event = ({ event }) => {
         pushed{' '}
         <a
           target="_blank"
+          rel="noreferrer"
           href={`https://github.com/${event.repo.name}/commit/${event.payload.head}`}
         >
           {event.payload.size} {event.payload.size > 1 ? 'commits' : 'commit'}
         </a>{' '}
         to{' '}
-        <a target="_blank" href={`https://github.com/${event.repo.name}`}>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={`https://github.com/${event.repo.name}`}
+        >
           {event.repo.name.replace('dcronqvist/', '')}
         </a>
       </td>
@@ -34,12 +43,17 @@ const Event = ({ event }) => {
     return (
       <td>
         {event.payload.action === 'closed' ? 'closed' : 'opened'}{' '}
-        <a target="_blank" href={`https://github.com/${event.repo.name}`}>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={`https://github.com/${event.repo.name}`}
+        >
           {event.repo.name.replace('dcronqvist/', '')}
         </a>{' '}
         PR{' '}
         <a
           target="_blank"
+          rel="noreferrer"
           href={`https://github.com/${event.repo.name}/pull/${event.payload.number}`}
         >
           #{event.payload.number}
@@ -162,7 +176,7 @@ export type GithubActivityProps = {
   username: string
 }
 
-const GithubActivity = ({ username }: GithubActivityProps): ReactNode => {
+const GithubActivity = ({ username }: GithubActivityProps): JSX.Element => {
   const { data } = useSWR(
     `https://api.github.com/users/${username}/events`,
     fetcher
@@ -207,7 +221,9 @@ const GithubActivity = ({ username }: GithubActivityProps): ReactNode => {
 
   const mappedEvents = grouped
     .slice(0, 3)
-    .map((events) => <DayOfEvents date={events[0].date} events={events} />)
+    .map((events) => (
+      <DayOfEvents key={events[0].date} date={events[0].date} events={events} />
+    ))
 
   return <TableContainer>{mappedEvents}</TableContainer>
 }

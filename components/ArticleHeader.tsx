@@ -70,7 +70,7 @@ const StyledLinkIcon = styled.a`
   color: inherit;
 `
 
-const AuthorPublication = ({ article }: { article: Article }) => {
+const AuthorPublication = ({ article }: { article: Article }): JSX.Element => {
   const { theme } = useTheme()
 
   const formatDate = (date: string): string => {
@@ -138,7 +138,10 @@ const ArticleSubHeader = styled.h2<{ theme: Theme }>`
   }
 `
 
-const ArticleHeader = ({ article, allTags }: ArticleHeaderProps): ReactNode => {
+const ArticleHeader = ({
+  article,
+  allTags
+}: ArticleHeaderProps): JSX.Element => {
   const { theme } = useTheme()
 
   return (
@@ -146,7 +149,7 @@ const ArticleHeader = ({ article, allTags }: ArticleHeaderProps): ReactNode => {
       <div>
         {article.image ? <StyledArticleImg src={article.image} /> : ''}
         <ArticleTitle>{article.title}</ArticleTitle>
-        <AuthorPublication article={article} allTags={allTags} />
+        <AuthorPublication article={article} />
         <TagContainer allTags={allTags} articleTags={article.tags} />
         <ArticleSubHeader theme={theme}>{article.subHeader}</ArticleSubHeader>
       </div>

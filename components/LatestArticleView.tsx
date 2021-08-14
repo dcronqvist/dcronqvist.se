@@ -73,11 +73,11 @@ const TableWrapper = styled.table`
   width: 100%;
 `
 
-const LatestArticleView = ({ articles }: Props): ReactNode => {
+const LatestArticleView = ({ articles }: Props): JSX.Element => {
   return (
     <TableWrapper>
       {articles.map((article) => (
-        <ArticlePreviewRow article={article} />
+        <ArticlePreviewRow key={getArticleLink(article)} article={article} />
       ))}
     </TableWrapper>
   )

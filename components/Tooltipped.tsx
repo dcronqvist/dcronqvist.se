@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
 type TooltippedProps = {
@@ -49,7 +49,7 @@ const TooltipContainer = styled.div`
   }
 `
 
-const Tooltipped = ({ text, children }: TooltippedProps): ReactNode => {
+const Tooltipped = ({ text, children }: TooltippedProps): JSX.Element => {
   return (
     <>
       <TooltipContainer>

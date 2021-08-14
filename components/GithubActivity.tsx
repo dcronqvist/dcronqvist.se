@@ -25,7 +25,7 @@ const Event = ({event}) => {
     }
     else if (event.type === "PullRequestEvent") {
         return <td>
-            {event.payload.action === "closed" ? "closed" : "opened"} <a target="_blank" href={`https://github.com/${event.repo.name}`}>{event.repo.name.replace("dcronqvist/", "")}</a> pull request <a target="_blank" href={`https://github.com/${event.repo.name}/pull/${event.payload.number}`}>#{event.payload.number}</a>
+            {event.payload.action === "closed" ? "closed" : "opened"} <a target="_blank" href={`https://github.com/${event.repo.name}`}>{event.repo.name.replace("dcronqvist/", "")}</a> PR <a target="_blank" href={`https://github.com/${event.repo.name}/pull/${event.payload.number}`}>#{event.payload.number}</a>
         </td>
     }
 
@@ -107,6 +107,10 @@ const DayOfEvents = ({date, events} : DayOfEventsProps) => {
 const TableContainer = styled.table`
     font-size: 20px;
     transition: all 0.2 ease;
+
+    @media (max-width:800px)  {
+        font-size: 16px;
+    }
 `
 
 const GithubActivity = ({ username }) => {

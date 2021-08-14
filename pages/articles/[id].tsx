@@ -153,8 +153,10 @@ const MarkdownContent = styled.div<{theme: Theme}>`
     border-radius: 5px;
   }
 
-  & pre code {
+  & pre > code {
     font-size: 14px;
+    overflow-wrap: normal;
+    white-space: inherit;
   }
 
   & code {
@@ -162,6 +164,9 @@ const MarkdownContent = styled.div<{theme: Theme}>`
     background-color: ${props => props.theme.backgroundAccent};
     border-radius: 5px;
     padding: 0 5px 0 5px;
+    display: inline;
+    white-space: normal;
+    overflow-wrap: break-word;
   }
 
   & li {

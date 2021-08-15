@@ -4,7 +4,7 @@ import { Project } from '@model/projects'
 import { getAllArticles } from './articles'
 import { removeDuplicates } from '@model/utils'
 
-export const getAllProjects = (): { projects: Project[], tags: string[] } => {
+export const getAllProjects = (): { projects: Project[]; tags: string[] } => {
   const projects: Project[] = []
   const projectsDir = './dcronqvist.se-content/projects'
 

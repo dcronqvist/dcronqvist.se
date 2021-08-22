@@ -5,6 +5,7 @@ import { getAllArticles } from './api/articles'
 import { Article } from '@model/articles'
 import styled from 'styled-components'
 import { GetStaticProps } from 'next'
+import { useTheme } from '@contexts/ThemeContext'
 
 type IndexPageProps = {
   articles: Article[]
@@ -59,9 +60,16 @@ const Container = styled.div`
     font-size: 24px;
     margin-bottom: 5px;
   }
+
+  & > img {
+    margin-top: 5px;
+    transition: all 0.2s ease;
+  }
 `
 
 const IndexPage = ({ articles }: IndexPageProps): JSX.Element => {
+  const { theme, currentThemeName } = useTheme()
+
   const latestArticles = articles
     .sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -88,7 +96,16 @@ const IndexPage = ({ articles }: IndexPageProps): JSX.Element => {
             </Container>
             <Container>
               <h3>Latest activity on GitHub</h3>
-              <GithubActivity username="dcronqvist" />
+              <img
+                src="https://ghchart.rshah.org/006CAD/dcronqvist"
+                alt="dcronqvist's Blue Github Chart"
+                style={
+                  currentThemeName === 'dark'
+                    ? { width: '100%', filter: 'invert(100%)' }
+                    : { width: '100%' }
+                }
+              />
+              {/* <GithubActivity username="dcronqvist" /> */}
             </Container>
           </HomeContainer>
         </HomeWrapper>

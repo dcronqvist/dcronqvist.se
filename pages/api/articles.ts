@@ -41,7 +41,7 @@ export const getAllArticles = (): { articles: Article[]; tags: string[] } => {
               }
             })
           : [],
-        readingTime: readingTime(article.content).minutes,
+        readingTime: Math.max(1, readingTime(article.content).minutes),
         subHeader: article.data.subheader ? article.data.subheader : null
       }
       articles.push(realArticle)

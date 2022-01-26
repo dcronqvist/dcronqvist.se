@@ -34,7 +34,7 @@
     "remark-autolink-headings": "^6.0.1",
     "remark-directive": "^2.0.0",
     "remark-highlight.js": "^7.0.0",
-    "remark-html": "^14.0.0",
+    "remark-html": "^14.0.1",
     "remark-parse": "^9.0.0",
     "remark-react": "^8.0.0",
     "remark-slug": "^6.1.0",

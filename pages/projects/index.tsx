@@ -241,6 +241,7 @@ const Section = styled.div``
 
 const Content = styled.div`
   padding-top: 20px;
+  padding-bottom: 20px;
   min-height: calc(82vh - 20px);
   position: relative;
   max-width: 800px;

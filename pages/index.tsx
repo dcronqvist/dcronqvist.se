@@ -21,11 +21,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
-  min-height: 82vh;
+  min-height: 75vh;
 `
 
 const HomeContainer = styled.div`
   padding-top: 20px;
+  padding-bottom: 20px;
   max-width: 800px;
   width: 90%;
 

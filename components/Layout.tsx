@@ -9,6 +9,7 @@ import githubIcon from '@iconify/icons-mdi/github'
 import mailIcon from '@iconify/icons-mdi/email'
 import Tooltipped from '../components/Tooltipped'
 import styled from 'styled-components'
+import Footer from './Footer'
 
 type Props = {
   children?: ReactNode
@@ -221,6 +222,7 @@ const Layout = ({
         </StyledHeader>
       </HorizontalCenterWrapper>
       <StyledMain>{children}</StyledMain>
+      <Footer />
     </LayoutWrapper>
   )
 }

@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0px;
     font-family: 'Roboto';
+    overflow-y: scroll;
   }
 `
 

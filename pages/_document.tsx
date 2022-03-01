@@ -45,6 +45,13 @@ class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
             rel="stylesheet"
           />
+          <meta
+            name="description"
+            content="Computer Science & Engineering student at Chalmers University of Technology, and part-time R&D Software Developer at Ericsson."
+          />
+          <meta name="author" content="Daniel Cronqvist" />
+          <meta name="keywords" content="Daniel Cronqvist, dcronqvist, danc" />
+          <meta name="robots" content="index, follow" />
         </Head>
         <body>
           <Main />

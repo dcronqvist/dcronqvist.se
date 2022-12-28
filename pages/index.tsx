@@ -136,9 +136,9 @@ const IndexPage = (): JSX.Element => {
           </Tooltipped>
         </Links>
         <Content>
-          i'm daniel, a software developer from sweden. security, programming
-          languages, computer engineering, and game development are some of my
-          main interests.
+          i&apos;m daniel, a software developer from sweden. security,
+          programming languages, computer engineering, and game development are
+          some of my main interests.
         </Content>
       </Box>
     </Wrapper>

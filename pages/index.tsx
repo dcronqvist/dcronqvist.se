@@ -1,117 +1,147 @@
-import Layout from '@components/Layout'
-import GithubActivity from '@components/GithubActivity'
-import LatestArticleView from '@components/LatestArticleView'
-import { getAllArticles } from './api/articles'
-import { Article } from '@model/articles'
 import styled from 'styled-components'
-import { GetStaticProps } from 'next'
-import { useTheme } from '@contexts/ThemeContext'
+import { Theme, useTheme } from '@contexts/ThemeContext'
+import linkedinIcon from '@iconify/icons-mdi/linkedin'
+import githubIcon from '@iconify/icons-mdi/github'
+import mailIcon from '@iconify/icons-mdi/email'
+import Icon from '@iconify/react'
+import Tooltipped from '@components/Tooltipped'
 
-type IndexPageProps = {
-  articles: Article[]
-}
+const Wrapper = styled.div<{ theme: Theme }>`
+  height: 100vh;
+  width: 100vw;
+  background-color: ${({ theme }) => theme.background};
 
-// eslint-disable-next-line
-export const getStaticProps: GetStaticProps = async (context) => {
-  return {
-    props: { articles: getAllArticles().articles }
-  }
-}
-
-const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
-  min-height: 75vh;
+  align-items: center;
+
+  color: ${({ theme }) => theme.onBackground};
+
+  transition: all 0.2s ease;
 `
 
-const HomeContainer = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
-  max-width: 800px;
-  width: 90%;
+const Box = styled.div<{ theme: Theme }>`
+  display: grid;
 
-  height: fit-content;
+  padding: 1rem;
 
-  & > img {
-    width: 30%;
-    float: right;
-    /* height: fit-content; */
+  max-width: 400px;
+  grid-column-gap: 20px;
+`
+
+const Header = styled.h1`
+  font-size: 2rem;
+  font-weight: 700;
+
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+`
+
+const Content = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  grid-row-start: 2;
+  grid-row-end: 4;
+
+  font-size: 1.2rem;
+`
+
+const Links = styled.div<{ theme: Theme }>`
+  grid-column-start: 4;
+  grid-column-end: 7;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & a {
+    color: ${({ theme }) => theme.onBackground};
   }
 
-  & > h3 {
-    display: inline-block;
-    width: 70%;
-    margin-top: 0;
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 0;
-    height: fit-content;
+  & a:hover {
+    color: ${({ theme }) => theme.linkHover};
   }
 
-  & > p {
-    font-size: 24px;
+  & svg {
+    padding: 0.1rem;
+    height: 35px;
+    width: 35px;
   }
 `
 
-const Container = styled.div`
-  width: 100%;
-  display: inline-block;
-
-  & > h3 {
-    font-size: 24px;
-    margin-bottom: 5px;
-  }
-
-  & > img {
-    margin-top: 5px;
-    transition: all 0.2s ease;
-  }
+const ThemeSwitcher = styled.span`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 10px;
+  font-size: 2rem;
+  user-select: none;
+  cursor: pointer;
 `
 
-const IndexPage = ({ articles }: IndexPageProps): JSX.Element => {
-  const { theme, currentThemeName } = useTheme()
-
-  const latestArticles = articles
-    .sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
-    .slice(0, 3)
+const IndexPage = (): JSX.Element => {
+  const { theme, setThemeName, currentThemeName, getThemeFromName } = useTheme()
 
   return (
-    <>
-      <Layout title="dcronqvist" currentNav="">
-        <HomeWrapper>
-          <HomeContainer>
-            <h3>Hey there, I&apos;m Daniel.</h3>
-            <img
-              alt="Image of me! For some reason, you can't see it though :("
-              src={'/imgofme-small.png'}
-            />
-            <p>
-              I&apos;m a Computer Science and Engineering student at Chalmers
-              University of Technology in Gothenburg, Sweden.
-            </p>
-            <Container>
-              <h3>Latest articles</h3>
-              <LatestArticleView articles={latestArticles} />
-            </Container>
-            <Container>
-              <h3>Latest activity on GitHub</h3>
-              <img
-                src="https://ghchart.rshah.org/006CAD/dcronqvist"
-                alt="dcronqvist's Blue Github Chart"
-                style={
-                  currentThemeName === 'dark'
-                    ? { width: '100%', filter: 'invert(100%)' }
-                    : { width: '100%' }
+    <Wrapper theme={theme}>
+      <Box theme={theme}>
+        <Header>dcronqvist.</Header>
+        <Links theme={theme}>
+          <a
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/dcronqvist/"
+            target="_blank"
+          >
+            <Icon icon={linkedinIcon} />
+          </a>
+          <Tooltipped text="Follow me!">
+            <a
+              href="https://github.com/dcronqvist"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <Icon icon={githubIcon} />
+            </a>
+          </Tooltipped>
+          <Tooltipped text="Get in touch?">
+            <a
+              rel="noreferrer"
+              href="mailto:daniel@dcronqvist.se"
+              target="_blank"
+            >
+              <Icon icon={mailIcon} />
+            </a>
+          </Tooltipped>
+          <Tooltipped text="Switch themes!">
+            <ThemeSwitcher
+              onClick={() => {
+                if (currentThemeName == 'light') {
+                  setThemeName('dark')
+                } else {
+                  setThemeName('light')
                 }
-              />
-              {/* <GithubActivity username="dcronqvist" /> */}
-            </Container>
-          </HomeContainer>
-        </HomeWrapper>
-      </Layout>
-    </>
+              }}
+            >
+              {currentThemeName == 'light'
+                ? getThemeFromName('dark').emoji
+                : getThemeFromName('light').emoji}
+            </ThemeSwitcher>
+          </Tooltipped>
+        </Links>
+        <Content>
+          i'm daniel, a software developer from sweden. security, programming
+          languages, computer engineering, and game development are some of my
+          main interests.
+        </Content>
+      </Box>
+    </Wrapper>
   )
 }
 

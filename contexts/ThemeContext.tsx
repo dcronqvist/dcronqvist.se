@@ -49,7 +49,7 @@ type ThemeContextType = {
 
 const themeContextDefaultValues: ThemeContextType = {
   theme: allThemes.light,
-  currentThemeName: 'light',
+  currentThemeName: 'dark',
   setThemeName: (themeName: string) => {}, // eslint-disable-line
   allThemeNames: Object.keys(allThemes),
   getThemeFromName: (themeName: string) => allThemes[themeName]

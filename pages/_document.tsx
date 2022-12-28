@@ -1,4 +1,3 @@
-import Footer from '@components/Footer'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 import { ServerStyleSheet } from 'styled-components'

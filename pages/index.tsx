@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { Theme, useTheme } from '@contexts/ThemeContext'
 import linkedinIcon from '@iconify/icons-mdi/linkedin'
 import githubIcon from '@iconify/icons-mdi/github'
@@ -9,15 +9,12 @@ import Tooltipped from '@components/Tooltipped'
 const Wrapper = styled.div<{ theme: Theme }>`
   height: 100vh;
   width: 100vw;
-  background-color: ${({ theme }) => theme.background};
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   color: ${({ theme }) => theme.onBackground};
-
-  transition: all 0.2s ease;
 `
 
 const Box = styled.div<{ theme: Theme }>`
@@ -86,62 +83,76 @@ const ThemeSwitcher = styled.span`
   cursor: pointer;
 `
 
+const Global = createGlobalStyle<{ theme: Theme }>`
+  body {
+    margin: 0px;
+    font-family: 'Roboto';
+    overflow-y: scroll;
+
+    background-color: ${({ theme }) => theme.background};
+
+    transition: all 0.2s ease;
+  }
+`
 const IndexPage = (): JSX.Element => {
   const { theme, setThemeName, currentThemeName, getThemeFromName } = useTheme()
 
   return (
-    <Wrapper theme={theme}>
-      <Box theme={theme}>
-        <Header>dcronqvist.</Header>
-        <Links theme={theme}>
-          <a
-            rel="noreferrer"
-            href="https://www.linkedin.com/in/dcronqvist/"
-            target="_blank"
-          >
-            <Icon icon={linkedinIcon} />
-          </a>
-          <Tooltipped text="Follow me!">
-            <a
-              href="https://github.com/dcronqvist"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <Icon icon={githubIcon} />
-            </a>
-          </Tooltipped>
-          <Tooltipped text="Get in touch?">
+    <>
+      <Global theme={theme} />
+      <Wrapper theme={theme}>
+        <Box theme={theme}>
+          <Header>dcronqvist.</Header>
+          <Links theme={theme}>
             <a
               rel="noreferrer"
-              href="mailto:daniel@dcronqvist.se"
+              href="https://www.linkedin.com/in/dcronqvist/"
               target="_blank"
             >
-              <Icon icon={mailIcon} />
+              <Icon icon={linkedinIcon} />
             </a>
-          </Tooltipped>
-          <Tooltipped text="Switch themes!">
-            <ThemeSwitcher
-              onClick={() => {
-                if (currentThemeName == 'light') {
-                  setThemeName('dark')
-                } else {
-                  setThemeName('light')
-                }
-              }}
-            >
-              {currentThemeName == 'light'
-                ? getThemeFromName('dark').emoji
-                : getThemeFromName('light').emoji}
-            </ThemeSwitcher>
-          </Tooltipped>
-        </Links>
-        <Content>
-          i&apos;m daniel, a software developer from sweden. security,
-          programming languages, computer engineering, and game development are
-          some of my main interests.
-        </Content>
-      </Box>
-    </Wrapper>
+            <Tooltipped text="Follow me!">
+              <a
+                href="https://github.com/dcronqvist"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <Icon icon={githubIcon} />
+              </a>
+            </Tooltipped>
+            <Tooltipped text="Get in touch?">
+              <a
+                rel="noreferrer"
+                href="mailto:daniel@dcronqvist.se"
+                target="_blank"
+              >
+                <Icon icon={mailIcon} />
+              </a>
+            </Tooltipped>
+            <Tooltipped text="Switch themes!">
+              <ThemeSwitcher
+                onClick={() => {
+                  if (currentThemeName == 'light') {
+                    setThemeName('dark')
+                  } else {
+                    setThemeName('light')
+                  }
+                }}
+              >
+                {currentThemeName == 'light'
+                  ? getThemeFromName('dark').emoji
+                  : getThemeFromName('light').emoji}
+              </ThemeSwitcher>
+            </Tooltipped>
+          </Links>
+          <Content>
+            i&apos;m daniel, a software developer from sweden. security,
+            programming languages, computer engineering, and game development
+            are some of my main interests.
+          </Content>
+        </Box>
+      </Wrapper>
+    </>
   )
 }
 

@@ -86,7 +86,6 @@ const Global = createGlobalStyle<{ theme: Theme }>`
   body {
     margin: 0px;
     font-family: 'Roboto';
-    overflow-y: scroll;
 
     background-color: ${({ theme }) => theme.background};
 

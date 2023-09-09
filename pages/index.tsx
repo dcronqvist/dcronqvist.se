@@ -21,7 +21,7 @@ const Box = styled.div<{ theme: Theme }>`
 
   padding: 1rem;
 
-  max-width: 400px;
+  max-width: 450px;
   grid-column-gap: 20px;
 `
 
@@ -92,6 +92,11 @@ const Global = createGlobalStyle<{ theme: Theme }>`
     transition: all 0.2s ease;
   }
 `
+
+const Link = styled.a`
+  color: ${({ theme }: { theme: Theme }) => theme.secondary};
+`
+
 const IndexPage = (): JSX.Element => {
   const { theme, setThemeName, currentThemeName, getThemeFromName } = useTheme()
 
@@ -144,9 +149,11 @@ const IndexPage = (): JSX.Element => {
             </Tooltipped>
           </Links>
           <Content>
-            i&apos;m daniel, a software developer from sweden. security,
+            i&apos;m daniel, a software developer from sweden. computer graphics,
             programming languages, computer engineering, and game development
-            are some of my main interests.
+            are some of my main interests. 
+            <br/><br/>
+            i'm a system developer at <Link theme={theme} href="https://www.raysearchlabs.com/" target="_blank">raysearch laboratories</Link> in stockholm.
           </Content>
         </Box>
       </Wrapper>

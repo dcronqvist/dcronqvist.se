@@ -153,7 +153,7 @@ const IndexPage = (): JSX.Element => {
             programming languages, computer engineering, and game development
             are some of my main interests. 
             <br/><br/>
-            i'm a system developer at <Link theme={theme} href="https://www.raysearchlabs.com/" target="_blank">raysearch laboratories</Link> in stockholm.
+            i&apos;m a system developer at <Link theme={theme} href="https://www.raysearchlabs.com/" target="_blank">raysearch laboratories</Link> in stockholm.
           </Content>
         </Box>
       </Wrapper>

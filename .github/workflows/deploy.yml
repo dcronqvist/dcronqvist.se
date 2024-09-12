@@ -32,11 +32,3 @@ jobs:
         local-dir: ./out/
         server-dir: public_html/
         dangerous-clean-slate: true
-        
-    - name: Send push notification
-      uses: techulus/push-github-action@1.0.0
-      env:
-        API_KEY: ${{ secrets.PUSH_API_KEY }}
-        MESSAGE: "Successfully uploaded new version of dcronqvist.se! ✔️"
-        TITLE: "dcronqvist.se"
-        LINK: https://dcronqvist.se

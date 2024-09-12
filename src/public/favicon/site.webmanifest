@@ -1,0 +1,14 @@
+{
+  "name": "dcronqvist.se",
+  "short_name": "dcronqvist.se",
+  "icons": [
+    {
+      "src": "/favicons/favicon.png",
+      "sizes": "503x503",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone"
+}

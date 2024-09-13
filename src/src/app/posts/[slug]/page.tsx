@@ -55,11 +55,7 @@ export function generateMetadata({ params }: Params): Metadata {
       type: "article",
       url: `https://dcronqvist.se/posts/${post.slug}`,
       description: post.excerpt,
-      images: [
-        {
-          url: `https://dcronqvist.se/assets/blog/authors/dcronqvist.jpg`
-        }
-      ],
+      images: [],
       emails: [
         "daniel@dcronqvist.se"
       ],

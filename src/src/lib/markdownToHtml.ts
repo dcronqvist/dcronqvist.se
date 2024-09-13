@@ -11,7 +11,8 @@ export default async function markdownToHtml(markdown: string) {
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypePrettyCode, {
-      theme: "slack-dark"
+      theme: "slack-dark",
+      keepBackground: false
     })
     .use(rehypeDocument)
     .use(rehypeFormat)

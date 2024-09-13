@@ -6,7 +6,7 @@ pre {
     overflow-x: auto;
     padding: 1rem 0;
     border-radius: 0.5rem;
-    border: 1px solid #7a778e;
+    @apply bg-slate-800 border-solid border-2 border-slate-700;
 }
 
 pre [data-line] {

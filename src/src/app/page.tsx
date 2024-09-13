@@ -14,7 +14,7 @@ export default function Index() {
   return (
     <main>
       <Container>
-        <Intro type={"blog"}/>
+        <Intro/>
         <HeroPost
           title={heroPost.title}
           date={heroPost.date}
@@ -25,7 +25,7 @@ export default function Index() {
         {morePosts.length > 0 && <MoreStories posts={morePosts.map(p => {
           return {
             ...p,
-            slug: `/posts/${p.slug}`,
+            slug: `${p.slug}`,
           }
         })} />}
       </Container>

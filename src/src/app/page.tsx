@@ -29,23 +29,20 @@ export default function Index() {
   );
 }
 
-export function generateMetadata(): Metadata {
-  return {
+export const metadata: Metadata = {
+  title: "dcronqvist blog",
+  openGraph: {
     title: "dcronqvist blog",
-    openGraph: {
-      title: "dcronqvist blog",
-      type: "website",
-      url: `https://dcronqvist.se`,
-      description: "Blog by Daniel Cronqvist, a software engineer from Sweden.",
-      siteName: "dcronqvist blog",
-      images: [
-        {
-          url: `https://dcronqvist.se/assets/blog/authors/dcronqvist.jpg`
-        }
-      ],
-      emails: [
-        "daniel@dcronqvist.se"
-      ]
-    },
-  };
-}
+    type: "website",
+    url: `https://dcronqvist.se`,
+    description: "Blog by Daniel Cronqvist, a software engineer from Sweden.",
+    images: [
+      {
+        url: `https://dcronqvist.se/assets/blog/authors/dcronqvist.jpg`
+      }
+    ],
+    emails: [
+      "daniel@dcronqvist.se"
+    ]
+  },
+};

@@ -46,7 +46,7 @@ export function generateMetadata({ params }: Params): Metadata {
     return notFound();
   }
 
-  const title = `${post.title} | dcronqvist.se blog`;
+  const title = `${post.title} | dcronqvist blog`;
 
   return {
     title,

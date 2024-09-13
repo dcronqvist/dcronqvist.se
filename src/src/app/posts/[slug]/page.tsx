@@ -40,7 +40,7 @@ type Params = {
 };
 
 export function generateMetadata({ params }: Params): Metadata {
-  const post = getPostBySlug(params.slug.replace("/posts/", ""));
+  const post = getPostBySlug(params.slug);
 
   if (!post) {
     return notFound();

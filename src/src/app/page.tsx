@@ -19,15 +19,10 @@ export default function Index() {
           title={heroPost.title}
           date={heroPost.date}
           author={heroPost.author}
-          slug={`/posts/${heroPost.slug}`}
+          slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />
-        {morePosts.length > 0 && <MoreStories posts={morePosts.map(p => {
-          return {
-            ...p,
-            slug: `${p.slug}`,
-          }
-        })} />}
+        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
     </main>
   );

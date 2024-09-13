@@ -3,6 +3,7 @@ import { HeroPost } from "@/app/_components/hero-post";
 import { Intro } from "@/app/_components/intro";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
+import { Metadata } from "next";
 
 export default function Index() {
   const allPosts = getAllPosts();
@@ -26,4 +27,25 @@ export default function Index() {
       </Container>
     </main>
   );
+}
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "dcronqvist blog",
+    openGraph: {
+      title: "dcronqvist blog",
+      type: "website",
+      url: `https://dcronqvist.se`,
+      description: "Blog by Daniel Cronqvist, a software engineer from Sweden.",
+      siteName: "dcronqvist blog",
+      images: [
+        {
+          url: `https://dcronqvist.se/assets/blog/authors/dcronqvist.jpg`
+        }
+      ],
+      emails: [
+        "daniel@dcronqvist.se"
+      ]
+    },
+  };
 }

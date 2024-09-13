@@ -52,7 +52,20 @@ export function generateMetadata({ params }: Params): Metadata {
     title,
     openGraph: {
       title,
-      images: [],
+      type: "article",
+      url: `https://dcronqvist.se/posts/${post.slug}`,
+      description: post.excerpt,
+      siteName: title,
+      images: [
+        {
+          url: `https://dcronqvist.se/assets/blog/authors/dcronqvist.jpg`
+        }
+      ],
+      emails: [
+        "daniel@dcronqvist.se"
+      ],
+      publishedTime: post.date,
+      authors: [post.author.name]
     },
   };
 }

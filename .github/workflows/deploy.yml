@@ -2,41 +2,34 @@ on:
   push:
     branches: [master]
 
-name: 🚀 Deploy website on push
+name: Deploy website on push
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.REPO_PAT }}
-        submodules: recursive
+    - name: Checkout
+      uses: actions/checkout@v4
 
-    - name: install npm deps
-      uses: actions/setup-node@v2
+    - name: Setup Node
+      uses: actions/setup-node@v4
       with:
-        node-version: 15.3
-        cache: 'npm'
-    - run: npm install
-    - run: npm run build
+        node-version: "20"
+        cache: yarn
+
+    - run: yarn install
+      working-directory: src/
+
+    - run: yarn next build
+      working-directory: src/
     
-    - name: 📂 Sync files
+    - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
         server: ${{ secrets.ftp_server }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         protocol: ftps
-        local-dir: ./out/
+        local-dir: ./src/out/
         server-dir: public_html/
         dangerous-clean-slate: true
-        
-    - name: Send push notification
-      uses: techulus/push-github-action@1.0.0
-      env:
-        API_KEY: ${{ secrets.PUSH_API_KEY }}
-        MESSAGE: "Successfully uploaded new version of dcronqvist.se! ✔️"
-        TITLE: "dcronqvist.se"
-        LINK: https://dcronqvist.se

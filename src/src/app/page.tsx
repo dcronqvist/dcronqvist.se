@@ -14,15 +14,20 @@ export default function Index() {
   return (
     <main>
       <Container>
-        <Intro />
+        <Intro type={"blog"}/>
         <HeroPost
           title={heroPost.title}
           date={heroPost.date}
           author={heroPost.author}
-          slug={heroPost.slug}
+          slug={`/posts/${heroPost.slug}`}
           excerpt={heroPost.excerpt}
         />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        {morePosts.length > 0 && <MoreStories posts={morePosts.map(p => {
+          return {
+            ...p,
+            slug: `/posts/${p.slug}`,
+          }
+        })} />}
       </Container>
     </main>
   );

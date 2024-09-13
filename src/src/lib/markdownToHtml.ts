@@ -11,7 +11,7 @@ export default async function markdownToHtml(markdown: string) {
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypePrettyCode, {
-      theme: "catppuccin-macchiato"
+      theme: "slack-dark"
     })
     .use(rehypeDocument)
     .use(rehypeFormat)

@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/api";
+import { getAllPosts, getPostBySlug, getProjectBySlug } from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
 
-export default async function Post({ params }: Params) {
-  const post = getPostBySlug(params.slug);
+export default async function Project({ params }: Params) {
+  const post = getProjectBySlug(params.slug);
 
   if (!post) {
     return notFound();
@@ -19,7 +19,7 @@ export default async function Post({ params }: Params) {
   return (
     <main>
       <Container>
-        <Header type={"blog"} url={"/"} />
+        <Header type={"projects"} url={"/projects"}/>
         <article className="mb-32">
           <PostHeader
             title={post.title}

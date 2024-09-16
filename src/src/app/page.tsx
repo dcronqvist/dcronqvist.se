@@ -36,7 +36,16 @@ export const metadata: Metadata = {
     type: "website",
     url: `https://dcronqvist.se`,
     description: "Blog by Daniel Cronqvist, a software engineer from Sweden.",
-    images: [],
+    images: [
+      {
+        url: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+        secureUrl: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+        width: 804,
+        height: 461,
+        alt: "dcronqvist blog",
+        type: "image/jpeg"
+      }
+    ],
     emails: [
       "daniel@dcronqvist.se"
     ]

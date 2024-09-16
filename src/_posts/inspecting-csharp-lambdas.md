@@ -1,6 +1,6 @@
 ---
-title: "InspecTree: Expression<T> with statement body support"
-excerpt: "You might have heard of, or used, Expression<T> in C#. They're very useful, but suffer from the major limitation of not supporting lambdas with statement bodies. Well, it's time we change that, and I'm here to tell you how I did it."
+title: "InspecTree: C# Expression<T> with statement body support"
+excerpt: "You might have heard of, or used, Expression<T> in C#. They're very useful, but suffer from the major limitation of not supporting lambdas with statement bodies. Well, it's time we change that, and I'm here to tell you how I did it. Here's my journey of creating InspecTree, a .NET library that uses source generators and interceptors to allow you to inspect entire C# lambdas."
 date: "2024-09-14"
 author:
   name: "dcronqvist"

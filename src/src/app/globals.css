@@ -34,8 +34,7 @@ code[data-line-numbers]>[data-line]::before {
 }
 
 [data-highlighted-chars] {
-    @apply bg-zinc-600/50 rounded;
-    box-shadow: 0 0 0 4px rgba(95, 95, 96, 0.5);
+    @apply bg-purple-600/20 dark:bg-purple-300/30 rounded;
 }
 
 [data-chars-id] {

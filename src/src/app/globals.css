@@ -6,7 +6,12 @@ pre {
     overflow-x: auto;
     padding: 1rem 0;
     border-radius: 0.5rem;
-    @apply bg-slate-800 border-solid border-2 border-slate-700;
+    @apply border-solid border-2 border-slate-200 bg-slate-100 dark:bg-slate-800 dark:border-slate-700;
+}
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+    @apply text-[var(--shiki-light)] bg-[var(--shiki-light-bg)] dark:text-[var(--shiki-dark)] dark:bg-[var(--shiki-dark-bg)];
 }
 
 pre [data-line] {

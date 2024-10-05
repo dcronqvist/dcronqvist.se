@@ -1,7 +1,7 @@
 ---
 title: "Extending InspecTree with support for semantic analysis"
 excerpt: "I recently created a library, InspecTree, that allows you to inspect and analyze entire C# lambdas. In this post, I will show you how I extended InspecTree to also support semantically analyzing the lambdas."
-date: "2024-09-30"
+date: "2024-10-05"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"

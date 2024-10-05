@@ -17,14 +17,14 @@ There's a pretty simple answer to that actually, you need an instance of a [`Sem
 
 # Source generating a compilation for a lambda 
 
-First thing to do is add a new property to the `InspecTree<T>{:csharp}` class so that we can store the `Compilation{:csharp}` for the lambda, so that users of the library can access it properly.
+First thing to do is add a new property to the `InspecTree<T>{:csharp}` class so that we can store the `SemanticModel{:csharp}` for the lambda, so that users of the library can access it properly.
 
 ```csharp showLineNumbers {5}
 public class InspecTree<TDelegate> where TDelegate : Delegate
 {
   public TDelegate Delegate { get; }
-  public SyntaxTree SyntaxTree { get; }
-  public Compilation Compilation { get; }
+  public LambdaExpressionSyntax LambdaSyntax { get; }
+  public SemanticModel SemanticModel { get; }
 }
 ```
 
@@ -76,7 +76,7 @@ using System.Numerics;
 }
 ```
 
-And now we have a compilation that actually works! Now.. how to do this automatically for all the invocations that are intercepted by InspecTree?
+And now we have a compilation that we can get our semantic model from! Now.. how to do this automatically for all the invocations that are intercepted by InspecTree?
 
 # Automatically generating a compilation for all intercepted lambdas
 

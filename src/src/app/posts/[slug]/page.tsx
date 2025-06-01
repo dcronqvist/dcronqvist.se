@@ -6,6 +6,8 @@ import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
+import JsonLD from "@/app/_components/jsonld";
+import { Article } from "schema-dts";
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -18,6 +20,23 @@ export default async function Post({ params }: Params) {
 
   return (
     <main>
+      <JsonLD<Article> context={{
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        author: {
+          '@type': 'Person',
+          name: post.author.name,
+          url: "https://dcronqvist.se",
+          image: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+        },
+        dateModified: post.date,
+        datePublished: post.date,
+        headline: post.title,
+        image: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+        articleBody: post.content,
+        description: post.excerpt,
+        keywords: post.keywords || [],
+      }} />
       <Container>
         <Header url={"/"} />
         <article className="mb-32">

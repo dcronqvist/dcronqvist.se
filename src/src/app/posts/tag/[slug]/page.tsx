@@ -8,6 +8,8 @@ import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
 import { Post } from "@/interfaces/post";
 import { PostsTagFilterable } from "@/app/_components/posts-tag-filterable";
+import JsonLD from "@/app/_components/jsonld";
+import { ItemList } from "schema-dts";
 
 export default async function Tag({ params: { slug } }: Params) {
   const postTags = getAllPostTags();
@@ -16,9 +18,33 @@ export default async function Tag({ params: { slug } }: Params) {
   }
   
   const posts = getAllPosts().filter((post: Post) => post.tags?.includes(slug));
+  const tagDisplayName = postTags.find((tag) => tag.identifier === slug)?.displayName || slug;
 
   return (
     <main>
+      <JsonLD<ItemList> context={{
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: posts.map(post => ({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          author: {
+            '@type': 'Person',
+            name: post.author.name,
+            url: "https://dcronqvist.se",
+            image: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+          },
+          dateModified: post.date,
+          datePublished: post.date,
+          headline: post.title,
+          image: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+          keywords: post.keywords || [],
+          description: post.excerpt,
+        })),
+        itemListOrder: "Descending",
+        numberOfItems: posts.length,
+        description: `A collection of posts tagged with "${tagDisplayName}" on dcronqvist blog.`,
+      }} />
       <Container>
         <Header url={"/"} />
         <PostsTagFilterable posts={posts} currentTag={slug} />

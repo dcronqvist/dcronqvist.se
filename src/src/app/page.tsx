@@ -4,6 +4,8 @@ import { Intro } from "@/app/_components/intro";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
 import { Metadata } from "next";
+import { Person } from "schema-dts";
+import JsonLD from "./_components/jsonld";
 
 export default function Index() {
   const allPosts = getAllPosts();
@@ -14,6 +16,15 @@ export default function Index() {
 
   return (
     <main>
+      <JsonLD<Person> context={{
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Daniel Cronqvist',
+        alternateName: 'dcronqvist',
+        description: 'Software engineer from Sweden, passionate about programming, game development, and open source.',
+        identifier: 'dcronqvist',
+        image: 'https://dcronqvist.se/assets/blog/images/og_image.jpg',
+      }} />
       <Container>
         <Intro/>
         <HeroPost

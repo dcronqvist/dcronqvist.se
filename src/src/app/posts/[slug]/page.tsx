@@ -18,6 +18,11 @@ export default async function Post({ params }: Params) {
 
   const content = await markdownToHtml(post.content || "");
 
+  const defaultImage = "https://dcronqvist.se/assets/blog/images/og_image.jpg";
+  const previewImage = post.previewImage
+    ? `https://dcronqvist.se${post.previewImage}`
+    : defaultImage;
+
   return (
     <main>
       <JsonLD<Article> context={{
@@ -27,12 +32,12 @@ export default async function Post({ params }: Params) {
           '@type': 'Person',
           name: post.author.name,
           url: "https://dcronqvist.se",
-          image: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+          image: "https://dcronqvist.se/assets/blog/authors/dcronqvist.jpg",
         },
         dateModified: post.date,
         datePublished: post.date,
         headline: post.title,
-        image: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+        image: previewImage,
         articleBody: post.content,
         description: post.excerpt,
         keywords: post.keywords || [],
@@ -68,6 +73,24 @@ export function generateMetadata({ params }: Params): Metadata {
 
   const title = `${post.title} | dcronqvist blog`;
 
+  const defaultOgImage = {
+    url: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+    secureUrl: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
+    width: 804,
+    height: 461,
+    alt: "dcronqvist blog",
+    type: "image/jpeg"
+  };
+
+  const previewImage = post.previewImage
+    ? {
+      url: `https://dcronqvist.se${post.previewImage}`,
+      secureUrl: `https://dcronqvist.se${post.previewImage}`,
+      alt: post.title,
+      type: `image/${post.previewImage.split('.').pop()}`,
+    }
+    : defaultOgImage;
+
   return {
     title,
     description: post.excerpt,
@@ -78,16 +101,7 @@ export function generateMetadata({ params }: Params): Metadata {
       type: "article",
       url: `https://dcronqvist.se/posts/${post.slug}`,
       description: post.excerpt,
-      images: [
-        {
-          url: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
-          secureUrl: "https://dcronqvist.se/assets/blog/images/og_image.jpg",
-          width: 804,
-          height: 461,
-          alt: "dcronqvist blog",
-          type: "image/jpeg"
-        }
-      ],
+      images: [previewImage],
       emails: [
         "daniel@dcronqvist.se"
       ],

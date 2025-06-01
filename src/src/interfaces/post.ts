@@ -32,6 +32,7 @@ export type Post = {
   excerpt: string;
   content: string;
   preview?: boolean;
+  previewImage?: string;
   tags?: string[];
   keywords?: string[];
 };

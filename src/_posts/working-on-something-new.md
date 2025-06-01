@@ -5,6 +5,7 @@ date: "2025-06-01"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"
+previewImage: "/assets/blog/working-on-something-new/preview.png"
 tags:
   - game-dev
 keywords:

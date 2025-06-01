@@ -5,7 +5,21 @@ date: "2024-09-14"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"
-tags: ["csharp", "dotnet", "prog-langs"]
+tags:
+  - csharp
+  - dotnet
+  - prog-langs
+keywords:
+  - c#
+  - csharp
+  - dotnet
+  - .net
+  - semantic analysis
+  - roslyn
+  - syntax tree
+  - lambda expressions
+  - transpiler
+  - syntax tree traversal
 ---
 
 #  What's an `Expression<T>{:csharp}`?

@@ -51,6 +51,9 @@ export function generateMetadata({ params }: Params): Metadata {
 
   return {
     title,
+    description: post.excerpt,
+    keywords: post.keywords || [],
+    authors: [{ name: post.author.name, url: "https://dcronqvist.se" }],
     openGraph: {
       title,
       type: "article",

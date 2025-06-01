@@ -1,11 +1,28 @@
 ---
 title: "Making a fast and memory efficient Tiled parsing library in C#"
-excerpt: "Tiled is a popular open source map editor for 2D games. Several libraries parsing the different Tiled map formats exist for .NET. Many of them have gone old and outdated though, and I took it upon myself to create a new one, with a focus on speed and memory efficiency."
+excerpt: "Tiled is a popular open source map editor for 2D games. Several libraries parsing the different Tiled map formats exist for .NET. Many of them have gone old and outdated though, and I took it upon myself to create a new one called DotTiled, with a focus on speed and memory efficiency."
 date: "2024-09-17"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"
-tags: ["game-dev", "dotnet"]
+tags:
+  - game-dev
+  - dotnet
+keywords:
+  - tiled
+  - tiled map editor
+  - tiled map parsing
+  - c#
+  - dotnet
+  - game development
+  - game dev
+  - 2d games
+  - map editor
+  - DotTiled
+  - dcronqvist
+  - benchmarking
+  - performance
+  - memory efficiency
 ---
 
 # What's Tiled?
@@ -173,7 +190,7 @@ However, even though it is quite verbose: it's readable and fast. The `ReadTileL
 
 For JSON, it is extremely similar; I made identical extension methods to `JsonElement{:csharp}` to be able to retrieve values in a *required* or *optional* manner.
 
-# Benchmarking my library against other libraries
+# Benchmarking my library DotTiled against other libraries
 
 After all this effort, it would be a shame if it turned out that it was only marginally faster than the reflection-based parsing. However, it turned out to be quite a lot faster.
 

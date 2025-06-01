@@ -5,7 +5,21 @@ date: "2024-10-05"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"
-tags: ["csharp", "dotnet", "prog-langs"]
+tags:
+  - csharp
+  - dotnet
+  - prog-langs
+keywords:
+  - c#
+  - csharp
+  - dotnet
+  - .net
+  - semantic analysis
+  - roslyn
+  - syntax tree
+  - lambda expressions
+  - transpiler
+  - syntax tree traversal
 ---
 
 In my [previous post](/posts/inspecting-csharp-lambdas/), I showed how I wanted to transpile my C# lambdas to GLSL shaders in my rendering engine. I created a library, InspecTree, which gives you access to the entire syntax tree of a lambda, statement bodies and all. This was a great start, but I quickly realized that I would want more than just the syntax tree. I would also want to know the types of the variables, the return type of the lambda, which methods that were being called inside the lambda, and more specifically check if a lambda is capturing one or more variables from an outer scope (more on why this would be a problem later).

@@ -1,5 +1,3 @@
-'use server';
-
 import { Metadata } from "next";
 import { getAllPosts } from "@/lib/api";
 import Container from "@/app/_components/container";

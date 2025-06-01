@@ -1,5 +1,3 @@
-'use server';
-
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getAllPostTags, getPostBySlug } from "@/lib/api";

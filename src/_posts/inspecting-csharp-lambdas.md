@@ -5,6 +5,7 @@ date: "2024-09-14"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"
+tags: ["csharp", "dotnet", "prog-langs"]
 ---
 
 #  What's an `Expression<T>{:csharp}`?

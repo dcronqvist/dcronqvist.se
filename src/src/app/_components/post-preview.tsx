@@ -6,8 +6,8 @@ import DateFormatter from "./date-formatter";
 type Props = {
   title: string;
   date: string;
-  excerpt: string;
-  author: Author;
+  excerpt?: string;
+  author?: Author;
   slug: string;
 };
 
@@ -28,8 +28,8 @@ export function PostPreview({
       <div className="text-lg mb-4">
         <DateFormatter dateString={date} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
+      { excerpt !== undefined ? <p className="text-lg leading-relaxed mb-4 truncate sm:whitespace-normal">{excerpt}</p> : null }
+      { author != undefined ? (<Avatar name={author.name} picture={author.picture} />) : null }
     </div>
   );
 }

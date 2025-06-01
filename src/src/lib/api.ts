@@ -1,5 +1,7 @@
-import { Post } from "@/interfaces/post";
+import { PostTags } from "@/app/_components/post-tags";
+import { AvailablePostTags, Post, PostTag } from "@/interfaces/post";
 import { Project } from "@/interfaces/project";
+import { assert } from "console";
 import fs from "fs";
 import matter from "gray-matter";
 import { join } from "path";
@@ -27,6 +29,23 @@ export function getAllPosts(): Post[] {
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
+}
+
+export function getAllPostTags(): PostTag[] {
+  return AvailablePostTags;
+}
+
+export function mapPostTagIdentifierToModel(tagIdentifier: string): PostTag {
+  const allAvailableTags = AvailablePostTags;
+
+  assert(
+    allAvailableTags.some((tag) => tag.identifier === tagIdentifier),
+    `Tag with identifier "${tagIdentifier}" not found in available tags.`
+  );
+
+  return allAvailableTags.find((tag) => {
+    return tag.identifier === tagIdentifier;
+  })!;
 }
 
 export function getProjectSlugs() {

@@ -5,6 +5,7 @@ date: "2024-09-17"
 author:
   name: "dcronqvist"
   picture: "/assets/blog/authors/dcronqvist.jpg"
+tags: ["game-dev", "dotnet"]
 ---
 
 # What's Tiled?

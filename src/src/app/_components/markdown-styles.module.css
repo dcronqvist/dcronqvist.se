@@ -33,3 +33,7 @@
 .markdown blockquote {
   @apply border-l-4 border-gray-300 pl-4 text-slate-500;
 }
+
+.markdown video {
+  @apply w-auto h-auto rounded-lg;
+}

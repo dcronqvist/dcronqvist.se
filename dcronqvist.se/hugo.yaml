@@ -1,0 +1,143 @@
+baseURL: "https://dcronqvist.se/"
+title: dcronqvist
+theme: PaperMod
+capitalizeListTitles: false
+
+enableRobotsTXT: true
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production
+  title: dcronqvist
+  description: "dcronqvist's portfolio and blog"
+  keywords:
+    [
+      blog,
+      portfolio,
+      dcronqvist,
+      spectral puffin,
+      tech,
+      programming,
+      dotnet,
+      spotify,
+    ]
+  author: dcronqvist
+  # author: ["Me", "You"] # multiple authors
+  images: ["favicon/favicon.png"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    disableFingerprinting: true
+    favicon: "favicon/favicon.png"
+    favicon16x16: "favicon/favicon.png"
+    favicon32x32: "favicon/favicon.png"
+    apple_touch_icon: "favicon/apple-touch-icon.png"
+    # safari_pinned_tab: "static/favicon/safari-pinned-tab.svg"
+
+  label:
+    text: "dcronqvist"
+    iconHeight: 35
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Hi there \U0001F44B"
+    Content: >
+      Welcome to my blog and portfolio site. I'm Daniel Cronqvist, a software engineer based in Sweden. 
+      Here I write about software development, open source, game development, and other things that interest me.
+
+        Software Engineer @ [RaySearch Laboratories](https://www.raysearchlabs.com).
+
+        If you want to check out my projects, head over to my [GitHub](https://github.com/dcronqvist) profile.
+
+  socialIcons:
+    - name: linkedin
+      url: "https://www.linkedin.com/in/dcronqvist/"
+    - name: github
+      url: "https://github.com/dcronqvist"
+    # - name: youtube
+    #   url: "https://www.youtube.com/@dancdev"
+    - name: email
+      url: "mailto:daniel@dcronqvist.se"
+
+  cover:
+    hidden: false # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  # editPost:
+  #   URL: "https://github.com/<path_to_repo>/content"
+  #   Text: "Suggest Changes" # edit text
+  #   appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    ignoreDiacritics: true
+    shouldSort: true
+    location: 0
+    includeMatches: true
+    # ignoreLocation: true
+    # findAllMatches: true
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 2
+    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    # - identifier: projects
+    #   name: projects
+    #   url: /projects/
+    #   weight: 5
+    - identifier: archive
+      name: archive
+      url: /archive/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 30
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    # anchorLineNos: true
+    # codeFences: true
+    # guessSyntax: true
+    lineNos: true
+    # style: monokai
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search

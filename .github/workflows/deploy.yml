@@ -1,31 +1,33 @@
 on:
   push:
-    branches: [master]
+    branches: [master, dev]
 
 name: Deploy website on push
 jobs:
   web-deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: "0.149.0"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
-      - run: yarn install
-        working-directory: src/
-
-      - run: yarn next build
-        working-directory: src/
+      - name: Build with Hugo
+        run: |
+          cd dcronqvist.se && \
+          hugo \
+            --buildDrafts --gc
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./src/out --project-name=personal-website
+          command: pages deploy ./dcronqvist.se/public --project-name=personal-website
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -4,7 +4,6 @@ draft: false
 title: "Hello World!"
 
 tags: []
-author: "dcronqvist"
 showToc: true
 TocOpen: false
 hidemeta: false

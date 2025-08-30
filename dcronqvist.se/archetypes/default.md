@@ -4,7 +4,6 @@ draft: true
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 
 tags: []
-author: "dcronqvist"
 showToc: true
 TocOpen: false
 hidemeta: false

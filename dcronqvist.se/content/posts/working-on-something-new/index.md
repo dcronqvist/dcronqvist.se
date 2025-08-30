@@ -16,7 +16,6 @@ keywords:
   - game dev
   - game design
   - prototype
-author: "dcronqvist"
 showToc: true
 TocOpen: false
 hidemeta: false

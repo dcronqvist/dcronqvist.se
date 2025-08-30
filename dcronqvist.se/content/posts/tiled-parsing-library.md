@@ -22,7 +22,6 @@ keywords:
   - benchmarking
   - performance
   - memory efficiency
-author: "dcronqvist"
 showToc: true
 TocOpen: false
 hidemeta: false

@@ -1,5 +1,5 @@
 baseURL: "https://dcronqvist.se/"
-title: dcronqvist
+title: daniel cronqvist
 theme: PaperMod
 capitalizeListTitles: false
 
@@ -11,22 +11,22 @@ minify:
 
 params:
   env: production
-  title: dcronqvist
-  description: "dcronqvist's portfolio and blog"
+  title: daniel cronqvist
+  description: "daniel cronqvists's portfolio and blog"
   keywords:
     [
       blog,
       portfolio,
       dcronqvist,
-      spectral puffin,
       tech,
       programming,
       dotnet,
       spotify,
+      daniel cronqvist,
     ]
-  author: dcronqvist
+  author: daniel cronqvist
   # author: ["Me", "You"] # multiple authors
-  images: ["favicon/favicon.png"]
+  images: ["favicon/favicon-64.png"]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -50,26 +50,26 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     disableFingerprinting: true
-    favicon: "favicon/favicon.png"
-    favicon16x16: "favicon/favicon.png"
-    favicon32x32: "favicon/favicon.png"
+    favicon: "favicon/favicon-64.png"
+    favicon16x16: "favicon/favicon-16.ico"
+    favicon32x32: "favicon/favicon-32.ico"
     apple_touch_icon: "favicon/apple-touch-icon.png"
     # safari_pinned_tab: "static/favicon/safari-pinned-tab.svg"
 
   label:
-    text: "dcronqvist"
+    text: daniel cronqvist
+    icon: favicon/favicon-64.png
     iconHeight: 35
 
   # home-info mode
   homeInfoParams:
-    Title: "Hi there \U0001F44B"
+    Title: "welcome! \U0001F44B"
     Content: >
-      Welcome to my blog and portfolio site. I'm Daniel Cronqvist, a software engineer based in Sweden. 
-      Here I write about software development, open source, game development, and other things that interest me.
+      - I'm Daniel Cronqvist, a swedish Software Engineer with a passion for open source software, game development and technology in general.
 
-        Software Engineer @ [RaySearch Laboratories](https://www.raysearchlabs.com).
+      - Software Engineer @ [RaySearch Laboratories](https://www.raysearchlabs.com).
 
-        If you want to check out my projects, head over to my [GitHub](https://github.com/dcronqvist) profile.
+      - Check out some of my projects on [GitHub](https://github.com/dcronqvist).
 
   socialIcons:
     - name: linkedin

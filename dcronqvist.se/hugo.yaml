@@ -76,10 +76,14 @@ params:
       url: "https://www.linkedin.com/in/dcronqvist/"
     - name: github
       url: "https://github.com/dcronqvist"
-    # - name: youtube
-    #   url: "https://www.youtube.com/@dancdev"
     - name: email
       url: "mailto:daniel@dcronqvist.se"
+    - name: youtube
+      url: "https://www.youtube.com/@dcronqvist"
+    - name: twitch
+      url: "https://www.twitch.tv/dcronqvist"
+    - name: itchio
+      url: "https://dcronqvist.itch.io/"
 
   cover:
     hidden: false # hide everywhere but not in structured data

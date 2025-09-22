@@ -22,7 +22,7 @@ jobs:
         run: |
           cd dcronqvist.se && \
           hugo \
-            --buildDrafts --gc
+            --gc
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

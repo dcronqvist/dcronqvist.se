@@ -67,7 +67,7 @@ params:
     Content: >
       - I'm Daniel Cronqvist, a swedish Software Engineer with a passion for open source software, game development and technology in general.
 
-      - Software Engineer @ [RaySearch Laboratories](https://www.raysearchlabs.com).
+      - Software Engineer @ [{{< figure src="images/static/spotify-logo.png" width="15" class="inline-block" >}} Spotify](https://www.spotify.com).
 
       - Check out some of my projects on [GitHub](https://github.com/dcronqvist).
 

@@ -64,3 +64,11 @@ div.highlight:hover .copy-code,
 pre:hover .copy-code {
     display: block;
 }
+
+figure.inline-block {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 2px;
+    margin-right: 4px;
+    transform: translateY(-2px);
+}

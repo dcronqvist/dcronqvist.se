@@ -6,7 +6,7 @@ title: 'InspecTree: C# Expression<T> with statement body support'
 tags:
   - csharp
   - dotnet
-  - programming-languages
+  - prog-langs
 keywords:
   - c#
   - csharp

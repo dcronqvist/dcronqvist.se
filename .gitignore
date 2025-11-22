@@ -2,6 +2,7 @@
 .vscode/
 
 dcronqvist.se/public/
+dcronqvist.se/resources/
 
 # dependencies
 **/node_modules

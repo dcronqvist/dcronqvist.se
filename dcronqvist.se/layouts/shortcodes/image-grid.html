@@ -1,0 +1,36 @@
+<div class="image-grid" style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0;">
+    {{ .Inner }}
+</div>
+
+<style>
+.image-grid {
+    justify-content: center;
+}
+
+.image-grid figure {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 250px;
+    max-width: 100%;
+    margin: 0;
+}
+
+.image-grid figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.image-grid figure figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9em;
+    color: var(--secondary);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .image-grid figure {
+        flex: 1 1 100%;
+    }
+}
+</style>

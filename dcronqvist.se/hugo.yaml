@@ -113,10 +113,6 @@ params:
 
 menu:
   main:
-    # - identifier: projects
-    #   name: projects
-    #   url: /projects/
-    #   weight: 5
     - identifier: archive
       name: archive
       url: /archive/

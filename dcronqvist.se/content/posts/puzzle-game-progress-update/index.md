@@ -1,5 +1,5 @@
 ---
-date: '2025-11-22T22:57:10+02:00'
+date: "2025-11-22T22:57:10+02:00"
 draft: false
 title: "Puzzle game progress update"
 
@@ -32,7 +32,7 @@ ShowPostNavLinks: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: false
 cover:
-    image: "media/cover.gif" # image path/url
+  image: "media/cover.gif" # image path/url
 ---
 
 Alright, it's been a while since my last update on the puzzle game I'm working on, so here goes. I figure that screenshots and gifs are the best way to showcase the current state of the game.
@@ -40,6 +40,8 @@ Alright, it's been a while since my last update on the puzzle game I'm working o
 **Beware that literally EVERYTHING is subject to change.**
 
 Oh, and in case it wasn't clear, the game is called _Quackoban_ (for now at least lol).
+
+### GIFs!
 
 {{< image-grid >}}
 {{< figure src="media/juicy-connection.gif" caption="blocks of the same color snap together" >}}

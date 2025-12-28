@@ -32,7 +32,7 @@ ShowPostNavLinks: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: false
 cover:
-    image: "preview.png" # image path/url
+  image: "preview.png" # image path/url
 ---
 
 So back in October 2024, I started working on a new project. I haven't posted anything in a while, so I figured that I could share the progress I've made so far - going over the initial prototype, what some of the challenges have been this far, and what I plan to do next.

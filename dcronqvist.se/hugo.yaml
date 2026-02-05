@@ -23,6 +23,7 @@ params:
       dotnet,
       spotify,
       daniel cronqvist,
+      quackoban,
     ]
   author: daniel cronqvist
   # author: ["Me", "You"] # multiple authors
@@ -79,11 +80,11 @@ params:
     - name: email
       url: "mailto:daniel@dcronqvist.se"
     - name: youtube
-      url: "https://www.youtube.com/@dcronqvist"
+      url: "https://www.youtube.com/@kronkineer"
     - name: twitch
-      url: "https://www.twitch.tv/dcronqvist"
+      url: "https://www.twitch.tv/kronkineer"
     - name: itchio
-      url: "https://dcronqvist.itch.io/"
+      url: "https://kronkineer.itch.io/"
 
   cover:
     hidden: false # hide everywhere but not in structured data
@@ -113,6 +114,10 @@ params:
 
 menu:
   main:
+    - identifier: games
+      name: games
+      url: /games/
+      weight: 5
     - identifier: archive
       name: archive
       url: /archive/

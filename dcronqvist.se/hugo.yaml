@@ -118,6 +118,10 @@ menu:
       name: archive
       url: /archive/
       weight: 10
+    - identifier: games
+      name: games
+      url: /games/
+      weight: 15
     - identifier: tags
       name: tags
       url: /tags/

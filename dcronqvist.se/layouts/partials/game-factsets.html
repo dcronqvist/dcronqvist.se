@@ -1,0 +1,41 @@
+{{- if or .Params.releaseDate .Params.platforms .Params.engine .Params.status .Params.genre .Params.steamUrl }}
+<div class="game-factsets" style="margin: 1rem 0; padding: 1rem; background: var(--entry); border-radius: var(--radius); border: 1px solid var(--border);">
+  <h3 style="margin-top: 0; margin-bottom: 1rem;">Factsheet</h3>
+  <dl style="display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1.5rem; margin: 0;">
+    {{- with .Params.developer }}
+    <dt style="font-weight: 600;">Developer:</dt>
+    <dd style="margin: 0;">{{ .alias }} <a href="mailto:{{ .email }}" style="color: var(--text-secondary); text-decoration: underline;">(email)</a></dd>
+    {{- end }}
+    
+    {{- with .Params.releaseDate }}
+    <dt style="font-weight: 600;">Release Date:</dt>
+    <dd style="margin: 0;">{{ . }}</dd>
+    {{- end }}
+    
+    {{- with .Params.platforms }}
+    <dt style="font-weight: 600;">Platforms:</dt>
+    <dd style="margin: 0;">{{ delimit . ", " }}</dd>
+    {{- end }}
+    
+    {{- with .Params.engine }}
+    <dt style="font-weight: 600;">Engine:</dt>
+    <dd style="margin: 0;">{{ . }}</dd>
+    {{- end }}
+    
+    {{- with .Params.status }}
+    <dt style="font-weight: 600;">Status:</dt>
+    <dd style="margin: 0;">{{ . }}</dd>
+    {{- end }}
+    
+    {{- with .Params.genre }}
+    <dt style="font-weight: 600;">Genre:</dt>
+    <dd style="margin: 0;">{{ delimit . ", " }}</dd>
+    {{- end }}
+    
+    {{- with .Params.pressKit }}
+    <dt style="font-weight: 600;">Press kit:</dt>
+    <dd style="margin: 0;"><a style="text-decoration: underline;" href="{{ . }}" download>Download press kit (.zip)</a></dd>
+    {{- end }}
+  </dl>
+</div>
+{{- end }}

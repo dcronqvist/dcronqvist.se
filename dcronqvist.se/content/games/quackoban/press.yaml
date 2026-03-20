@@ -1,0 +1,28 @@
+factsheet:
+  title: "Quackoban"
+  developer:
+    alias: "kronkware"
+    email: "daniel@dcronqvist.se"
+  releaseDate: "Fall of 2026"
+  platforms:
+    - text: "Steam (Windows/MacOS)"
+      url: "https://store.steampowered.com/app/4444330/Quackoban/?utm_source=dcronqvist.se&utm_medium=referral&utm_campaign=presskit"
+  genre: ["puzzle", "sokoban", "cozy", "casual"]
+  engine: "Custom C#/.NET engine with raylib"
+
+description: |
+  Quackoban is a cozy puzzle game where you play as a duck solving Sokoban-style puzzles with some intricate block interactions. Push boxes, build shapes, teleport them around, and enjoy the peaceful atmosphere as you work your way through increasingly complex puzzles.
+
+history: |
+  The development of Quackoban began in late 2024 as a small project by Swedish indie developer Daniel Cronqvist, also known as kronkware, who has a background in software engineering and a passion for game development. The idea was born out of a desire to create a relaxing yet challenging puzzle game that could be enjoyed by players of all skill levels.
+
+features: |
+  - Follow the familiar rules of sokoban, pushing blocks into their designated spots.
+  - Charming duck protagonist
+  - Learn the rules of Quackoban's intricate block interactions!
+  - Peaceful, cozy atmosphere
+  - Complete 60+ hand-crafted puzzles and unlock new regions as you progress.
+  - Built with a custom C#/.NET engine
+  - Earn achievements by completing challenges and finding secrets...
+  - Unlock new ducks and accessories to express yourself! Some ducks like party hats, others like cool glasses.
+  - Level editor for creating your own puzzles

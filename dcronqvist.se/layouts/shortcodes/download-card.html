@@ -1,0 +1,39 @@
+{{- $file := .Get "file" -}}
+{{- $text := .Get "text" -}}
+
+{{- $fileInfo := os.Stat (path.Join "static" $file) -}}
+{{- $fileSize := "" -}}
+
+{{- if $fileInfo -}}
+  {{- $bytes := $fileInfo.Size -}}
+  {{- if ge $bytes 1073741824 -}}
+    {{- $fileSize = printf "(%.1f GB)" (div (float $bytes) 1073741824.0) -}}
+  {{- else if ge $bytes 1048576 -}}
+    {{- $fileSize = printf "(%.1f MB)" (div (float $bytes) 1048576.0) -}}
+  {{- else if ge $bytes 1024 -}}
+    {{- $fileSize = printf "(%.1f KB)" (div (float $bytes) 1024.0) -}}
+  {{- else -}}
+    {{- $fileSize = printf "(%d B)" $bytes -}}
+  {{- end -}}
+{{- end -}}
+
+<a href="{{ $file }}" download class="download-card">
+  <span>{{ $text }} {{ $fileSize }}</span>
+</a>
+
+<style>
+.download-card {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: var(--entry);
+  border: 1px solid #adff2f;
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.download-card:hover {
+  text-decoration: underline;
+}
+</style>

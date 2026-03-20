@@ -35,7 +35,7 @@ cover:
 
 ### Screenshots
 
-{{< download-card file="/presskits/quackoban/quackoban-screenshots.zip" text="download screenshots as .zip" >}}
+{{< download-card file="presskit/quackoban-screenshots.zip" text="download screenshots as .zip" >}}
 
 {{< figure src="media/1.png" alt="Gameplay Screenshot 1" >}}
 {{< figure src="media/2.png" alt="Gameplay Screenshot 2" >}}
@@ -45,7 +45,7 @@ cover:
 
 ### Logo & Icon
 
-{{< download-card file="/presskits/quackoban/quackoban-logos-icons.zip" text="download logos & icons as .zip" >}}
+{{< download-card file="presskit/quackoban-logos-icons.zip" text="download logos & icons as .zip" >}}
 
 {{< image-grid >}}
 {{< figure src="media/store_main.png" alt="Store Main Image" >}}

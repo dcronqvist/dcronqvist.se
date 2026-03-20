@@ -4,11 +4,11 @@ title: "Quackoban"
 
 tags: [game-dev]
 author: "dcronqvist"
-showToc: true
+showToc: false
 TocOpen: false
 hidemeta: false
 comments: false
-description: "A challenging puzzle game with unique mechanics and beautiful visuals."
+description: "A challenging sokoban-like puzzle game with unique mechanics and a charming duck."
 disableHLJS: false
 disableShare: true
 hideSummary: false
@@ -21,52 +21,34 @@ ShowRssButtonInSectionTermList: false
 UseHugoToc: false
 cover:
   image: "media/cover.png"
-
-# Game-specific metadata
-developer:
-  alias: "kronkineer"
-  email: "daniel@dcronqvist.se"
-steamUrl: "https://store.steampowered.com/app/500"
-releaseDate: "2026 Q2"
-platforms: ["Windows", "Linux", "MacOS"]
-engine: "Custom C#/.NET engine with raylib"
-status: "In Development"
-genre: ["Puzzle", "Sokoban"]
-pressKit: "media/presskit.zip"
 ---
 
-## About
+### Steam Page
 
-This is an example game page to demonstrate the games content type. Replace this with your actual game description.
+{{< steam-widget appid="4444330" >}}
 
-Describe the key features, gameplay mechanics, and what makes your game unique. This section can be as detailed as you want.
+<!-- ### Videos
 
-## Key Features
+**Initial Quackoban Gameplay Trailer** [YouTube](https://www.youtube.com/@kronkware)
 
-- **Innovative Mechanics**: Unique puzzle-solving mechanics that challenge players
-- **Beautiful Art Style**: Hand-crafted visuals with attention to detail
-- **Relaxing Soundtrack**: Original music that complements the gameplay
-- **Multiple Worlds**: Explore different environments with increasing difficulty
+{{< youtube "dQw4w9WgXcQ" >}} -->
 
-## Screenshots
+### Screenshots
+
+{{< download-card file="presskits/quackoban/quackoban-screenshots.zip" text="download screenshots as .zip" >}}
+
+{{< figure src="media/1.png" alt="Gameplay Screenshot 1" >}}
+{{< figure src="media/2.png" alt="Gameplay Screenshot 2" >}}
+{{< figure src="media/3.png" alt="Gameplay Screenshot 3" >}}
+{{< figure src="media/4.png" alt="Gameplay Screenshot 4" >}}
+{{< figure src="media/5.png" alt="Gameplay Screenshot 5" >}}
+
+### Logo & Icon
+
+{{< download-card file="presskits/quackoban/quackoban-logos-icons.zip" text="download logos & icons as .zip" >}}
 
 {{< image-grid >}}
-{{< figure src="media/screenshot1.png" alt="Gameplay Screenshot 1" >}}
-{{< figure src="media/screenshot2.png" alt="Gameplay Screenshot 2" >}}
+{{< figure src="media/store_main.png" alt="Store Main Image" >}}
+{{< figure src="media/app-256.png" alt="Game Icon" >}}
+{{< figure src="media/library_logo.png" alt="Game Logo" >}}
 {{< /image-grid >}}
-
-## Gameplay Trailer
-
-Add your gameplay trailer here using the video shortcode:
-
-```
-{{</* video src="media/trailer.mp4" type="video/mp4" preload="metadata" */>}}
-```
-
-## Community
-
-Follow the development and join the community:
-
-- [Discord](#) - Join the discussion
-- [Twitter](#) - Get the latest updates
-- [YouTube](#) - Watch devlogs and trailers

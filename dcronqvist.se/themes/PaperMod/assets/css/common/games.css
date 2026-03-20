@@ -9,3 +9,12 @@
 .games-entry-no-padding > figure > img {
     border-radius: 0px !important;
 }
+
+.game-factsets {
+    font-size: 1rem;
+}
+
+.presskit-link {
+    color: greenyellow;
+    text-decoration: underline;
+}

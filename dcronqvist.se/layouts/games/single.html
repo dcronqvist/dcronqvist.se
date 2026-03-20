@@ -1,4 +1,5 @@
 {{- define "main" }}
+{{ $gameData := .Resources.Get "press.yaml" | transform.Unmarshal }}
 
 <article class="post-single">
   <header class="post-header">
@@ -29,10 +30,10 @@
     {{- end }}
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
-  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+  {{/*  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}  */}}
   
   {{- /* Steam widget - prominent placement after cover */ -}}
-  {{- with .Params.steamUrl }}
+  {{- with $gameData.steamUrl }}
   {{- $appId := replaceRE `^https?://store\.steampowered\.com/app/(\d+).*$` "$1" . }}
   <div style="margin: 2rem auto; max-width: 100%;">
     <iframe src="https://store.steampowered.com/widget/{{ $appId }}/" 
@@ -45,7 +46,7 @@
   {{- end }}
   
   {{- /* Game factsets */ -}}
-  {{- partial "game-factsets.html" . }}
+  {{- partial "game-factsets.html" $gameData }}
   
   {{- if (.Param "ShowToc") }}
   {{- partial "toc.html" . }}

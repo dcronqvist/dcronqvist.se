@@ -27,6 +27,10 @@ cover:
 
 {{< steam-widget appid="4444330" >}}
 
+### Presskit download
+
+{{< download-card file="presskit/quackoban-presskit.zip" text="download presskit as .zip" >}}
+
 <!-- ### Videos
 
 **Initial Quackoban Gameplay Trailer** [YouTube](https://www.youtube.com/@kronkware)
@@ -34,8 +38,6 @@ cover:
 {{< youtube "dQw4w9WgXcQ" >}} -->
 
 ### Screenshots
-
-{{< download-card file="presskit/quackoban-screenshots.zip" text="download screenshots as .zip" >}}
 
 {{< figure src="media/1.png" alt="Gameplay Screenshot 1" >}}
 {{< figure src="media/2.png" alt="Gameplay Screenshot 2" >}}
@@ -45,10 +47,11 @@ cover:
 
 ### Logo & Icon
 
-{{< download-card file="presskit/quackoban-logos-icons.zip" text="download logos & icons as .zip" >}}
-
 {{< image-grid >}}
 {{< figure src="media/store_main.png" alt="Store Main Image" >}}
 {{< figure src="media/app-256.png" alt="Game Icon" >}}
+{{< figure src="media/duck_logo_2.png" alt="kronkware logo" >}}
 {{< figure src="media/library_logo.png" alt="Game Logo" >}}
+{{< figure src="media/quackoban_outline.png" alt="Quackoban logo outlined" >}}
+{{< figure src="media/quackoban.png" alt="Quackoban logo" >}}
 {{< /image-grid >}}

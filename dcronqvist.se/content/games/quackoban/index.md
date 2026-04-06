@@ -54,4 +54,5 @@ cover:
 {{< figure src="media/library_logo.png" alt="Game Logo" >}}
 {{< figure src="media/quackoban_outline.png" alt="Quackoban logo outlined" >}}
 {{< figure src="media/quackoban.png" alt="Quackoban logo" >}}
+{{< figure src="media/banner.png" alt="Quackoban banner" >}}
 {{< /image-grid >}}

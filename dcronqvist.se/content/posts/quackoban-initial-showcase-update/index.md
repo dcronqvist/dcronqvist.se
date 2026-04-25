@@ -5,6 +5,7 @@ title: "Quackoban initial showcase and progress update"
 
 tags:
   - game-dev
+  - quackoban
 keywords:
   - quackoban
   - game development

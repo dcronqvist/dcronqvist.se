@@ -31,11 +31,11 @@ cover:
 
 {{< download-card file="presskit/quackoban-presskit.zip" text="download presskit as .zip" >}}
 
-<!-- ### Videos
+### Videos
 
-**Initial Quackoban Gameplay Trailer** [YouTube](https://www.youtube.com/@kronkware)
+**Initial Quackoban Gameplay Trailer** [YouTube](https://youtu.be/4aNWxdf4fCo)
 
-{{< youtube "dQw4w9WgXcQ" >}} -->
+{{< youtube "4aNWxdf4fCo" >}}
 
 ### Screenshots
 

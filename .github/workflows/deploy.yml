@@ -20,14 +20,21 @@ jobs:
 
       - name: Build with Hugo
         run: |
+          if [ "${GITHUB_REF_NAME}" = "master" ]; then
+            BASE_URL="https://dcronqvist.se/"
+          else
+            BASE_URL="https://${GITHUB_REF_NAME}.personal-website.pages.dev/"
+          fi
+
           cd dcronqvist.se && \
           hugo \
-            --gc
+            --gc \
+            --baseURL "${BASE_URL}"
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dcronqvist.se/public --project-name=personal-website
+          command: pages deploy ./dcronqvist.se/public --project-name=personal-website --branch=${{ github.ref_name }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

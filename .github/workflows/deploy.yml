@@ -20,19 +20,9 @@ jobs:
 
       - name: Build with Hugo
         run: |
-          if [ "${GITHUB_REF_NAME}" = "master" ]; then
-            BASE_URL="https://dcronqvist.se/"
-            HUGO_EXTRA_FLAGS=""
-          else
-            BASE_URL="/"
-            HUGO_EXTRA_FLAGS="--relativeURLs"
-          fi
-
           cd dcronqvist.se && \
           hugo \
-            --gc \
-            --baseURL "${BASE_URL}" \
-            ${HUGO_EXTRA_FLAGS}
+            --gc
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

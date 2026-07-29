@@ -22,14 +22,17 @@ jobs:
         run: |
           if [ "${GITHUB_REF_NAME}" = "master" ]; then
             BASE_URL="https://dcronqvist.se/"
+            HUGO_EXTRA_FLAGS=""
           else
-            BASE_URL="https://${GITHUB_REF_NAME}.personal-website.pages.dev/"
+            BASE_URL="/"
+            HUGO_EXTRA_FLAGS="--relativeURLs"
           fi
 
           cd dcronqvist.se && \
           hugo \
             --gc \
-            --baseURL "${BASE_URL}"
+            --baseURL "${BASE_URL}" \
+            ${HUGO_EXTRA_FLAGS}
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

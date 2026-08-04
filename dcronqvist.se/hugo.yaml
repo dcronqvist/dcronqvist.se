@@ -80,11 +80,17 @@ params:
     - name: email
       url: "mailto:daniel@dcronqvist.se"
     - name: youtube
-      url: "https://www.youtube.com/@kronkineer"
+      url: "https://www.youtube.com/@kronkware"
     - name: twitch
-      url: "https://www.twitch.tv/kronkineer"
+      url: "https://www.twitch.tv/kronkware"
     - name: itchio
-      url: "https://kronkineer.itch.io/"
+      url: "https://kronkware.itch.io/"
+    - name: x
+      url: "https://x.com/kronkware"
+    - name: bluesky
+      url: "https://bsky.app/profile/kronkware.bsky.social"
+    - name: instagram
+      url: "https://www.instagram.com/kronkware.games/"
 
   cover:
     hidden: false # hide everywhere but not in structured data
